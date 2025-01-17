@@ -1,3 +1,13 @@
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/.terraform.lock.hcl
+inventory/my-cluster
+terraform/.terraform
+TODO.md
+terraform/variables.tfvars
+terraform/.terraform.tfstate.lock.info
+terraform/terraform-plugin-proxmox.log
+
 # Local .terraform directories
 **/.terraform/*
 
@@ -23,9 +33,6 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Ignore transient lock info files created by terraform apply
-.terraform.tfstate.lock.info
-
 # Include override files you do wish to add to version control using negated pattern
 # !example_override.tf
 
@@ -35,3 +42,11 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+
+# Ignore ssh pub files
+*.pub
+
+
+# Ignore out files
+*.out

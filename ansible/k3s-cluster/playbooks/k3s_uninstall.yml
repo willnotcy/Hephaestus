@@ -1,0 +1,16 @@
+- hosts: master
+  become: yes  # Ensure root privileges for all tasks
+  tasks:
+    - name: Uninstall K3s on master
+      shell: |
+        k3s-uninstall.sh
+      args:
+        removes: /usr/local/bin/k3s
+
+- hosts: worker
+  become: yes  # Ensure root privileges for all tasks
+  tasks:
+    - name: Uninstall K3s on worker
+      ansible.builtin.file:
+        state: absent
+        path: /usr/local/bin/k3s

@@ -1,0 +1,10 @@
+ingressRoute:
+  dashboard:
+    enabled: true   
+
+providers:
+  kubernetesCRD:
+    allowCrossNamespace: true
+
+additionalArguments:
+  - "--log.level=DEBUG"

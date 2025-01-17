@@ -1,0 +1,87 @@
+- hosts: master
+  become: yes  # Ensure root privileges for all tasks
+  tasks:
+    - name: Install K3s on master
+      shell: |
+        curl -sfL https://get.k3s.io | sh -s - server --write-kubeconfig-mode 644 --disable=servicelb --disable=traefik 
+      args:
+        creates: /usr/local/bin/k3s
+
+    - name: Wait for K3s to initialize node token
+      wait_for:
+        path: /var/lib/rancher/k3s/server/node-token
+
+    - name: Read the node-token file
+      slurp:
+        src: /var/lib/rancher/k3s/server/node-token
+      register: node_token_content
+
+    - name: Save the node-token as a fact
+      set_fact:
+        global_node_token: "{{ node_token_content['content'] | b64decode | trim }}"
+
+    - name: Allow token sharing by fixing directory permissions
+      file:
+        path: /var/lib/rancher/k3s/server
+        mode: "0755"
+        recurse: yes
+
+    - name: Register kubeconfig file
+      stat:    
+        path: /etc/rancher/k3s/k3s.yaml
+      register: kubeconfig_stat
+
+    - name: Fix kubeconfig permissions if necessary
+      file:
+        path: /etc/rancher/k3s/k3s.yaml
+        mode: '0644'
+        state: file
+      when: kubeconfig_stat.stat.exists and kubeconfig_stat.stat.mode != '0644'
+
+    - name: Fetch and Configure Kubeconfig
+      fetch:
+        src: /etc/rancher/k3s/k3s.yaml
+        dest: /tmp/k3s.yaml
+        flat: yes      
+
+- hosts: worker
+  become: yes
+  tasks:
+    - name: Debug K3S_URL and K3S_TOKEN on worker nodes
+      debug:
+        msg:
+          - "K3S_URL=https://{{ hostvars[groups['master'][0]].inventory_hostname }}:6443"
+          - "K3S_TOKEN={{ hostvars[groups['master'][0]]['global_node_token'] }}"
+
+    - name: Install K3s on worker nodes
+      shell: |
+        curl -sfL https://get.k3s.io | K3S_URL=https://{{ hostvars[groups['master'][0]].inventory_hostname }}:6443 K3S_TOKEN={{ hostvars[groups['master'][0]]['global_node_token'] }} sh -
+      args:
+        creates: /usr/local/bin/k3s
+
+
+- hosts: localhost
+  tasks:
+    - name: Ensure ~/.kube directory exists
+      file:
+        path: ~/.kube
+        state: directory
+        mode: '0755'
+
+    - name: Update kubeconfig to use master IP
+      lineinfile:
+        path: /tmp/k3s.yaml
+        regexp: '^ *server: .*'
+        line: "    server: https://{{ hostvars[groups['master'][0]].inventory_hostname }}:6443"
+
+    - name: Copy updated kubeconfig to Ansible control node
+      copy:
+        src: /tmp/k3s.yaml
+        dest: ~/.kube/config
+        remote_src: no
+
+    - name: Set KUBECONFIG environment variable
+      lineinfile:
+        path: ~/.bashrc
+        regexp: '^export KUBECONFIG='
+        line: 'export KUBECONFIG=~/.kube/config'
