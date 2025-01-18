@@ -11,6 +11,13 @@ persistence:
   path: /certs
   size: 128Mi
 
+ports:
+  web:
+    redirections:
+      entryPoint:
+        to: websecure
+        scheme: https
+        permanent: true  
 
 env:
   - name: DUCKDNS_TOKEN
