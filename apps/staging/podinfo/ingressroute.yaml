@@ -1,15 +1,5 @@
 ---
 apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: strip-podinfo
-  namespace: podinfo
-spec:
-  stripPrefix:
-    prefixes:
-      - "/podinfo"
----
-apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: traefik-podinfo
@@ -18,27 +8,9 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: PathPrefix(`/podinfo`)
+    - match: Host(`podinfo.hephlab.duckdns.org`) 
       kind: Rule
-      middlewares:
-        - name: strip-podinfo      
       services:
         - name: podinfo
           port: 9898
           namespace: podinfo
----
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
-  name: traefik-podinfo-api
-  namespace: podinfo
-spec:
-  entryPoints:
-    - web
-  routes:
-    - match: PathPrefix(`/api/`)
-      kind: Rule      
-      services:
-        - name: podinfo
-          port: 9898
-          namespace: podinfo                                                
