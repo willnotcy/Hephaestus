@@ -6,7 +6,7 @@ metadata:
   namespace: podinfo
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`podinfo.hephlab.duckdns.org`) 
       kind: Rule
