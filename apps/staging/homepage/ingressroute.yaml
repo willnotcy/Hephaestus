@@ -6,7 +6,7 @@ metadata:
   namespace: homepage
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: PathPrefix(`/`)
       kind: Rule
@@ -22,7 +22,7 @@ metadata:
   namespace: homepage
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`homepage.hephlab.duckdns.org`) 
       kind: Rule
