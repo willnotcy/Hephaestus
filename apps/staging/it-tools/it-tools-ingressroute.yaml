@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-it-tools
+  namespace: it-tools
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`it-tools.hephlab.duckdns.org`) 
+      kind: Rule
+      services:
+        - name: it-tools
+          port: 80
+          namespace: it-tools
