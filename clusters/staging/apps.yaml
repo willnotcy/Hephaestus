@@ -5,8 +5,10 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  # dependsOn:
-  #   - name: infra-configs
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   sourceRef:
     kind: GitRepository
     name: flux-system

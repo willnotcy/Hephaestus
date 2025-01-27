@@ -4,3 +4,8 @@ resources:
   - podinfo/
   - homepage/
   - it-tools/
+  - zurg/
+  - rclone/
+  - riven/
+  - riven-backend/
+  - plex/

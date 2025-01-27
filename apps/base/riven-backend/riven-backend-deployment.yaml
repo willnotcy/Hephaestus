@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: riven-backend
+  namespace: riven
+  labels:
+    app: riven
+    component: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: riven
+      component: backend
+  template:
+    metadata:
+      labels:
+        app: riven
+        component: backend
+    spec:           
+      containers:
+      - name: riven-backend
+        image: ghcr.io/rivenmedia/riven:latest
+        envFrom:
+        - secretRef:
+            name: riven-backend-secret              
+        - configMapRef:
+            name: riven-backend-configmap
+        volumeMounts:
+        - name: data-volume
+          mountPath: /riven/data
+        - name: shared-media-data
+          mountPath: /mnt/library
+        - name: rclone-data
+          mountPath: /mnt/zurg         
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+      volumes:
+      - name: rclone-data
+        hostPath:
+          path: /mnt/zurg       
+      - name: data-volume
+        hostPath:
+          path: /data/riven
+      - name: shared-media-data
+        persistentVolumeClaim:
+          claimName: shared-media-pvc    

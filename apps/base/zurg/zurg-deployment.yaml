@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zurg
+  namespace: zurg
+  labels:
+    app: zurg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zurg
+  template:
+    metadata:
+      labels:
+        app: zurg
+    spec:    
+      containers:
+      - name: zurg
+        image: ghcr.io/debridmediamanager/zurg-testing:latest
+        volumeMounts:
+        - name: zurg-config
+          subPath: config.yml
+          mountPath: /app/config.yml
+      volumes:
+      - name: zurg-config
+        configMap:
+          name: zurg-config
+      restartPolicy: Always

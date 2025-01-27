@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex
+  namespace: plex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plex
+  template:
+    metadata:
+      labels:
+        app: plex
+    spec:
+      containers:
+        - name: plex
+          image: plexinc/pms-docker:latest              
+          env:
+          volumeMounts:
+            - name: shared-data
+              mountPath: /mnt/library
+              readOnly: true
+            - name: plex-config
+              mountPath: /config    
+            - name: rclone-data
+              mountPath: /mnt/zurg                          
+      volumes:
+        - name: shared-data
+          persistentVolumeClaim:
+            claimName: shared-media-pvc
+        - name: plex-config
+          persistentVolumeClaim:
+            claimName: plex-pvc
+        - name: rclone-data
+          hostPath:
+            path: /mnt/zurg                           
+ 

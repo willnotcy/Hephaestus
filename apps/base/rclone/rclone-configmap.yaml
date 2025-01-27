@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rclone-config
+  namespace: rclone
+data:
+  rclone.conf: |
+    [zurg]
+    type = webdav
+    url = http://zurg-webdav.zurg.svc.cluster.local:9999/dav
+    vendor = other
+    pacer_min_sleep = 0
+
+
+    [zurghttp]
+    type = http
+    url = http://zurg-webdav.zurg.svc.cluster.local:9999/http
+    no_head = false
+    no_slash = false

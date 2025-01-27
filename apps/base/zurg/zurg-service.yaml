@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zurg-webdav
+  namespace: zurg
+spec:
+  selector:
+    app: zurg 
+  ports:
+  - protocol: TCP
+    port: 9999
+    targetPort: 9999

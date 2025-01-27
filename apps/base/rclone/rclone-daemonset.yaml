@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: rclone-mount
+  namespace: rclone
+  labels:
+    app: rclone-mount  
+spec:
+  selector:
+    matchLabels:
+      app: rclone-mount
+  template:
+    metadata:
+      labels:
+        app: rclone-mount
+    spec: 
+      containers:
+      - name: rclone
+        image: rclone/rclone:latest
+        command: ["rclone", "mount", "zurg:", "/mnt/zurg"]
+        args:
+        - "--umask=000"          
+        - "--dir-cache-time=30s"
+        - "--allow-other"
+        - "--allow-non-empty"
+        - "-v"
+        - "--vfs-cache-mode=full"
+        - "--vfs-cache-max-size=2G"
+        - "--read-only"
+        securityContext:
+          privileged: true
+          capabilities:
+            add:
+            - SYS_ADMIN
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/rclone
+        - name: rclone-config
+          mountPath: /root/.rclone.conf
+          subPath: rclone.conf
+        - name: zurg-mount
+          mountPath: /mnt/zurg
+          mountPropagation: Bidirectional
+      volumes:
+      - name: data
+        hostPath:
+          path: /var/lib/rclone/
+      - name: rclone-config
+        configMap:
+          name: rclone-config
+      - name: zurg-mount
+        hostPath:
+          path: /mnt/zurg
+      restartPolicy: Always

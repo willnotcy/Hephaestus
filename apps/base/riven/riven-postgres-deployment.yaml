@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: riven-postgres
+  namespace: riven
+  labels:
+    app: riven
+    component: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: riven
+      component: postgres
+  template:
+    metadata:
+      labels:
+        app: riven
+        component: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:17.0-alpine3.20
+        envFrom:
+        - secretRef:
+            name: riven-postgres-secret                    
+        - configMapRef:
+            name: riven-postgres-configmap
+        volumeMounts:
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data/pgdata
+        readinessProbe:
+          exec:
+            command: ["pg_isready", "-U", "postgres"]
+          initialDelaySeconds: 10
+          periodSeconds: 5
+      volumes:
+      - name: postgres-data
+        persistentVolumeClaim:
+          claimName: riven-postgres-pvc
+
