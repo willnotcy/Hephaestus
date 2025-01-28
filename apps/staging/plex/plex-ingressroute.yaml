@@ -12,6 +12,6 @@ spec:
     - match: Host(`plex.hephlab.duckdns.org`) 
       kind: Rule
       services:
-        - name: plex-service
+        - name: plex
           port: 32400
           namespace: plex
