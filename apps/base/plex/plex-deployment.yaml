@@ -16,7 +16,9 @@ spec:
       containers:
         - name: plex
           image: plexinc/pms-docker:latest              
-          env:
+          envFrom:
+          - secretRef:
+              name: plex-secret
           volumeMounts:
             - name: shared-data
               mountPath: /mnt/library
