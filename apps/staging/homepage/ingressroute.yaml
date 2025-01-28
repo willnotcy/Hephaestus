@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: PathPrefix(`/`)
+    - match: Host(`hephlab.duckdns.org`)
       kind: Rule
       services:
         - name: homepage
