@@ -7,5 +7,5 @@ data:
   PUID: "1000"
   PGID: "1000"
   TZ: Europe/Copenhagen
-  BACKEND_URL: "http://riven-backend-service:8080"
+  BACKEND_URL: "http://riven-backend-service.plex.svc.cluster.local:8080"
   DIALECT: "postgres"
