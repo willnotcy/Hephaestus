@@ -3,5 +3,4 @@ kind: Kustomization
 namespace: plex
 resources:
   - ../../base/plex
-  - plex-secret.yaml
   - plex-ingressroute.yaml
