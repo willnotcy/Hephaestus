@@ -45,8 +45,8 @@ spec:
         hostPath:
           path: /mnt/zurg       
       - name: data-volume
-        hostPath:
-          path: /data/riven
+        persistentVolumeClaim:
+          claimName: riven-backend-pvc  
       - name: shared-media-data
         persistentVolumeClaim:
           claimName: shared-media-pvc    
