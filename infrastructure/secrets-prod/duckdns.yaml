@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: duckdns-token
+    namespace: traefik-system
+type: Opaque
+stringData:
+    token: ENC[AES256_GCM,data:DeHZE0Z9DtP085r1bajImvupWOcweHecQRn5nYQbJk7wf+DH,iv:nGsV92vfQEDPYLw2N35Ypd1J067hp87w9njvnYbNsOo=,tag:7XnX/sFonLVUZ49Qp/K39g==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-02-05T15:27:01Z"
+    mac: ENC[AES256_GCM,data:nr1YoHdSaitvycgk2AKlz0KHw5na1QoHrPlwKRn5iTYA7h2mAfdnU9cnd/u+WheL+JxjeSIBqCnYSCDyWDGwRk4qdNzgz8ymYxaeRL+SPO6dDdSJFBdSEmhzdDvOOwXRiCWBNUxWT6v2SRxRqyhgpBu30Whq9C5WbpZ5YaPXxME=,iv:Ipm6ZgYqQw6alfLWVEY57zoazZzko4R+uRdJfTO3zXE=,tag:2c0thQgnhUO6cG3V1JeWcA==,type:str]
+    pgp:
+        - created_at: "2025-02-05T15:27:01Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA/ifymI7TXLxARAAjTRram97DcK70gKuQRpDdZYkRi+meeXoPqs+N+hdkT9j
+            IsaqOl0Yl51jv+JBBj8muvFsSEQqduRs0WBlFIdxziKYV9LckbIsuhaFk5r/Jx4W
+            V/UDiv5uM8RURdoMhxXq/wKHhNFjiuYTt5s6iXtbnkO6B2Ks+ee0iubWJPY9ij72
+            p0UCUp2PlA/TXxMPZ6d3xv6/dEE4rNluMAQ3nBdeIK6oBg5pC0j+gCj+rL5wFFMP
+            5HuAeh1ThLgZv+t3c3WVT3LCcVuDs4e98vY+UeIOE03cSGYnbTUKLyvpLJ5x267i
+            kM71BndhPFeWuHeDtJy9ED+h5hJw3pHtt/onWyUZwuCD4nswJh4sc1BSsxeaqCie
+            L5q5VvxWNLEPs5zan8auUxDUNg1KVahjDKpxJ9QOH9xNX0QPIf1Gw/3jF2XtgVfy
+            owQMduhb/bM+O2ZkTU2OGTs+L/3FymC9O3th+R3NyOxYNe99IZ2B5ux5JQkyXRzA
+            eGNDZf4FFqiClEMq788CE44MfOSjXWTa5WFcUa1hfHNu0J2fPNNAzIPg70WAAAEi
+            refqxjJhYcLKWX3VOdZ0MWm4KGt68rf1ylTrDH1ITpZ2GCwDztHwew6jkIfA6fi7
+            OWBl7IADOBKHTV6gO9/5EZAbs9uqCKuCBxBcYPZxTaU6SUnBAElFRUKWXuUukADS
+            XgH4YzytEjRIRwSreoa9Btl4Y0TA4jZ9DmAMB2RRwezhoYzIITySXzPJIlX16mOv
+            CMIwz+irHxhdvbKBLzz8JggCx/amzzWDQ2uCJ4RJ/fG5ranCRb9moA60wxhLC1Y=
+            =nOKf
+            -----END PGP MESSAGE-----
+          fp: E6862079C6D05BFFF38F920C4EB7CEF00A5BE02D
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.4
