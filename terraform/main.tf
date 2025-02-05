@@ -1,9 +1,22 @@
 data "local_file" "ssh_public_key" {
-  filename = "./id_ed25519.pub"
+  filename = "./ssh_host_ed25519.pub"
 }
 
 data "local_file" "ssh_public_key_desktop" {
   filename = "./id_ed25519_desktop.pub"
+}
+
+resource "proxmox_virtual_environment_hardware_mapping_usb" "usb_device" {
+  comment = "USB Device"
+  name    = "usb_passthrough"
+  
+  map = [
+    {
+      comment = "Sonoff Zigbee 3.0 USB Dongle Plus"
+      id      = var.host_usb
+      node    = var.pm_node_name
+    },
+  ]
 }
 
 resource "proxmox_virtual_environment_file" "user_data_cloud_config" {
@@ -111,6 +124,10 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm_master" {
   network_device {
     bridge = var.network_bridge
   }
+
+  usb {
+    mapping = proxmox_virtual_environment_hardware_mapping_usb.usb_device.id
+  }
 }
 
 resource "proxmox_virtual_environment_vm" "proxmox_vm_worker" {
@@ -152,6 +169,10 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm_worker" {
 
   network_device {
     bridge = var.network_bridge
+  }
+
+  usb {
+    mapping = proxmox_virtual_environment_hardware_mapping_usb.usb_device.id
   }
 }
 

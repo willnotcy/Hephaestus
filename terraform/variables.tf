@@ -4,7 +4,7 @@
 variable "cluster_name" {
   description = "Name of cluster"
   type        = string
-  default     = "foocluster"
+  default     = "hephaestus"
 }
 
 variable "gateway" {
@@ -85,6 +85,12 @@ variable "network_bridge" {
   default     = "vmbr0"
 }
 
+variable "host_usb" {
+  description = "Host usb devide (Sonoff Zigbee Gateway)"
+  type        = string
+  default     = "10c4:ea60"
+}
+
 
 #######
 # SSH #
@@ -104,7 +110,7 @@ variable "k3s_master_count" {
 variable "k3s_master_disk_size" {
   description = "Disk size of the controlplane nodes"
   type        = string
-  default     = "15"
+  default     = "25"
 }
 
 variable "k3s_master_cores" {
@@ -116,7 +122,7 @@ variable "k3s_master_cores" {
 variable "k3s_master_memory" {
   description = "Memory for each controlplane node"
   type        = string
-  default     = "4096"
+  default     = "12288"
 }
 
 variable "k3s_master_name_prefix" {
@@ -137,7 +143,7 @@ variable "k3s_worker_count" {
 
 variable "k3s_worker_disk_size" {
   type    = string
-  default = "10"
+  default = "25"
 }
 
 variable "k3s_worker_cores" {
@@ -149,7 +155,7 @@ variable "k3s_worker_cores" {
 variable "k3s_worker_memory" {
   description = "Memory for each worker node"
   type        = string
-  default     = "4096"
+  default     = "12288"
 }
 
 variable "k3s_worker_name_prefix" {
