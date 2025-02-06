@@ -1,0 +1,32 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-homepage-default
+  namespace: homepage
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`hephlab.duckdns.org`)
+      kind: Rule
+      services:
+        - name: homepage
+          port: 3000
+          namespace: homepage
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-homepage
+  namespace: homepage
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`homepage.hephlab.duckdns.org`) 
+      kind: Rule
+      services:
+        - name: homepage
+          port: 3000
+          namespace: homepage
