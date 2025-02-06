@@ -37,3 +37,4 @@ additionalArguments:
   - --certificatesresolvers.duckdns.acme.storage=/certs/acme.json
   - --certificatesresolvers.duckdns.acme.caServer=https://acme-v02.api.letsencrypt.org/directory
   - "--certificatesResolvers.duckdns.acme.dnsChallenge.disablePropagationCheck=true"
+  - --certificatesResolvers.duckdns.acme.dnsChallenge.disablePropagationCheck=true
