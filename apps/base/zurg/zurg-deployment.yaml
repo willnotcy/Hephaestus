@@ -14,16 +14,38 @@ spec:
     metadata:
       labels:
         app: zurg
-    spec:    
+    spec:  
+      initContainers:
+        - name: merge-config
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              echo "Merging config files..."
+              cat /zurgsecret/secret.yml > /config/config.yml
+              cat /zurgconfig/config.yml >> /config/config.yml
+          volumeMounts:
+            - name: zurg-config
+              mountPath: /zurgconfig
+            - name: zurg-secret
+              mountPath: /zurgsecret
+            - name: merged-config
+              mountPath: /config      
       containers:
       - name: zurg
         image: ghcr.io/debridmediamanager/zurg-testing:latest
         volumeMounts:
-        - name: zurg-config
+        - name: merged-config
           subPath: config.yml
           mountPath: /app/config.yml
       volumes:
       - name: zurg-config
         configMap:
           name: zurg-config
+      - name: zurg-secret
+        secret:
+          secretName: zurg-secret          
+      - name: merged-config
+        emptyDir: {}
       restartPolicy: Always

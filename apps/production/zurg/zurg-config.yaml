@@ -1,0 +1,38 @@
+zurg: v1
+check_for_changes_every_secs: 10
+enable_repair: false
+auto_delete_rar_torrents: false
+rar_action: extract
+addl_playable_extensions:
+  - m4b
+  - mp3
+  - flac
+  - aac
+
+directories:
+  shows:
+    group_order: 10
+    group: media
+    filters:
+      - has_episodes: true
+
+  audiobooks:
+    group_order: 20
+    group: media
+    filters:
+      - or:
+          - regex: /.+\.mp3$/i
+          - regex: /.+\.flac$/i
+          - regex: /.+\.aac$/i
+          - regex: /.+\.m4b$/i
+          - any_file_inside_regex: /.+\.mp3$/i
+          - any_file_inside_regex: /.+\.flac$/i
+          - any_file_inside_regex: /.+\.aac$/i
+          - any_file_inside_regex: /.+\.m4b$/i
+
+  movies:
+    group_order: 30
+    group: media
+    only_show_the_biggest_file: true
+    filters:
+      - regex: /.*/

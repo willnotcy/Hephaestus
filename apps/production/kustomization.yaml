@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
   - homepage/
   - it-tools/
-  # - zurg/
-  # - rclone/
+  - zurg/
+  - rclone/
   # - riven/
   # - riven-backend/
   # - plex/

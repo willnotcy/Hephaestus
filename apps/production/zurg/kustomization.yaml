@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: zurg
+resources:
+  - ../../base/zurg
+configMapGenerator:
+  - name: zurg-config
+    files:
+      - config.yml=zurg-config.yaml
+secretGenerator:
+  - name: zurg-secret
+    files:
+      - secret.yml=zurg-secret.yaml
+    type: Opaque      
