@@ -4,7 +4,7 @@ metadata:
   name: it-tools
   namespace: it-tools
   labels:
-    app: it-tools
+    app: it-tools  
 spec:
   replicas: 1
   selector:
@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: it-tools
+        app.kubernetes.io/name: it-tools
     spec:
       containers:
       - name: it-tools
