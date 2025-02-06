@@ -34,5 +34,6 @@ additionalArguments:
   - --certificatesresolvers.duckdns.acme.dnschallenge.provider=duckdns
   - --certificatesresolvers.duckdns.acme.email=markkristensen@outlook.com
   - --certificatesresolvers.duckdns.acme.dnschallenge.resolvers=1.1.1.1
-  - --certificatesresolvers.duckdns.acme.storage=/certs/acme.json
-  - --certificatesresolvers.duckdns.acme.caServer=https://acme-v02.api.letsencrypt.org/directory
+  - --certificatesresolvers.duckdns.acme.storage=/certs/acmes.json
+  - --certificatesresolvers.duckdns.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory
+  - "--certificatesResolvers.duckdns.acme.dnsChallenge.disablePropagationCheck=true"
