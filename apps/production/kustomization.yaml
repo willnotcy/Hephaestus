@@ -7,4 +7,4 @@ resources:
   - rclone/
   - riven/
   - riven-backend/
-  # - plex/
+  - plex/
