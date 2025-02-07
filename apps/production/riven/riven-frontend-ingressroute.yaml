@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: riven-frontend-ingress
+  namespace: riven
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`riven.hephlab.duckdns.org`) 
+      kind: Rule
+      services:
+        - name: riven-frontend-service
+          port: 3000
+          namespace: riven              

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: riven-backend-configmap
+  namespace: plex
+data:
+  RIVEN_SYMLINK_RCLONE_PATH: /mnt/zurg/__all__
+  TZ: Europe/Copenhagen
+  RIVEN_FORCE_ENV: "true"
+  RIVEN_SYMLINK_LIBRARY_PATH: /mnt/library

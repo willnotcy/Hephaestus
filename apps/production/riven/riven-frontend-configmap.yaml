@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: riven-frontend-configmap
+  namespace: riven
+data:
+  PUID: "1000"
+  PGID: "1000"
+  TZ: Europe/Copenhagen
+  BACKEND_URL: "http://riven-backend-service.plex.svc.cluster.local:8080"
+  DIALECT: "postgres"
