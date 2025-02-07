@@ -4,6 +4,14 @@ kind: IngressRoute
 metadata:
   name: plex-ingress
   namespace: plex
+  annotations:
+    gethomepage.dev/href: "https://plex.hephlab.duckdns.org"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Plex"
+    gethomepage.dev/description: "Plex Media Server"
+    gethomepage.dev/app: plex
+    gethomepage.dev/group: "Dynamic"
+    gethomepage.dev/icon: "plex.png"    
 spec:
   entryPoints:
     - websecure

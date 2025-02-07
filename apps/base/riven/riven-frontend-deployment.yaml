@@ -17,6 +17,7 @@ spec:
       labels:
         app: riven
         component: frontend
+        app.kubernetes.io/name: riven       
     spec:
       containers:
       - name: riven-frontend

@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: plex
+        app.kubernetes.io/name: plex      
     spec:
       containers:
         - name: plex
