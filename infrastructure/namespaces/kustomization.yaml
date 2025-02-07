@@ -8,3 +8,4 @@ resources:
   - rclone-namespace.yaml
   - riven-namespace.yaml
   - zurg-namespace.yaml
+  - plex-auto-languages-namespace.yaml

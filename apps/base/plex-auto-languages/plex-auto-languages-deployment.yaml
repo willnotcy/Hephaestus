@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex-auto-languages
+  namespace: plex-auto-languages
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plex-auto-languages
+  template:
+    metadata:
+      labels:
+        app: plex-auto-languages
+    spec:
+      containers:
+        - name: plex-auto-languages
+          image: remirigal/plex-auto-languages:latest
+          envFrom:
+          - secretRef:
+              name: plex-auto-languages-secret              
+          - configMapRef:
+              name: plex-auto-languages-configmap

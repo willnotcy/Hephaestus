@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: plex-auto-languages-configmap
+  namespace: plex-auto-languages
+data:
+  PLEX_URL: "https://plex.hephlab.duckdns.org"
+  TZ: Europe/Copenhagen

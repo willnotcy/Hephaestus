@@ -8,3 +8,4 @@ resources:
   - riven/
   - riven-backend/
   - plex/
+  - plex-auto-languages/
