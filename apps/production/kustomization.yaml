@@ -9,3 +9,4 @@ resources:
   - riven-backend/
   - plex/
   - plex-auto-languages/
+  - uptime-kuma/
