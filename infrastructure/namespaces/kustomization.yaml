@@ -9,4 +9,5 @@ resources:
   - riven-namespace.yaml
   - zurg-namespace.yaml
   - plex-auto-languages-namespace.yaml
-  - uptime-kuma.yaml
+  - uptime-kuma-namespace.yaml
+  - babybuddy-namespace.yaml
