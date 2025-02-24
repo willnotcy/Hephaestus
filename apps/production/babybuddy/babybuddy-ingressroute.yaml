@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/name: "Baby Buddy"
     gethomepage.dev/description: "Application for tracking baby care activities."
     gethomepage.dev/app: babybuddy
-    gethomepage.dev/group: "Dynamic"
+    gethomepage.dev/group: "Tools"
     gethomepage.dev/icon: "https://github.com/babybuddy/babybuddy/blob/master/static/babybuddy/img/core/child-placeholder.png?raw=true"  # Adjust or replace with an appropriate icon URL
 spec:
   entryPoints:

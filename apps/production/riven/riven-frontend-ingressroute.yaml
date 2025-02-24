@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/name: "Riven"
     gethomepage.dev/description: "Media management and streaming integrated with various media servers and third-party services"
     gethomepage.dev/app: riven
-    gethomepage.dev/group: "Dynamic"
+    gethomepage.dev/group: "Media"
     gethomepage.dev/icon: "https://github.com/rivenmedia/riven/blob/main/assets/riven-dark.png?raw=true"      
 spec:
   entryPoints:
