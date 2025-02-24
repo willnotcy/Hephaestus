@@ -3,7 +3,7 @@ config:
     - Developer:
         - Github:
             - abbr: GH
-              href: https://github.com/willnotcy
+              href: https://github.com/willnotcy/Hephaestus
 
   widgets:
     # show the kubernetes widget, with the cluster summary and individual nodes
@@ -22,6 +22,9 @@ config:
     - search:
         provider: duckduckgo
         target: _blank
+
+  services: null # Explicitly override with an empty list
+  
   kubernetes:
     mode: cluster
   settings:
@@ -33,19 +36,3 @@ serviceAccount:
 
 # This enables the service account to access the necessary resources
 enableRbac: true
-
-ingress:
-  main:
-    enabled: true
-    annotations:
-      # Example annotations to add Homepage to your Homepage!
-      gethomepage.dev/enabled: "true"
-      gethomepage.dev/name: "Homepage"
-      gethomepage.dev/description: "Homelab Dashboard"
-      gethomepage.dev/group: "Dynamic"
-      gethomepage.dev/icon: "homepage.png"
-    hosts:
-      - host: hephlab.duckdns.org
-        paths:
-          - path: /
-            pathType: Prefix
