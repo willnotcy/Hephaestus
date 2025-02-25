@@ -11,3 +11,4 @@ resources:
   - plex-auto-languages/
   - uptime-kuma/
   - babybuddy/
+  - huginn/

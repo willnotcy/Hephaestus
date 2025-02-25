@@ -1,0 +1,23 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: huginn
+  namespace: huginn
+  annotations:
+    gethomepage.dev/href: "https://huginn.hephlab.duckdns.org"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Huginn"
+    gethomepage.dev/description: "An automation tool that creates agents to monitor and act on your behalf."
+    gethomepage.dev/app: huginn
+    gethomepage.dev/group: "Tools"
+    gethomepage.dev/icon: "https://github.com/huginn/huginn/blob/master/public/android-chrome-192x192.png?raw=true"  
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`huginn.hephlab.duckdns.org`)
+      kind: Rule
+      services:
+        - name: huginn
+          port: 3000

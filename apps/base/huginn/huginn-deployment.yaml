@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: huginn
+  namespace: huginn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: huginn
+  template:
+    metadata:
+      labels:
+        app: huginn
+        app.kubernetes.io/name: huginn        
+    spec:
+      containers:
+        - name: huginn
+          image: ghcr.io/huginn/huginn:latest
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+          tty: true
+          stdin: true
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: huginn-mysql-pvc

@@ -11,3 +11,4 @@ resources:
   - plex-auto-languages-namespace.yaml
   - uptime-kuma-namespace.yaml
   - babybuddy-namespace.yaml
+  - huginn-namespace.yaml
