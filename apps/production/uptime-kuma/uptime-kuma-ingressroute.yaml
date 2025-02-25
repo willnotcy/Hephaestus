@@ -11,6 +11,9 @@ metadata:
     gethomepage.dev/app: uptime-kuma
     gethomepage.dev/group: "Monitoring"
     gethomepage.dev/icon: "https://raw.githubusercontent.com/louislam/uptime-kuma/master/public/icon.svg"
+    gethomepage.dev/widget.type: "uptimekuma"
+    gethomepage.dev/widget.url: "http://uptime-kuma.uptime-kuma.svc.cluster.local:80"
+    gethomepage.dev/widget.slug: "svcsstatus"
 spec:
   entryPoints:
     - web
