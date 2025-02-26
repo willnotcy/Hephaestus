@@ -12,3 +12,4 @@ resources:
   - uptime-kuma-namespace.yaml
   - babybuddy-namespace.yaml
   - huginn-namespace.yaml
+  - audiobookshelf-namespace.yaml

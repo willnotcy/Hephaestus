@@ -12,3 +12,5 @@ resources:
   - uptime-kuma/
   - babybuddy/
   - huginn/
+  - audiobookshelf/
+

@@ -1,0 +1,23 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: audiobookshelf-ingressroute
+  namespace: audiobookshelf
+  annotations:
+    gethomepage.dev/href: "https://audiobookshelf.hephlab.duckdns.org"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Audiobookshelf"
+    gethomepage.dev/description: "Self-hosted audiobook and podcast server"
+    gethomepage.dev/app: audiobookshelf
+    gethomepage.dev/group: "Media"
+    gethomepage.dev/icon: "https://github.com/advplyr/audiobookshelf/blob/master/client/static/icon192.png?raw=true"
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`audiobookshelf.hephlab.duckdns.org`)
+      kind: Rule
+      services:
+        - name: audiobookshelf
+          port: 80
