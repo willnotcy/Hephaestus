@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: spoolman  # Default namespace, can be overridden in production
+resources:
+  - spoolman-deployment.yaml
+  - spoolman-service.yaml
+  - spoolman-pvc.yaml

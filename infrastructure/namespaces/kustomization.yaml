@@ -13,3 +13,4 @@ resources:
   - babybuddy-namespace.yaml
   - huginn-namespace.yaml
   - audiobookshelf-namespace.yaml
+  - spoolman-namespace.yaml

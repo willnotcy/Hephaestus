@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spoolman
+  labels:
+    app: spoolman
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spoolman
+  template:
+    metadata:
+      labels:
+        app: spoolman
+        app.kubernetes.io/name: spoolman
+    spec:
+      containers:
+        - name: spoolman
+          image: ghcr.io/donkie/spoolman:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - name: spoolman-data
+              mountPath: /data
+          env:
+            - name: TZ
+              value: Europe/Copenhagen
+            - name: SPOOLMAN_PORT
+              value: "8000"
+            - name: SPOOLMAN_DIR_DATA
+              value: "/data"
+            - name: SPOOLMAN_DIR_BACKUPS
+              value: "/data/backups"
+      volumes:
+        - name: spoolman-data
+          persistentVolumeClaim:
+            claimName: spoolman-pvc
