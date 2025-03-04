@@ -35,4 +35,4 @@ additionalArguments:
   - --certificatesresolvers.cloudflare.acme.email=markkristensen@outlook.com
   - --certificatesresolvers.cloudflare.acme.dnschallenge.resolvers=1.1.1.1
   - --certificatesresolvers.cloudflare.acme.storage=/certs/acme.json
-  - --certificatesresolvers.cloudflare.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory #changed
+  - --certificatesresolvers.cloudflare.acme.caServer=https://acme-v02.api.letsencrypt.org/directory #changed
