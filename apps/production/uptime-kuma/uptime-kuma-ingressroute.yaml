@@ -4,7 +4,7 @@ metadata:
   name: uptime-kuma
   namespace: uptime-kuma
   annotations:
-    gethomepage.dev/href: "https://uptime-kuma.hephlab.duckdns.org"
+    gethomepage.dev/href: "https://uptime-kuma.hephaestus.markmk.com"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: "Uptime Kuma"
     gethomepage.dev/description: "Self-hosted monitoring tool for uptime tracking"
@@ -19,7 +19,7 @@ spec:
     - web
     - websecure    
   routes:
-    - match: Host(`uptime-kuma.hephlab.duckdns.org`)
+    - match: Host(`uptime-kuma.hephaestus.markmk.com`)
       kind: Rule
       services:
         - name: uptime-kuma

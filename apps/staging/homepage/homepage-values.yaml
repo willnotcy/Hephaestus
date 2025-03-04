@@ -59,7 +59,7 @@ ingress:
       gethomepage.dev/group: "Dynamic"
       gethomepage.dev/icon: "homepage.png"
     hosts:
-      - host: hephlab.duckdns.org
+      - host: hephaestus.markmk.com
         paths:
           - path: /
             pathType: Prefix

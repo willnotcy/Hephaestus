@@ -4,7 +4,7 @@ metadata:
   name: huginn
   namespace: huginn
   annotations:
-    gethomepage.dev/href: "https://huginn.hephlab.duckdns.org"
+    gethomepage.dev/href: "https://huginn.hephaestus.markmk.com"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: "Huginn"
     gethomepage.dev/description: "An automation tool that creates agents to monitor and act on your behalf."
@@ -16,7 +16,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`huginn.hephlab.duckdns.org`)
+    - match: Host(`huginn.hephaestus.markmk.com`)
       kind: Rule
       services:
         - name: huginn

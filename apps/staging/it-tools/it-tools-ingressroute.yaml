@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`it-tools.hephlab.duckdns.org`) 
+    - match: Host(`it-tools.hephaestus.markmk.com`) 
       kind: Rule
       services:
         - name: it-tools

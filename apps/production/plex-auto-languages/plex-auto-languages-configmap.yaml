@@ -4,5 +4,5 @@ metadata:
   name: plex-auto-languages-configmap
   namespace: plex-auto-languages
 data:
-  PLEX_URL: "https://plex.hephlab.duckdns.org"
+  PLEX_URL: "https://plex.hephaestus.markmk.com"
   TZ: Europe/Copenhagen

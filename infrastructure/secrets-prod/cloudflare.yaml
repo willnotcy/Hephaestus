@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: cloudflare-api
+    namespace: traefik-system
+type: Opaque
+stringData:
+    cloudflare-dns-api-key: ENC[AES256_GCM,data:5hfd8oThhXvus63xDe5zs0vP0bkkLnz7YcRwt+N5NIPqKlSP7jv3/w==,iv:FN5k23dq4FIKNIljnKw+WcvTNNBmkQqQdYJlC2e7HaY=,tag:1FuJoxi5asMODBa93y1uQg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-03-04T13:57:28Z"
+    mac: ENC[AES256_GCM,data:LdCGDfCXhRJjpcthpJeBCotYnhYSR+M1Iely3fzOJvdDgYmfrrFgTDNaQzC+GmCiAelY4eNRRGM83D3dCtyXNxFeHuXHMQ6PfXnwodpLAjdIpKw1wyBiLpFKNccKGtfKNPDmkEK+aRcjF5TekLE4n3Trdp5wOxklp/yp8QWGoc0=,iv:V899mrFcINpqF1htWuQOnbkhaWaEPlEVhBIG/nZKPuI=,tag:kWn/BwGrYzP64uDynVsr7Q==,type:str]
+    pgp:
+        - created_at: "2025-03-04T13:57:28Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA/ifymI7TXLxAQ//Y7qLDsJwEbsmpHc2y42Sl/IIgrh9kgn3PzsU4pxWCf1H
+            pc4EJ+2EFHGsTcJj3WvasBgQVqJrly0wIqv+grcjfXUoFKuVzTilolpJ4SIKbWGm
+            yqXusk/nMTq6Kovfy/jIUgnMl3bIbsCp6ruvuZOTl0+XKCqmPyjllrknSVzdoa4x
+            DVErQQEIlmAxn/UDlSRPRNYjxE9iQXHpoO+mSGACotx4A3jQ/MJe/gbEcoI/JZOt
+            UJihM0VQMvAaAMs9qhrtUWrGCuAJWAW4zVu2VLlTaPE/TWioQ/inEjxz7pPfhMck
+            IOg3ZC4hBLgSCd1oVKqxuUCok9UIOO9MucdM9LgoSprK6b74E8e6QrL6+M6i4ta6
+            HrFGJ5icE3p0FCxFxhFgjVRTWgzzvDNA8jVuZE+dplLS/8PDMdF5b/O1yCHktQME
+            1BGMkAmFVkpmTNcfZrQF6/BWxDfDKbQA9M1s6mjnoEZjxgEwJTaqFq7kaiATXR+6
+            pJlBdjdXhYOYZDEO14tgzHn6ruQRJ6HhvbWwvHq+LrPCk41xnvndQuYjaj5hoIbY
+            jMCNawigTS/QYjDB1umijnozpd5dMVEEkLsfBU5OCLGRBaA4FK8CnQaGWR8k+FXW
+            BbDjBaKydhXsAKuvsMKyvqs0ng6H7k5FTpsB2I0euft6LDMQ59xdrEwxXMjKqc7S
+            XgHICkn9cP/OEGrxfAyxpCxny6W+JceHCwAEM0sB1bG2gSRJEun24Y+eXvnkoxz2
+            Cce8Q2su/61vCriZHt6jycXsExKuw0WJiUopJyYzmSq/C+gpX3ZwaBmgQcLSRVg=
+            =U3SW
+            -----END PGP MESSAGE-----
+          fp: E6862079C6D05BFFF38F920C4EB7CEF00A5BE02D
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.4

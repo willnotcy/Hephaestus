@@ -4,7 +4,7 @@ metadata:
   name: traefik-it-tools
   namespace: it-tools
   annotations:
-    gethomepage.dev/href: "https://it-tools.hephlab.duckdns.org"
+    gethomepage.dev/href: "https://it-tools.hephaestus.markmk.com"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: "IT - Tools"
     gethomepage.dev/description: "Collection of handy online tools for developers"
@@ -15,7 +15,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`it-tools.hephlab.duckdns.org`) 
+    - match: Host(`it-tools.hephaestus.markmk.com`) 
       kind: Rule
       services:
         - name: it-tools

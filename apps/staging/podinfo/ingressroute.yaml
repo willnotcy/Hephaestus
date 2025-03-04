@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`podinfo.hephlab.duckdns.org`) 
+    - match: Host(`podinfo.hephaestus.markmk.com`) 
       kind: Rule
       services:
         - name: podinfo

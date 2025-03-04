@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`hephlab.duckdns.org`)
+    - match: Host(`hephaestus.markmk.com`)
       kind: Rule
       services:
         - name: homepage
@@ -24,7 +24,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`homepage.hephlab.duckdns.org`) 
+    - match: Host(`homepage.hephaestus.markmk.com`) 
       kind: Rule
       services:
         - name: homepage

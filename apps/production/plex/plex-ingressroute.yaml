@@ -5,7 +5,7 @@ metadata:
   name: plex-ingress
   namespace: plex
   annotations:
-    gethomepage.dev/href: "https://plex.hephlab.duckdns.org"
+    gethomepage.dev/href: "https://plex.hephaestus.markmk.com"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: "Plex"
     gethomepage.dev/description: "Plex Media Server"
@@ -17,7 +17,7 @@ spec:
     - websecure
     - web
   routes:
-    - match: Host(`plex.hephlab.duckdns.org`) 
+    - match: Host(`plex.hephaestus.markmk.com`) 
       kind: Rule
       services:
         - name: plex

@@ -9,7 +9,7 @@ spec:
     - websecure
     - web
   routes:
-    - match: Host(`riven.hephlab.duckdns.org`) 
+    - match: Host(`riven.hephaestus.markmk.com`) 
       kind: Rule
       services:
         - name: riven-frontend-service

@@ -9,7 +9,7 @@ spec:
     - websecure
     - web
   routes:
-    - match: Host(`plex.hephlab.duckdns.org`) 
+    - match: Host(`plex.hephaestus.markmk.com`) 
       kind: Rule
       services:
         - name: plex
