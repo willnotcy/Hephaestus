@@ -29,8 +29,10 @@ env:
 additionalArguments:
   - "--log.level=DEBUG"
   - --entrypoints.websecure.http.tls.certresolver=cloudflare
-  - --entrypoints.websecure.http.tls.domains[0].main=hephaestus.markmk.com
-  - --entrypoints.websecure.http.tls.domains[0].sans=*.hephaestus.markmk.com
+  - --entrypoints.websecure.http.tls.domains[0].main=markmk.com
+  - --entrypoints.websecure.http.tls.domains[0].sans=*.markmk.com
+  - --entrypoints.websecure.http.tls.domains[1].main=hephaestus.markmk.com
+  - --entrypoints.websecure.http.tls.domains[1].sans=*.hephaestus.markmk.com
   - --certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare
   - --certificatesresolvers.cloudflare.acme.email=markkristensen@outlook.com
   - --certificatesresolvers.cloudflare.acme.dnschallenge.resolvers=1.1.1.1

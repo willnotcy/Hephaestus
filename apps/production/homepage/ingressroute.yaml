@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`hephaestus.markmk.com`)
+    - match: Host(`hephaestus.markmk.com`) || Host(`markmk.com`)
       kind: Rule
       services:
         - name: homepage
