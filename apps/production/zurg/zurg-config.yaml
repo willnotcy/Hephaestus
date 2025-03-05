@@ -1,7 +1,7 @@
 zurg: v1
 check_for_changes_every_secs: 10
-enable_repair: false
-auto_delete_rar_torrents: false
+enable_repair: true
+auto_delete_rar_torrents: true
 rar_action: extract
 addl_playable_extensions:
   - m4b
