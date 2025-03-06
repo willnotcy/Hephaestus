@@ -14,3 +14,4 @@ resources:
   - huginn-namespace.yaml
   - audiobookshelf-namespace.yaml
   - spoolman-namespace.yaml
+  - traefik-namespace.yaml
