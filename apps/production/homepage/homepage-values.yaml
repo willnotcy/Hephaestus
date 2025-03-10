@@ -4,6 +4,9 @@ config:
         - Github:
             - abbr: GH
               href: https://github.com/willnotcy/Hephaestus
+        - Kubesearch:
+            - abbr: KS
+              href: https://kubesearch.dev/
 
   widgets:
     # show the kubernetes widget, with the cluster summary and individual nodes
