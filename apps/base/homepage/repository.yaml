@@ -5,4 +5,4 @@ metadata:
   namespace: homepage
 spec:
   interval: 5m
-  url: https://jameswynn.github.io/helm-charts
+  url: https://github.somogyi.xyz/homepage-helm-chart
