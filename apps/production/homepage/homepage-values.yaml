@@ -16,7 +16,7 @@ config:
           cpu: true
           memory: true
           showLabel: true
-          label: "cluster"
+          label: "Hephaestus"
         nodes:
           show: true
           cpu: true
