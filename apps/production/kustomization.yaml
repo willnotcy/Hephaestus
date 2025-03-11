@@ -14,4 +14,5 @@ resources:
   - huginn/
   - audiobookshelf/
   - spoolman/
+  - home-assistant/
 

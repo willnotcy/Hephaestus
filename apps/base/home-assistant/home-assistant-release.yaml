@@ -1,0 +1,92 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: home-assistant
+  namespace: home-assistant
+spec:
+  releaseName: home-assistant
+  interval: 50m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.7.2
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  values:
+    controllers:
+      home-assistant:
+        containers:
+          home-assistant:
+            image:
+              repository: ghcr.io/onedr0p/home-assistant
+              tag: 2025.3.2
+          code:
+            dependsOn: home-assistant
+            image:
+              repository: ghcr.io/coder/code-server
+              tag: 4.98.0
+            args:
+              - --auth
+              - "none"
+              - --user-data-dir
+              - "/config/.vscode"
+              - --extensions-dir
+              - "/config/.vscode"
+              - --port
+              - "8081"
+              - "/config"
+        initContainers:
+          ensure-config:
+            image:
+              repository: busybox
+              tag: latest
+            command:
+              - /bin/sh
+              - -c
+              - |
+                CONFIG_FILE="/config/configuration.yaml"
+                if ! grep -q "trusted_proxies" "$CONFIG_FILE"; then
+                  echo "Adding missing http settings..."
+                  echo "" >> "$CONFIG_FILE"
+                  echo "http:" >> "$CONFIG_FILE"
+                  echo "  use_x_forwarded_for: true" >> "$CONFIG_FILE"
+                  echo "  trusted_proxies:" >> "$CONFIG_FILE"
+                  echo "    - 10.42.0.0/16" >> "$CONFIG_FILE"
+                fi
+    service:
+      home-assistant:
+        controller: home-assistant
+        type: ClusterIP
+        ports:
+          http:
+            port: 8123
+      code:
+        type: ClusterIP
+        controller: home-assistant
+        ports:
+          http:
+            port: 8081
+
+    persistence:
+      config:
+        existingClaim: home-assistant-config
+        globalMounts:
+          - path: /config
+
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: "OnRootMismatch"
