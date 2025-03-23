@@ -32,7 +32,7 @@ metadata:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: "VSCode - Home assistant"
     gethomepage.dev/description: "Code server for Home assistant"
-    gethomepage.dev/app: code
+    gethomepage.dev/app: home-assistant
     gethomepage.dev/group: "Automation"
     gethomepage.dev/icon: "https://code.visualstudio.com/assets/images/code-stable.png"
 spec:
@@ -40,8 +40,8 @@ spec:
     - web
     - websecure    
   routes:
-    - match: Host(`home-assistant.hephaestus.markmk.com`) || Host(`hacode.hephaestus.markmk.com`)
+    - match: Host(`home-assistant-code.hephaestus.markmk.com`) || Host(`hacode.hephaestus.markmk.com`)
       kind: Rule
       services:
-        - name: code
+        - name: home-assistant-code
           port: http
