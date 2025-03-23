@@ -15,4 +15,5 @@ resources:
   - audiobookshelf/
   - spoolman/
   - home-assistant/
+  - n8n/
 

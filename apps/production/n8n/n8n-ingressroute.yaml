@@ -1,0 +1,23 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: n8n
+  namespace: n8n
+  annotations:
+    gethomepage.dev/href: "https://n8n.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "n8n"
+    gethomepage.dev/description: "Self-hosted workflow automation"
+    gethomepage.dev/app: n8n
+    gethomepage.dev/group: "Automation"
+    gethomepage.dev/icon: "https://github.com/n8n-io/n8n/blob/master/assets/n8n-logo.png?raw=true"
+spec:
+  entryPoints:
+    - web
+    - websecure    
+  routes:
+    - match: Host(`n8n.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: n8n
+          port: 5678

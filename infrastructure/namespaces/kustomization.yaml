@@ -16,3 +16,4 @@ resources:
   - spoolman-namespace.yaml
   - traefik-namespace.yaml
   - home-assistant-namespace.yaml
+  - n8n-namespace.yaml
