@@ -15,8 +15,8 @@ spec:
         app.kubernetes.io/name: audiobookshelf     
     spec:
       containers:
-        - name: audiobookshelf
-          image: ghcr.io/advplyr/audiobookshelf:latest #
+        - name: audiobookshelf          
+          image: ghcr.io/advplyr/audiobookshelf@sha256:106531342a5f150e0e3dcbb348f126a5c452ecc4274f162d31545194dbe4352a
           ports:
             - containerPort: 80
               name: http
@@ -38,4 +38,3 @@ spec:
         - name: rclone-data
           hostPath:
             path: /mnt/zurg/audiobooks
-
