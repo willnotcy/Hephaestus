@@ -4,9 +4,15 @@ config:
         - Github:
             - abbr: GH
               href: https://github.com/willnotcy/Hephaestus
+        - Github (Tarzan):
+            - abbr: GHTZ
+              href: https://github.com/Benjaminmnoer/iac
         - Kubesearch:
             - abbr: KS
               href: https://kubesearch.dev/
+        - Renovate:
+            - abbr: MEND
+              href: https://developer.mend.io/github/willnotcy/Hephaestus
 
   widgets:
     # show the kubernetes widget, with the cluster summary and individual nodes
