@@ -31,5 +31,16 @@
       ],
       "datasourceTemplate": "helm"
     },
-  ],     
+  ],
+
+  "packageRules": [
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "app-template"
+      ],
+      "registryUrls": ["https://bjw-s.github.io/helm-charts/"]
+    }
+  ]
 }
