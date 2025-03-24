@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: plex
-          image: plexinc/pms-docker:latest              
+          image: plexinc/pms-docker@sha256:9462ed05adb6dd166a15d0aa7a0224e4593ef8a195018feec4a812fd32704d46            
           # envFrom:
           # - secretRef:
           #     name: plex-secret

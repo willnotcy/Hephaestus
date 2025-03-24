@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: plex-auto-languages
-          image: remirigal/plex-auto-languages:latest
+          image: remirigal/plex-auto-languages@sha256:54bd9cf5d399514b8ed3052ce1d01a14375825a429653cb06da129685740889e
           envFrom:
           - secretRef:
               name: plex-auto-languages-secret              

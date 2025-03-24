@@ -34,7 +34,7 @@ spec:
               mountPath: /config      
       containers:
       - name: zurg
-        image: ghcr.io/debridmediamanager/zurg-testing:latest
+        image: ghcr.io/debridmediamanager/zurg-testing@sha256:5c47ef99443ac67c9a5ede82204b5be75d30eb25b4ac4885b6612d7526243baa
         volumeMounts:
         - name: merged-config
           subPath: config.yml

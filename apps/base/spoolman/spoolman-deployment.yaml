@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: spoolman
-          image: ghcr.io/donkie/spoolman:latest
+          image: ghcr.io/donkie/spoolman@sha256:91e4b75dacfd17c64fdf23336e824149fb0d636df6c422312de1e211d02ce412
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
