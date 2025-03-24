@@ -1,0 +1,46 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "flux": {
+    "fileMatch": ["cluster/.+\\.ya?ml$"]
+  },
+  "helm-values": {
+    "fileMatch": ["cluster/.+\\.ya?ml$","apps/.+\\.ya?ml$","infrastructure/.+\\.ya?ml$"]
+  },
+  "kubernetes": {
+    "fileMatch": ["cluster/.+\\.ya?ml$","apps/.+\\.ya?ml$","infrastructure/.+\\.ya?ml$"]
+  },
+  "regexManagers": [
+    {
+      "description": "Match Helm values for non-standard yamls",
+      "fileMatch": "infrastructure/.+\\.ya?ml$",
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "repository:\\s?\"?(?<depName>[^\\s\"]*)\"?\\s*?tag:\\s?\"?(?<currentValue>[^\\s\"]*)\"?"
+      ],
+      "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Match Helm Releases for helm charts",
+      "fileMatch": ["apps/.+\\.ya?ml$","infrastructure/.+\\.ya?ml$"],
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "chart:\\s?\"?(?<depName>[^\\s\"]*)\"?\\s*?version:\\s?\"?(?<currentValue>[^\\s\"]*)\"?"
+      ],
+      "datasourceTemplate": "helm"
+    },
+  ],
+
+  "packageRules": [
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "app-template"
+      ],
+      "registryUrls": ["https://bjw-s.github.io/helm-charts/"]
+    }
+  ]
+}
