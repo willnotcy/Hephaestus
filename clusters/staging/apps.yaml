@@ -4,8 +4,6 @@ metadata:
   name: apps
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: infra-namespaces
   interval: 10m0s
   decryption:
     provider: sops
