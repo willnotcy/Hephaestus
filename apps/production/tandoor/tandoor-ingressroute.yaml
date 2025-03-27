@@ -1,0 +1,22 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: tandoor
+  namespace: tandoor
+  annotations:
+    gethomepage.dev/href: "https://tandoor.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Tandoor"
+    gethomepage.dev/description: "Self-hosted recipe manager"
+    gethomepage.dev/app: tandoor
+    gethomepage.dev/group: "Tools"
+    gethomepage.dev/icon: "https://raw.githubusercontent.com/TandoorRecipes/recipes/192ca44d893858ef9899dc71036d2078f5fbc29a/docs/logo_color.svg"
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`tandoor.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: tandoor
+          port: 8080

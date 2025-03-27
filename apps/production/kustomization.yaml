@@ -15,3 +15,5 @@ resources:
   - spoolman/
   - home-assistant/
   - n8n/
+  - tandoor/
+  
