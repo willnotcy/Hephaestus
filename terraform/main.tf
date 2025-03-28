@@ -106,6 +106,7 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm_master" {
 
   cpu {
     cores = var.k3s_master_cores
+    type = var.k3s_cpu_type
   }
 
   memory {
@@ -152,6 +153,7 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm_worker" {
 
   cpu {
     cores = var.k3s_worker_cores
+    type = var.k3s_cpu_type
   }
 
   memory {

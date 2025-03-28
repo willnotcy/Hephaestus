@@ -91,6 +91,11 @@ variable "host_usb" {
   default     = "10c4:ea60"
 }
 
+variable "k3s_cpu_type" {
+  description = "The emulated CPU type"
+  type        = string
+  default     = "host"
+}
 
 #######
 # SSH #
