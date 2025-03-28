@@ -39,12 +39,23 @@ spec:
       strategy: node
       externalProvisioner:
         enabled: true
+        extraArgs:
+          - --leader-election=false
+          - --node-deployment=true
+          - --node-deployment-immediate-binding=false
+          - --feature-gates=Topology=true
+          - --strict-topology=true
+          - --enable-capacity=true
+          - --capacity-ownerref-level=1    
       externalResizer:
         enabled: false
       externalAttacher:
         enabled: false
       externalSnapshotter:
         enabled: true
+        extraArgs:
+          - --leader-election=false
+          - --node-deployment=true
     node:
       driver:
         extraVolumeMounts:
