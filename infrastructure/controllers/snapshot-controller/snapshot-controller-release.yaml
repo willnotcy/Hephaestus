@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: snapshot-controller
+  namespace: snapshot-controller-system
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: snapshot-controller
+    namespace: snapshot-controller-system
+  install:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    crds: CreateReplace
+    remediation:
+      strategy: rollback
+      retries: 3
+  values:
+    controller:
+      replicaCount: 1
+  targetNamespace: snapshot-controller-system
