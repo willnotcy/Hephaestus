@@ -28,7 +28,7 @@ spec:
         containers:
           home-assistant:
             image:
-              repository: ghcr.io/onedr0p/home-assistant
+              repository: ghcr.io/home-operations/home-assistant
               tag: 2025.3.3
           code:
             dependsOn: home-assistant
