@@ -12,11 +12,11 @@ spec:
   restic:
     repository: tandoor-volsync
     copyMethod: Snapshot
-    volumeSnapshotClassName: csi-democratic-csi-hostpath
+    volumeSnapshotClassName: csi-local-hostpath
     cacheCapacity: 2Gi
-    cacheStorageClassName: democratic-csi-hostpath
+    cacheStorageClassName: local-hostpath
     cacheAccessModes: [ReadWriteOnce]
-    storageClassName:  democratic-csi-hostpath
+    storageClassName:  local-hostpath
     accessModes: [ReadWriteOnce]
     capacity: 2Gi
     moverSecurityContext:
