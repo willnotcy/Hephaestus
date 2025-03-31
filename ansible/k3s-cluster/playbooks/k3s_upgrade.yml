@@ -1,0 +1,38 @@
+- hosts: master
+  become: yes  # Ensure root privileges for all tasks
+  tasks:
+    - name: Upgrade K3s on master
+      shell: |
+        curl -sfL https://get.k3s.io | sh -s - server --write-kubeconfig-mode 644 --disable=servicelb --disable=traefik 
+
+    - name: Wait for K3s to initialize node token
+      wait_for:
+        path: /var/lib/rancher/k3s/server/node-token
+
+    - name: Read the node-token file
+      slurp:
+        src: /var/lib/rancher/k3s/server/node-token
+      register: node_token_content
+
+    - name: Save the node-token as a fact
+      set_fact:
+        global_node_token: "{{ node_token_content['content'] | b64decode | trim }}"
+
+    - name: Allow token sharing by fixing directory permissions
+      file:
+        path: /var/lib/rancher/k3s/server
+        mode: "0755"
+        recurse: yes
+
+- hosts: worker
+  become: yes
+  tasks:
+    - name: Debug K3S_URL and K3S_TOKEN on worker nodes
+      debug:
+        msg:
+          - "K3S_URL=https://{{ hostvars[groups['master'][0]].inventory_hostname }}:6443"
+          - "K3S_TOKEN={{ hostvars[groups['master'][0]]['global_node_token'] }}"
+
+    - name: Upgrade K3s on worker nodes
+      shell: |
+        curl -sfL https://get.k3s.io | K3S_URL=https://{{ hostvars[groups['master'][0]].inventory_hostname }}:6443 K3S_TOKEN={{ hostvars[groups['master'][0]]['global_node_token'] }} sh -
