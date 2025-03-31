@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://kube-schemas.pages.dev/volsync.backube/replicationdestination_v1alpha1.json
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: "tandoor-bootstrap"
+  namespace: volsync-system
+  labels:
+    kustomize.toolkit.fluxcd.io/ssa: IfNotPresent
+spec:
+  trigger:
+    manual: restore-once
+  restic:
+    repository: tandoor-volsync
+    copyMethod: Snapshot
+    volumeSnapshotClassName: csi-democratic-csi-hostpath
+    cacheCapacity: 2Gi
+    cacheStorageClassName: democratic-csi-hostpath
+    cacheAccessModes: [ReadWriteOnce]
+    storageClassName:  democratic-csi-hostpath
+    accessModes: [ReadWriteOnce]
+    capacity: 2Gi
+    moverSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 100
+      fsGroup: 100
+    enableFileDeletion: true
+    cleanupCachePVC: true
+    cleanupTempPVC: true

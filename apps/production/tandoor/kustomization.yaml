@@ -3,3 +3,6 @@ kind: Kustomization
 resources:
   - ../../base/tandoor/
   - tandoor-ingressroute.yaml
+  - tandoor-replication-secret.yaml
+  - tandoor-replicationdestination.yaml
+  - tandoor-replicationsource.yaml

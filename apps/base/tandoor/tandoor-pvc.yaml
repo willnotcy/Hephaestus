@@ -4,6 +4,10 @@ metadata:
   name: tandoor-data
   namespace: tandoor
 spec:
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: "tandoor-bootstrap"
   accessModes:
     - ReadWriteOnce
   resources:
