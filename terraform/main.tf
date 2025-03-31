@@ -39,7 +39,7 @@ resource "proxmox_virtual_environment_file" "user_data_cloud_config" {
         sudo: ALL=(ALL) NOPASSWD:ALL
     runcmd:
         - apt update
-        - apt install -y qemu-guest-agent net-tools
+        - apt install -y qemu-guest-agent net-tools nfs-common
         - timedatectl set-timezone Europe/Copenhagen
         - systemctl enable qemu-guest-agent
         - systemctl start qemu-guest-agent
