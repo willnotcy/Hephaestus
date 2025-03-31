@@ -4,4 +4,4 @@ resources:
   - traefik-proxy/
   - volsync/
   - snapshot-controller/
-  - democratic-csi/
+  # - democratic-csi/
