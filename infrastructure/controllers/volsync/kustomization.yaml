@@ -4,3 +4,4 @@ resources:
   - volsync-repository.yaml
   - volsync-release.yaml
   - volsync-namespace.yaml
+  - ./mutations
