@@ -19,7 +19,7 @@ spec:
       retries: 3
   values:
     csiDriver:
-      name: local-hostpath.democratic-csi.k8s.home.arpa
+      name: local-hostpath.cluster.local
       storageCapacity: true
       attachRequired: false
       fsGroupPolicy: File
@@ -70,7 +70,6 @@ spec:
     driver:
       config:
         driver: local-hostpath
-        instance_id: k8s-local-hostpath
         local-hostpath:
           shareBasePath: *path
           controllerBasePath: *path
