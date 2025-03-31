@@ -19,7 +19,7 @@ spec:
       retries: 3
   values:
     csiDriver:
-      name: local-hostpath.cluster.local
+      name: democratic-csi-hostpath.cluster.local
       storageCapacity: true
       attachRequired: false
       fsGroupPolicy: File
