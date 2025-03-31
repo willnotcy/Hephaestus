@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://kube-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -8,37 +9,27 @@ spec:
   chartRef:
     kind: OCIRepository
     name: democratic-csi
-    namespace: democratic-csi-system
   install:
     remediation:
-      retries: 3
+      retries: -1
   upgrade:
     cleanupOnFail: true
     remediation:
-      strategy: rollback
       retries: 3
+  dependsOn:
+    - name: volsync
   values:
-    csiDriver:
-      name: democratic-csi-hostpath.cluster.local
-      storageCapacity: true
-      attachRequired: false
-      fsGroupPolicy: File
-    storageClasses:
-      - name: democratic-csi-hostpath
-        defaultClass: false
-        reclaimPolicy: Delete
-        volumeBindingMode: WaitForFirstConsumer
-        allowVolumeExpansion: false
-    volumeSnapshotClasses:
-      - name: csi-democratic-csi-hostpath
-        deletionPolicy: Delete
-        parameters:
-          cluster: k8s
     controller:
+      fullnameOverride: democratic-csi
       enabled: true
       strategy: node
+      externalAttacher:
+        enabled: false
       externalProvisioner:
         enabled: true
+        image:
+          registry: registry.k8s.io/sig-storage/csi-provisioner
+          tag: v5.2.0
         extraArgs:
           - --leader-election=false
           - --node-deployment=true
@@ -46,34 +37,54 @@ spec:
           - --feature-gates=Topology=true
           - --strict-topology=true
           - --enable-capacity=true
-          - --capacity-ownerref-level=1    
+          - --capacity-ownerref-level=1
       externalResizer:
-        enabled: false
-      externalAttacher:
         enabled: false
       externalSnapshotter:
         enabled: true
+        image:
+          registry: registry.k8s.io/sig-storage/csi-snapshotter
+          tag: v8.2.1
         extraArgs:
           - --leader-election=false
           - --node-deployment=true
-    node:
-      driver:
-        extraVolumeMounts:
-          - name: local-hostpath
-            mountPath: &path /var/mnt/extra/democratic-csi/local
-            mountPropagation: Bidirectional
-      extraVolumes:
-        - name: local-hostpath
-          hostPath:
-            path: *path
-            type: DirectoryOrCreate
+    csiDriver:
+      name: local-hostpath.cluster.local
+      attachRequired: false
+      storageCapacity: true
+      fsGroupPolicy: File
+    storageClasses:
+      - name: local-hostpath
+        defaultClass: true
+        reclaimPolicy: Delete
+        volumeBindingMode: WaitForFirstConsumer
+        allowVolumeExpansion: true
+    volumeSnapshotClasses:
+      - name: csi-local-hostpath
+        annotations:
+          snapshot.storage.kubernetes.io/is-default-class: "true"
+        deletionPolicy: Delete
+        parameters: {}
     driver:
       config:
         driver: local-hostpath
         local-hostpath:
-          shareBasePath: *path
-          controllerBasePath: *path
+          shareBasePath: /var/lib/csi-local-hostpath
+          controllerBasePath: /var/lib/csi-local-hostpath
           dirPermissionsMode: "0770"
           dirPermissionsUser: 0
           dirPermissionsGroup: 0
-  targetNamespace: democratic-csi-system
+    node:
+      driver:
+        image:
+          registry: democraticcsi/democratic-csi
+          tag: v1.9.3
+        extraVolumeMounts:
+          - name: local-hostpath
+            mountPath: /var/lib/csi-local-hostpath
+            mountPropagation: Bidirectional
+      extraVolumes:
+        - name: local-hostpath
+          hostPath:
+            path: /var/lib/csi-local-hostpath
+            type: DirectoryOrCreate

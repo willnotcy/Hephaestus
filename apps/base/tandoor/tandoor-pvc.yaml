@@ -7,10 +7,10 @@ spec:
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
-    name: "tandoor-bootstrap"
+    name: tandoor-bootstrap
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  storageClassName: democratic-csi-hostpath
+  storageClassName: local-hostpath
