@@ -46,6 +46,11 @@ spec:
         extraArgs:
           - --leader-election=false
           - --node-deployment=true
+        env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
     csiDriver:
       name: local-hostpath.cluster.local
       attachRequired: false
