@@ -36,8 +36,8 @@ spec:
       files:
         existingClaim: tandoor-data
         advancedMounts:
-          tandoor:
-            app:
+          main:
+            main:
               - path: /opt/recipes/mediafiles
                 subPath: mediafiles
               - path: /opt/recipes/staticfiles
@@ -45,8 +45,8 @@ spec:
       temp:
         type: emptyDir
         advancedMounts:
-          tandoor:
-            app:
+          main:
+            main:
               - path: /tmp
                 subPath: app-tmp
               - path: /opt/recipes/cookbook/static/django_js_reverse
