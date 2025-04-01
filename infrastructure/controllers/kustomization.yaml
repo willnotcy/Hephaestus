@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - traefik-proxy/
   - volsync/
-  # - snapshot-controller/
+  - snapshot-controller/
   - democratic-csi/
