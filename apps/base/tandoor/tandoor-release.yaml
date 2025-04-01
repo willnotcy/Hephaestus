@@ -34,4 +34,4 @@ spec:
       data:
         existingClaim: tandoor-data
         globalMounts:
-          - path: /data
+          - path: /opt/
