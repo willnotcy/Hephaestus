@@ -40,3 +40,5 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /opt/recipes/cookbook/static/django_js_reverse
+      tmp:
+        type: emptyDir
