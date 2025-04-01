@@ -33,5 +33,10 @@ spec:
     persistence:
       data:
         existingClaim: tandoor-data
-        globalMounts:
-          - path: /opt/
+        advancedMounts:
+          tandoor:
+            app:
+              - path: /opt/recipes/mediafiles
+                subPath: mediafiles
+              - path: /opt/recipes/staticfiles
+                subPath: staticfiles
