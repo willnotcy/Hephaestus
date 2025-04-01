@@ -40,3 +40,8 @@ spec:
                 subPath: mediafiles
               - path: /opt/recipes/staticfiles
                 subPath: staticfiles
+      django-js-reverse:
+        enabled: true
+        type: emptyDir
+        globalMounts:
+          - path: /opt/recipes/cookbook/static/django_js_reverse
