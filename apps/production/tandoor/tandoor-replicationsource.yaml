@@ -20,8 +20,8 @@ spec:
     accessModes: [ReadWriteOnce]
     moverSecurityContext:
       runAsUser: 1000
-      runAsGroup: 100
-      fsGroup: 100
+      runAsGroup: 1000
+      fsGroup: 1000
     retain:
       hourly: 24
       daily: 10

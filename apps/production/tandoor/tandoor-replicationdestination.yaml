@@ -21,8 +21,8 @@ spec:
     capacity: 2Gi
     moverSecurityContext:
       runAsUser: 1000
-      runAsGroup: 100
-      fsGroup: 100
+      runAsGroup: 1000
+      fsGroup: 1000
     enableFileDeletion: true
     cleanupCachePVC: true
     cleanupTempPVC: true
