@@ -1,10 +1,9 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: traefik-it-tools
-  namespace: it-tools
+  name: it-tools
   annotations:
-    gethomepage.dev/href: "https://it-tools.hephaestus.markmk.com"
+    gethomepage.dev/href: "https://${HOSTNAME:=it-tools.hephaestus.markmk.com}"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: "IT - Tools"
     gethomepage.dev/description: "Collection of handy online tools for developers"
@@ -15,7 +14,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`it-tools.hephaestus.markmk.com`) 
+    - match: Host(`${HOSTNAME:=it-tools.hephaestus.markmk.com}`) 
       kind: Rule
       services:
         - name: it-tools
