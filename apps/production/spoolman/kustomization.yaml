@@ -1,6 +1,27 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
+---
+# yaml-language-server: $schema=https://kube-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
-namespace: spoolman
-resources:
-  - ../../base/spoolman
-  - spoolman-ingressroute.yaml
+metadata:
+  name: &app spoolman
+  namespace: flux-system
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  components:
+    - ../../../components/volsync
+  interval: 1h
+  path: ./apps/base/spoolman
+  postBuild:
+    substitute:
+      HOSTNAME: "spoolman.hephaestus.markmk.com"
+  prune: true
+  retryInterval: 2m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: &namespace spoolman
+  timeout: 5m
+  wait: false

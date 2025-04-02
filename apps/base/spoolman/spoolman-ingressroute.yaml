@@ -4,7 +4,7 @@ metadata:
   name: spoolman-ingressroute
   namespace: spoolman
   annotations:
-    gethomepage.dev/href: "https://spoolman.hephaestus.markmk.com"
+    gethomepage.dev/href: "https://${HOSTNAME:=spoolman.hephaestus.markmk.com}"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: "Spoolman"
     gethomepage.dev/description: "Application for managing filament spools."
@@ -17,7 +17,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`spoolman.hephaestus.markmk.com`)
+    - match: Host(`${HOSTNAME:=spoolman.hephaestus.markmk.com}`)
       kind: Rule
       services:
         - name: spoolman
