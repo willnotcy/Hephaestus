@@ -15,6 +15,7 @@ spec:
   path: ./apps/base/spoolman
   postBuild:
     substitute:
+      APP: *app
       HOSTNAME: "spoolman.hephaestus.markmk.com"
   prune: true
   retryInterval: 2m
