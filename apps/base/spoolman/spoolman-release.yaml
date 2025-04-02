@@ -52,7 +52,7 @@ spec:
 
     persistence:
       files:
-        existingClaim: &app
+        existingClaim: *app
         advancedMounts:
           spoolman:
             app:
