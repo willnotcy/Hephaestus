@@ -51,17 +51,7 @@ spec:
             port: &port 80
 
     persistence:
-      files:
+      data:
         existingClaim: *app
-        advancedMounts:
-          spoolman:
-            app:
-              - path: /data
-
-
-    defaultPodOptions:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1001
-        fsGroup: 1001
-        fsGroupChangePolicy: "OnRootMismatch"
+        globalMounts:
+          - path: /data
