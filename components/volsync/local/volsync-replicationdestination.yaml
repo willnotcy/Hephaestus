@@ -9,7 +9,7 @@ spec:
   trigger:
     manual: restore-once
   restic:
-    repository: ${APP}-volsync
+    repository: "${APP}-volsync"
     copyMethod: Snapshot
     volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:=csi-local-hostpath}"
     cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:=2Gi}"
