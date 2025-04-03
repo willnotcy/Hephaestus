@@ -12,6 +12,7 @@ spec:
     copyMethod: Snapshot
     pruneIntervalDays: 14
     repository: "${APP}-volsync"
+    volumeSnapshotClassName: csi-local-hostpath
     retain:
       hourly: 6
       daily: 5
