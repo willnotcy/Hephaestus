@@ -10,11 +10,17 @@ spec:
   restic:
     repository: "${APP}-volsync"
     copyMethod: Snapshot
-    volumeSnapshotClassName: csi-local-hostpath
-    storageClassName: local-hostpath
-    accessModes: ["ReadWriteOnce"]
-    capacity: ${CAPACITY:=1Gi}
+    volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:=csi-local-hostpath}"
+    cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:=local-hostpath}"
+    cacheAccessModes: ["${VOLSYNC_CACHE_ACCESSMODES:=ReadWriteOnce}"]
+    cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:=1Gi}"
+    storageClassName: "${VOLSYNC_STORAGECLASS:=local-hostpath}"
+    accessModes: ["${VOLSYNC_ACCESSMODES:=ReadWriteOnce}"]
+    capacity: "${VOLSYNC_CAPACITY:=1Gi}"
     moverSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
+      runAsUser: ${VOLSYNC_PUID:=1000}
+      runAsGroup: ${VOLSYNC_PGID:=1000}
+      fsGroup: ${VOLSYNC_PGID:=1000}
+    enableFileDeletion: true
+    cleanupCachePVC: true
+    cleanupTempPVC: true
