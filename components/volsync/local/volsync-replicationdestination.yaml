@@ -14,3 +14,7 @@ spec:
     storageClassName: local-hostpath
     accessModes: ["ReadWriteOnce"]
     capacity: ${CAPACITY:=1Gi}
+    moverSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 100
+      fsGroup: 100
