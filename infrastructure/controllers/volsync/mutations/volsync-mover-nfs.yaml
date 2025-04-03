@@ -46,7 +46,7 @@ spec:
                 name: "repository",
                 nfs: Object.spec.template.spec.volumes.nfs{
                   server: "nfs.markmk.com",
-                  path: "/volsync"
+                  path: "/mnt/volsync"
                 }
               }
             }
