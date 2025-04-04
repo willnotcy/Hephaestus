@@ -43,8 +43,7 @@ spec:
                 enabled: false
               startup:
                 enabled: false
-            nodeSelector:
-              kubernetes.io/hostname: hephaestus-k3s-worker-1
+
     service:
       app:
         controller: spoolman
@@ -59,8 +58,10 @@ spec:
           - path: /data
 
     defaultPodOptions:
-       securityContext:
-         runAsUser: 1001
-         runAsGroup: 1001
-         fsGroup: 1001
-         fsGroupChangePolicy: "OnRootMismatch"
+      securityContext:
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+        fsGroupChangePolicy: "OnRootMismatch"
+      nodeSelector:
+        kubernetes.io/hostname: hephaestus-k3s-worker-1
