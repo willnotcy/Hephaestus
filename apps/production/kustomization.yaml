@@ -16,4 +16,5 @@ resources:
   - home-assistant/
   - n8n/
   - tandoor/
+  - audiobookshelf2/kustomization.yaml
   
