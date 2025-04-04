@@ -58,3 +58,7 @@ spec:
       rclone:
         type: hostPath
         hostPath: /mnt/zurg/audiobooks
+
+    defaultPodOptions:
+       nodeSelector:
+         kubernetes.io/hostname: hephaestus-k3s-worker-1
