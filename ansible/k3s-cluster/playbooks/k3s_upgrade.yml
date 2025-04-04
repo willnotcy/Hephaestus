@@ -3,8 +3,7 @@
   tasks:
     - name: Upgrade K3s on master
       shell: |
-        curl -sfL https://get.k3s.io | sh -s - server --write-kubeconfig-mode 644 --disable=servicelb --disable=traefik  --kube-apiserver-arg="feature-gates=MutatingAdmissionPolicy=true" --kube-apiserver-arg="runtime-config=admissionregistration.k8s.io/v1alpha1=true"
-
+        curl -sfL https://get.k3s.io | sh -s - server --write-kubeconfig-mode 644 --disable=servicelb --disable=traefik  --kube-apiserver-arg="feature-gates=MutatingAdmissionPolicy=true" --kube-apiserver-arg="runtime-config=admissionregistration.k8s.io/v1alpha1=true" --kube-apiserver-arg="feature-gates=MutatingAdmissionPolicy=true"
     - name: Wait for K3s to initialize node token
       wait_for:
         path: /var/lib/rancher/k3s/server/node-token
