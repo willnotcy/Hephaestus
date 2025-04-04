@@ -25,7 +25,7 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/donkie/audiobookshelf
+              repository: ghcr.io/advplyr/audiobookshelf
               tag: 2.20.0
             env:
               - name: TZ
@@ -58,7 +58,3 @@ spec:
       rclone:
         type: hostPath
         hostPath: /mnt/zurg/audiobooks
-
-    defaultPodOptions:
-       nodeSelector:
-         kubernetes.io/hostname: hephaestus-k3s-worker-1
