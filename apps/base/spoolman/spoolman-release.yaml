@@ -43,6 +43,8 @@ spec:
                 enabled: false
               startup:
                 enabled: false
+            nodeSelector:
+              kubernetes.io/hostname: hephaestus-k3s-worker-1
     service:
       app:
         controller: spoolman
