@@ -56,12 +56,3 @@ spec:
         existingClaim: *app
         globalMounts:
           - path: /data
-
-    defaultPodOptions:
-      securityContext:
-        runAsUser: 1001
-        runAsGroup: 1001
-        fsGroup: 1001
-        fsGroupChangePolicy: "OnRootMismatch"
-      nodeSelector:
-        kubernetes.io/hostname: hephaestus-k3s-worker-1
