@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: riven-frontend
-        image: spoked/riven-frontend@sha256:311a1ad122b00c76136b44e41bca8e9a2a13edfdd491413bf881c8601f14e8f9
+        image: spoked/riven-frontend@sha256:2e4ddd26dca86d85237f059c70786ab917d1f0cedff906c90dc4b457bae32a8d
         envFrom:
         - secretRef:
             name: riven-frontend-secret              
