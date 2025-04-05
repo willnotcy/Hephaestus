@@ -62,6 +62,11 @@ spec:
         reclaimPolicy: Delete
         volumeBindingMode: WaitForFirstConsumer
         allowVolumeExpansion: true
+      - name: local-hostpath-immediate
+        defaultClass: false
+        reclaimPolicy: Delete
+        volumeBindingMode: Immediate
+        allowVolumeExpansion: true
     volumeSnapshotClasses:
       - name: csi-local-hostpath
         annotations:
