@@ -13,13 +13,12 @@ spec:
     repository: "${APP}-volsync"
     copyMethod: Snapshot
     volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:=csi-local-hostpath}"
-    destinationPVC: "${APP}-bootstrap-claim"
-    # cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:=local-hostpath-immediate}"
-    # cacheAccessModes: ["${VOLSYNC_CACHE_ACCESSMODES:=ReadWriteOnce}"]
-    # cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:=1Gi}"
-    # storageClassName: "${VOLSYNC_STORAGECLASS:=local-hostpath-immediate}"
-    # accessModes: ["${VOLSYNC_ACCESSMODES:=ReadWriteOnce}"]
-    # capacity: "${VOLSYNC_CAPACITY:=1Gi}"
+    cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:=local-hostpath-immediate}"
+    cacheAccessModes: ["${VOLSYNC_CACHE_ACCESSMODES:=ReadWriteOnce}"]
+    cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:=1Gi}"
+    storageClassName: "${VOLSYNC_STORAGECLASS:=local-hostpath-immediate}"
+    accessModes: ["${VOLSYNC_ACCESSMODES:=ReadWriteOnce}"]
+    capacity: "${VOLSYNC_CAPACITY:=1Gi}"
     moverSecurityContext:
       runAsUser: ${VOLSYNC_PUID:=1000}
       runAsGroup: ${VOLSYNC_PGID:=1000}
