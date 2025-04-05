@@ -13,7 +13,7 @@ spec:
     repository: "${APP}-volsync"
     copyMethod: Snapshot
     volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:=csi-local-hostpath}"
-    cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:=local-hostpath}"
+    cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:=local-hostpath-immediate}"
     cacheAccessModes: ["${VOLSYNC_CACHE_ACCESSMODES:=ReadWriteOnce}"]
     cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:=1Gi}"
     storageClassName: "${VOLSYNC_STORAGECLASS:=local-hostpath}"
