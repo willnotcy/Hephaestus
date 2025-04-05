@@ -3,3 +3,4 @@ kind: Component
 resources:
   - local/
   - pvc.yaml
+  - pvc-claim.yaml
