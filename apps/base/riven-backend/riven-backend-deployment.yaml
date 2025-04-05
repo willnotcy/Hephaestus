@@ -20,7 +20,7 @@ spec:
     spec:           
       containers:
       - name: riven-backend
-        image: ghcr.io/rivenmedia/riven@sha256:5b4db82843bbfe6ca1599852d4154b95b8222ecc02526c56cc6537f43840ab66
+        image: ghcr.io/rivenmedia/riven@sha256:aec6ae6bf0350d3f384d33414441f06edc95587bea5591e15b054175a07f91ce
         envFrom:
         - secretRef:
             name: riven-backend-secret              
