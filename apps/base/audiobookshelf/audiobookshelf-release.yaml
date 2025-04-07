@@ -58,3 +58,6 @@ spec:
       rclone:
         type: hostPath
         hostPath: /mnt/zurg/audiobooks
+        globalMounts:
+          - path: /audiobooks
+            readOnly: true
