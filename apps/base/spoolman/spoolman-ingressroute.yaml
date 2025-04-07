@@ -21,4 +21,4 @@ spec:
       kind: Rule
       services:
         - name: spoolman
-          port: 80
+          port: 8000
