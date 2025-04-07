@@ -11,10 +11,9 @@ resources:
   - plex-auto-languages/
   - babybuddy/
   - huginn/
-  - audiobookshelf/
   - spoolman/kustomization.yaml
   - home-assistant/
   - n8n/
   - tandoor/
-  - audiobookshelf2/kustomization.yaml
+  - audiobookshelf/kustomization.yaml
   

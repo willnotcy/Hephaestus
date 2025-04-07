@@ -1,6 +1,28 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
+---
+# yaml-language-server: $schema=https://kube-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
-namespace: audiobookshelf
-resources:
-  - ../../base/audiobookshelf
-  - audiobookshelf-ingressroute.yaml
+metadata:
+  name: &app audiobookshelf
+  namespace: flux-system
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  components:
+    - ../../../components/volsync
+  interval: 1h
+  path: ./apps/base/audiobookshelf
+  postBuild:
+    substitute:
+      APP: *app
+      HOSTNAME: "audiobookshelf.hephaestus.markmk.com"
+  prune: true
+  retryInterval: 2m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: &namespace audiobookshelf
+  timeout: 5m
+  wait: false
