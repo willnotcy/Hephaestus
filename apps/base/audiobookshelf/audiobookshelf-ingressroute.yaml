@@ -2,7 +2,6 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: audiobookshelf-ingressroute
-  namespace: audiobookshelf-test
   annotations:
     gethomepage.dev/href: "https://audiobookshelf.hephaestus.markmk.com"
     gethomepage.dev/enabled: "true"
