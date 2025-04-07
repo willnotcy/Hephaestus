@@ -1,4 +1,4 @@
-# Hephaestus 🔧🔨
+# Hephaestus 🛠️ 
 
 A homelab forged with **Proxmox**, **Terraform**, **Ansible**, **K3s**, **Flux**, and **Renovate**.
 
@@ -10,7 +10,7 @@ A homelab forged with **Proxmox**, **Terraform**, **Ansible**, **K3s**, **Flux**
 
 I'm transitioning from a setup based on Proxmox VMs and LXC containers to a more modern, Kubernetes-native environment. The goal is to automate everything—spinning up bare-metal servers, bootstrapping K3s, deploying apps, and keeping everything in sync through CI/CD workflows.
 
-This project is a learning playground, a passion project, and—hopefully—a way to convince my wife that Kubernetes won’t randomly turn off the lights or break the coffee machine again.
+This project is a learning playground, a passion project, hopefully—a way to achieve a wife approved home automation setup.
 
 ---
 
