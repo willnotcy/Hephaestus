@@ -23,11 +23,11 @@ This project is a learning playground, a passion project, hopefully—a way to a
 | Bootstrapping  | [Ansible](https://www.ansible.com/)                                                                          |
 | Kubernetes     | [K3s](https://k3s.io/)                                                                                       |
 | GitOps         | [Flux](https://fluxcd.io/)                                                                                   |
-| Secrets Mgmt   | [SOPS](https://github.com/mozilla/sops)                          |
+| Secrets Management   | [SOPS](https://github.com/mozilla/sops)                          |
 | Ingress Controller   | [Traefik](https://doc.traefik.io/traefik/)                          |
 |CSI storage   | [democratic-csi](https://github.com/democratic-csi/democratic-csi)                          |
 |Backup/Recovery   | [volsync](https://volsync.readthedocs.io/en/stable/)                          |
-| Dependency Mgmt   | [Renovate](https://github.com/renovatebot/renovate)                          |
+| Dependency Management   | [Renovate](https://github.com/renovatebot/renovate)                          |
 | Observability  | TBD (Prometheus,Loki,Grafana...) |
 
 ---
