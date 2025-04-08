@@ -24,7 +24,9 @@ spec:
       main:
         initContainers:
           create-db:
-            image: busybox
+            image:
+              repository: docker.io/library/busybox
+              tag: latest
             command:
               - sh
               - -c
