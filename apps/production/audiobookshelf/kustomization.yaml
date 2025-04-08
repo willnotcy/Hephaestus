@@ -16,7 +16,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      HOSTNAME: "audiobookshelf.hephaestus.markmk.com"
+      SUBDOMAIN: *app
   prune: true
   retryInterval: 2m
   sourceRef:

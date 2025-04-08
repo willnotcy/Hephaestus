@@ -15,4 +15,5 @@ resources:
   - home-assistant/
   - n8n/
   - audiobookshelf/kustomization.yaml
+  - mealie/kustomization.yaml
   

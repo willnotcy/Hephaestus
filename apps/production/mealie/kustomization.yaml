@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app spoolman
+  name: &app mealie
   namespace: flux-system
 spec:
   commonMetadata:
@@ -12,7 +12,7 @@ spec:
   components:
     - ../../../components/volsync
   interval: 1h
-  path: ./apps/base/spoolman
+  path: ./apps/base/mealie
   postBuild:
     substitute:
       APP: *app
@@ -23,6 +23,6 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  targetNamespace: &namespace spoolman
+  targetNamespace: &namespace mealie
   timeout: 5m
   wait: false
