@@ -23,16 +23,15 @@ spec:
     controllers:
       main:
         initContainers:
-          copy-files:
-            image:
-              repository: ghcr.io/tandoorrecipes/recipes
-              tag: 1.5.33
+          create-db:
+            image: busybox
             command:
               - sh
               - -c
               - |
-                cp /opt/recipes/boot.sh /tmp/app-tmp/boot.sh
-                cp /opt/recipes/db.sqlite3 /tmp/app-tmp/db.sqlite3
+                if [ ! -f /opt/recipes/db.sqlite3 ]; then
+                  mkdir -p /opt/recipes && touch /opt/recipes/db.sqlite3;
+                fi
         containers:
           main:
             image:
@@ -45,12 +44,6 @@ spec:
                 value: "1"
               - name: ENABLE_SIGNUP
                 value: "0"
-            command:
-              - sh
-              - -c
-              - |
-                cp /tmp/app-tmp/boot.sh /opt/recipes/boot.sh 
-                cp  /tmp/app-tmp/db.sqlite3 /opt/recipes/db.sqlite3
     service:
       main:
         controller: main
@@ -61,15 +54,13 @@ spec:
     persistence:
       files:
         existingClaim: *app
-        advancedMounts:
-          main:
-            main:
-              - path: /opt/recipes/db.sqlite3 
-                subPath: db.sqlite3
-              - path: /opt/recipes/mediafiles
-                subPath: mediafiles
-              - path: /opt/recipes/staticfiles
-                subPath: staticfiles
+        globalMounts:
+          - path: /opt/recipes/db.sqlite3 
+            subPath: db.sqlite3
+          - path: /opt/recipes/mediafiles
+            subPath: mediafiles
+          - path: /opt/recipes/staticfiles
+            subPath: staticfiles
       temp:
         type: emptyDir
         globalMounts:
