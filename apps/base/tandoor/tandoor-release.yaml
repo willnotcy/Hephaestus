@@ -22,6 +22,17 @@ spec:
   values:
     controllers:
       main:
+        initContainers:
+          copy-files:
+            image:
+              repository: ghcr.io/tandoorrecipes/recipes
+              tag: 1.5.33
+            command:
+              - sh
+              - -c
+              - |
+                cp /opt/recipes/boot.sh /tmp/app-tmp/boot.sh
+                cp /opt/recipes/db.sqlite3 /tmp/app-tmp/db.sqlite3
         containers:
           main:
             image:
@@ -34,6 +45,12 @@ spec:
                 value: "1"
               - name: ENABLE_SIGNUP
                 value: "0"
+            command:
+              - sh
+              - -c
+              - |
+                cp /tmp/app-tmp/boot.sh /opt/recipes/boot.sh 
+                cp  /tmp/app-tmp/db.sqlite3 /opt/recipes/db.sqlite3
     service:
       main:
         controller: main
@@ -55,9 +72,7 @@ spec:
                 subPath: staticfiles
       temp:
         type: emptyDir
-        advancedMounts:
-          main:
-            main:
-              - path: /tmp
-                subPath: app-tmp
-              - path: /opt/recipes/cookbook/static/django_js_reverse
+        globalMounts:
+          - path: /tmp
+            subPath: app-tmp
+          - path: /opt/recipes/cookbook/static/django_js_reverse
