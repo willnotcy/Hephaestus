@@ -57,8 +57,8 @@ spec:
       files:
         existingClaim: *app
         globalMounts:
-          - path: /opt/recipes/db.sqlite3 
-            subPath: db.sqlite3
+          - path: /opt/recipes/
+            subPath: recipes
           - path: /opt/recipes/mediafiles
             subPath: mediafiles
           - path: /opt/recipes/staticfiles
