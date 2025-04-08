@@ -52,7 +52,7 @@ spec:
         controller: main
         ports:
           http:
-            port: &port 3000
+            port: &port 9000
     persistence:
       data:
         existingClaim: *app
