@@ -2,10 +2,6 @@ data "local_file" "ssh_public_key" {
   filename = "./ssh_host_ed25519.pub"
 }
 
-data "local_file" "ssh_public_key_desktop" {
-  filename = "./id_ed25519_desktop.pub"
-}
-
 resource "proxmox_virtual_environment_hardware_mapping_usb" "usb_device" {
   comment = "USB Device"
   name    = "usb_passthrough"
@@ -35,7 +31,7 @@ resource "proxmox_virtual_environment_file" "user_data_cloud_config" {
         shell: /bin/bash
         ssh_authorized_keys:
           - ${trimspace(data.local_file.ssh_public_key.content)}
-          - ${trimspace(data.local_file.ssh_public_key_desktop.content)}
+          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMR5+iuMQAV5C5uwYoaRspziWVueXwcXd+d1XOL4rsku markkristensen@outlook.com
         sudo: ALL=(ALL) NOPASSWD:ALL
     runcmd:
         - apt update
@@ -126,9 +122,9 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm_master" {
     bridge = var.network_bridge
   }
 
-  usb {
-    mapping = proxmox_virtual_environment_hardware_mapping_usb.usb_device.id
-  }
+#  usb {
+#    mapping = proxmox_virtual_environment_hardware_mapping_usb.usb_device.id
+#  }
 }
 
 resource "proxmox_virtual_environment_vm" "proxmox_vm_worker" {
@@ -173,9 +169,9 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm_worker" {
     bridge = var.network_bridge
   }
 
-  usb {
-    mapping = proxmox_virtual_environment_hardware_mapping_usb.usb_device.id
-  }
+#  usb {
+#    mapping = proxmox_virtual_environment_hardware_mapping_usb.usb_device.id
+#  }
 }
 
 resource "proxmox_virtual_environment_download_file" "ubuntu_cloud_image" {

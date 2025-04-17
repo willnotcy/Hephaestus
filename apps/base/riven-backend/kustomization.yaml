@@ -5,3 +5,4 @@ resources:
   - riven-backend-pvc.yaml
   - riven-backend-deployment.yaml
   - riven-backend-service.yaml
+  - riven-sharedmedia-pvc.yaml
