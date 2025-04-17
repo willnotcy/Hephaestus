@@ -3,7 +3,7 @@
   tasks:
     - name: Install K3s on master
       shell: |
-        curl -sfL https://get.k3s.io | sh -s - server --write-kubeconfig-mode 644 --disable=servicelb --disable=traefik  --kube-apiserver-arg="feature-gates=MutatingAdmissionPolicy=true" --kube-apiserver-arg="runtime-config=admissionregistration.k8s.io/v1alpha1=true" --kube-apiserver-arg="feature-gates=MutatingAdmissionPolicy=true"
+        curl -sfL https://get.k3s.io | sh -s - server --write-kubeconfig-mode 644 --disable=servicelb --disable=traefik  --kube-apiserver-arg="feature-gates=MutatingAdmissionPolicy=true" --kube-apiserver-arg="runtime-config=admissionregistration.k8s.io/v1alpha1=true"
       args:
         creates: /usr/local/bin/k3s
 
