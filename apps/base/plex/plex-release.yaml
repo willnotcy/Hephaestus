@@ -54,7 +54,7 @@ spec:
     service:
       app:
         controller: plex
-        type: LoadBalancer
+        type: ClusterIP
         ports:
           http:
             port: &port 32400
