@@ -1,0 +1,104 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app plex
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      plex:
+        containers:
+          app:
+            image:
+              repository: ghcr.io/home-operations/plex
+              tag: 1.41.6.9685
+            env:
+              - name: TZ
+                value: Europe/Copenhagen
+              - name: PLEX_ADVERTISE_URL
+                value: "https://${SUBDOMAIN:=plex}.hephaestus.markmk.com"
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /identity
+                    port: 32400
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 10
+
+    service:
+      app:
+        controller: plex
+        type: LoadBalancer
+        ports:
+          http:
+            port: &port 32400
+
+
+    persistence:
+      config:
+        existingClaim: *app
+        advancedMounts:
+          plex:
+            app:
+              - path: /config
+
+      plex-cache:
+        type: emptyDir
+        advancedMounts:
+          plex:
+            app:
+              - path: /config/Library/Application Support/Plex Media Server/Cache
+
+      logs:
+        type: emptyDir
+        advancedMounts:
+          plex:
+            app:
+              - path: /config/Library/Application Support/Plex Media Server/Logs
+
+      rclone:
+        type: hostPath
+        hostPath: /mnt/zurg/
+        globalMounts:
+          - path: /data/zurg
+            readOnly: true
+
+      media:
+        existingClaim: shared-media-pvc
+        advancedMounts:
+          plex:
+            app:
+              - path: /data/media
+
+      transcode:
+        type: emptyDir
+        advancedMounts:
+          plex:
+            app:
+              - path: /transcode
