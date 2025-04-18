@@ -93,7 +93,7 @@ spec:
         type: hostPath
         hostPath: /mnt/zurg/
         globalMounts:
-          - path: /data/zurg
+          - path: /mnt/zurg
             readOnly: true
 
       media:
