@@ -1,6 +1,29 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
+---
+# yaml-language-server: $schema=https://kube-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
-namespace: babybuddy
-resources:
-  - ../../base/babybuddy
-  - babybuddy-ingressroute.yaml
+metadata:
+  name: &app babybuddy
+  namespace: flux-system
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  components:
+    - ../../../components/volsync
+  interval: 1h
+  path: ./apps/base/babybuddy
+  postBuild:
+    substitute:
+      APP: *app
+      SUBDOMAIN: *app
+      CAPACITY: 2Gi
+  prune: true
+  retryInterval: 2m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: &namespace babybuddy
+  timeout: 5m
+  wait: false
