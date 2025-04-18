@@ -47,7 +47,7 @@ spec:
         controller: babybuddy
         ports:
           http:
-            port: &port 3000
+            port: &port 8000
 
     persistence:
       config:
