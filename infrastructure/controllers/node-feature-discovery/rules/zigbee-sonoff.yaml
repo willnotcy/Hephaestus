@@ -1,0 +1,16 @@
+---
+apiVersion: nfd.k8s-sigs.io/v1alpha1
+kind: NodeFeatureRule
+metadata:
+  name: zigbee-sonoff
+  namespace: node-feature-discovery  
+spec:
+  rules:
+      name: zigbee.sonoff
+      labels:
+        zigbee.feature.node.kubernetes.io/sonoff: "true"
+      matchFeatures:
+        - feature: usb.device # SONOFF Zigbee 3.0 USB Dongle Plus (Silicon Labs CP210x USB to UART Bridge)
+          matchExpressions:
+            vendor: { op: In, value: ["10c4"] }
+            device: { op: In, value: ["ea60"] }

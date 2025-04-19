@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - node-feature-discovery-namespace.yaml
+  - node-feature-discovery-repository.yaml
+  - node-feature-discovery-release.yaml
+  - ./rules  
