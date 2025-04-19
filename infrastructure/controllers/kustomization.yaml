@@ -5,4 +5,4 @@ resources:
   - volsync/
   - snapshot-controller/
   - democratic-csi/
-  - node-feature-discovery/
+  - node-feature-discovery/kustomization.yaml
