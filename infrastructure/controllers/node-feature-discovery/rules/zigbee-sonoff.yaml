@@ -8,7 +8,7 @@ spec:
   rules:
     - name: zigbee.sonoff
       labels:
-        zigbee.feature.node.kubernetes.io/sonoff: "true"
+        feature.node.kubernetes.io/sonoff_zigbee: "true"
       matchFeatures:
         - feature: usb.device # SONOFF Zigbee 3.0 USB Dongle Plus (Silicon Labs CP210x USB to UART Bridge)
           matchExpressions:
