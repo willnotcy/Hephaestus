@@ -12,7 +12,7 @@ resources:
   - babybuddy/kustomization.yaml
   - huginn/
   - spoolman/kustomization.yaml
-  - home-assistant/
+  - home-assistant/kustomization.yaml
   - n8n/
   - audiobookshelf/kustomization.yaml
   - mealie/kustomization.yaml
