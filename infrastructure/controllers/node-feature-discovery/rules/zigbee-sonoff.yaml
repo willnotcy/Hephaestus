@@ -6,7 +6,7 @@ metadata:
   namespace: node-feature-discovery  
 spec:
   rules:
-      name: zigbee.sonoff
+    - name: zigbee.sonoff
       labels:
         zigbee.feature.node.kubernetes.io/sonoff: "true"
       matchFeatures:
