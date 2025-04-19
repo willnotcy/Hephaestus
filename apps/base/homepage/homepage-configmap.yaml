@@ -22,21 +22,19 @@ data:
               href: https://developer.mend.io/github/willnotcy/Hephaestus
   docker.yaml: ""
   kubernetes.yaml: |
-    - mode: cluster
-    - traefik: true
-  services.yaml: ""
-    # - Infrastructure:
-    #   - Proxmox01:
-    #       href: https://proxmox01.markmk.com:8006
-    #       icon: https://www.45drives.com/solutions/proxmox/img/proxmox_Logo.png
-    #       description: Proxmox01 (OMV/NFS)
-    #   - Proxmox02:
-    #       href: https://proxmox02.markmk.com:8006
-    #       icon: https://www.45drives.com/solutions/proxmox/img/proxmox_Logo.png
-    #       description: Proxmox02 (K3s)     
-        
+    mode: cluster
+    traefik: true
+  services.yaml: |
+    - Infrastructure:
+      - Proxmox01:
+          href: https://proxmox01.markmk.com:8006
+          icon: https://www.45drives.com/solutions/proxmox/img/proxmox_Logo.png
+          description: Proxmox01 (OMV/NFS)
+      - Proxmox02:
+          href: https://proxmox02.markmk.com:8006
+          icon: https://www.45drives.com/solutions/proxmox/img/proxmox_Logo.png
+          description: Proxmox02 (K3s)     
   settings.yaml: ""
-
   widgets.yaml: |
     - search:
         provider: [google]
