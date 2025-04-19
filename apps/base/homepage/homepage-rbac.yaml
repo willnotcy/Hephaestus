@@ -61,4 +61,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: *app
-    namespace: services
+    namespace: homepage
