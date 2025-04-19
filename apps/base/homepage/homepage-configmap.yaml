@@ -1,0 +1,58 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-config
+  labels:
+    app.kubernetes.io/name: homepage
+data:
+  bookmarks.yaml: |
+    - Developer:
+        - Github:
+            - abbr: GH
+              href: https://github.com/willnotcy/Hephaestus
+        - Github (Tarzan):
+            - abbr: GHTZ
+              href: https://github.com/Benjaminmnoer/iac
+        - Kubesearch:
+            - abbr: KS
+              href: https://kubesearch.dev/
+        - Renovate:
+            - abbr: MEND
+              href: https://developer.mend.io/github/willnotcy/Hephaestus
+  docker.yaml: ""
+  kubernetes.yaml: |
+    mode: cluster
+  services.yaml: |
+    - Infrastructure:
+      - Proxmox01:
+          href: https://proxmox01.markmk.com:8006
+          icon: https://www.45drives.com/solutions/proxmox/img/proxmox_Logo.png
+          description: Proxmox01 (OMV/NFS)
+      - Proxmox02:
+          href: https://proxmox02.markmk.com:8006
+          icon: https://www.45drives.com/solutions/proxmox/img/proxmox_Logo.png
+          description: Proxmox02 (K3s)     
+        
+  settings.yaml: ""
+
+  widgets.yaml: |
+    - search:
+        provider: [google]
+        focus: false
+        target: _blank
+    - greeting:
+        text_size: xl
+        text: "Hey Mark, how are you doing today?"
+    - kubernetes:
+        cluster:
+            cpu: true
+            memory: true
+            show: true
+            showLabel: true
+            label: "Hephaestus"
+        nodes:
+            cpu: true
+            memory: true
+            show: true
+            showLabel: true

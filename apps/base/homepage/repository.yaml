@@ -1,8 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: homepage
-  namespace: homepage
-spec:
-  interval: 5m
-  url: https://github.somogyi.xyz/homepage-helm-chart

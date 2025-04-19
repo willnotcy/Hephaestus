@@ -3,5 +3,9 @@ kind: Kustomization
 namespace: homepage
 resources:
   - homepage-namespace.yaml
-  - repository.yaml
-  - release.yaml
+  - homepage-ingressroute.yaml
+  - homepage-release.yaml
+  - homepage-configmap.yaml
+  - homepage-rbac.yaml
+generatorOptions:
+  disableNameSuffixHash: true
