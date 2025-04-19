@@ -22,7 +22,8 @@ data:
               href: https://developer.mend.io/github/willnotcy/Hephaestus
   docker.yaml: ""
   kubernetes.yaml: |
-    mode: cluster
+    - mode: cluster
+    - traefik: true
   services.yaml: |
     - Infrastructure:
       - Proxmox01:

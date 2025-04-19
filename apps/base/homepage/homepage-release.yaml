@@ -26,10 +26,12 @@ spec:
           app:
             image:
               repository: ghcr.io/gethomepage/homepage
-              tag: 1.1.1
+              tag: v1.1.1
             env:
               - name: TZ
                 value: Europe/Copenhagen
+              - name: HOMEPAGE_ALLOWED_HOSTS
+                value: hephaestus.markmk.com,markmk.com,homepage.hephaestus.markmk.com
 
     service:
       app:
@@ -55,7 +57,7 @@ spec:
             path: /app/config/settings.yaml
           - subPath: widgets.yaml
             path: /app/config/widgets.yaml
-            
+
     serviceAccount:
       create: true
       name: *app            
