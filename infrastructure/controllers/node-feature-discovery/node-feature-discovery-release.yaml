@@ -18,5 +18,3 @@ spec:
       config:
         core:
           labelSources: ["pci", "system", "usb"]
-    prometheus:
-      enable: true
