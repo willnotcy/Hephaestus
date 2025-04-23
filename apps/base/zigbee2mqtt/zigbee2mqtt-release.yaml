@@ -85,3 +85,10 @@ spec:
         existingClaim: *app
         globalMounts:
           - path: /config
+
+      zigbee:
+        type: hostPath
+        hostPath: *hostPath
+        hostPathType: CharDevice
+        globalMounts:
+          - path: *hostPath
