@@ -36,6 +36,7 @@ resource "proxmox_virtual_environment_file" "user_data_cloud_config" {
     runcmd:
         - apt update
         - apt install -y qemu-guest-agent net-tools nfs-common
+        - apt install -y linux-modules-extra-$(uname -r)
         - timedatectl set-timezone Europe/Copenhagen
         - systemctl enable qemu-guest-agent
         - systemctl start qemu-guest-agent
