@@ -16,4 +16,6 @@ resources:
   - n8n/
   - audiobookshelf/kustomization.yaml
   - mealie/kustomization.yaml
+  - zigbee2mqtt/kustomization.yaml
+  - mosquitto/kustomization.yaml
   
