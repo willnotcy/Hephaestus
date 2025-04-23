@@ -88,7 +88,7 @@ spec:
 
       zigbee:
         type: hostPath
-        hostPath: *hostPath
+        hostPath: /dev/ttyUSB0
         hostPathType: CharDevice
         globalMounts:
-          - path: *hostPath
+          - path: /dev/ttyUSB0
