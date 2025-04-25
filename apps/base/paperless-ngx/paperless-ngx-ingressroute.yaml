@@ -18,5 +18,5 @@ spec:
     - match: Host(`${SUBDOMAIN:=paperless-ngx}.hephaestus.markmk.com`)
       kind: Rule
       services:
-        - name: paperless-ngx
+        - name: paperless-ngx-app
           port: 8000
