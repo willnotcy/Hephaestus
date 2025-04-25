@@ -33,7 +33,7 @@ spec:
               PAPERLESS_DATA_DIR: /paperless/data
               PAPERLESS_MEDIA_ROOT: /paperless/media
               PAPERLESS_OCR_LANGUAGE: dan+eng
-              PAPERLESS_OCR_LANGUAGE: dan
+              PAPERLESS_OCR_LANGUAGES: dan
               PAPERLESS_REDIS: redis://localhost:6379
               PAPERLESS_TIME_ZONE: Europe/Copenhagen
               PAPERLESS_URL: https://${SUBDOMAIN:=paperless-ngx}.hephaestus.markmk.com
