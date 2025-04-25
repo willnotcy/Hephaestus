@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/name: "Paperless NGX"
     gethomepage.dev/description: "Document management and OCR system"
     gethomepage.dev/app: paperless-ngx
-    gethomepage.dev/group: "Utilities"
+    gethomepage.dev/group: "Media"
     gethomepage.dev/icon: "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/dev/docs/img/logo.svg"
 spec:
   entryPoints:
