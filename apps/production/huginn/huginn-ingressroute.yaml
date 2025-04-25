@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/name: "Huginn"
     gethomepage.dev/description: "An automation tool that creates agents to monitor and act on your behalf."
     gethomepage.dev/app: huginn
-    gethomepage.dev/group: "Tools"
+    gethomepage.dev/group: "Automation"
     gethomepage.dev/icon: "https://github.com/huginn/huginn/blob/master/public/android-chrome-192x192.png?raw=true"  
 spec:
   entryPoints:
