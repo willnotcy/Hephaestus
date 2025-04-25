@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: paperless-ngx
+resources:
+  - paperless-ngx-namespace.yaml
+  - paperless-ngx-ingressroute.yaml
+  - paperless-ngx-release.yaml
