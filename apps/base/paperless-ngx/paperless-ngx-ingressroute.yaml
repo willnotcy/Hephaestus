@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/description: "Document management and OCR system"
     gethomepage.dev/app: paperless-ngx
     gethomepage.dev/group: "Media"
-    gethomepage.dev/icon: "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/dev/docs/img/logo.svg"
+    gethomepage.dev/icon: "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/refs/heads/dev/resources/logo/web/svg/square.svg"
 spec:
   entryPoints:
     - websecure
