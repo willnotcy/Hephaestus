@@ -35,12 +35,24 @@ spec:
               PAPERLESS_OCR_LANGUAGE: dan+eng
               PAPERLESS_OCR_LANGUAGES: dan
               PAPERLESS_REDIS: redis://localhost:6379
+              PAPERLESS_TIKA_ENABLED: 1
+              PAPERLESS_TIKA_ENDPOINT: http://localhost:9998
+              PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://localhost:3000
               PAPERLESS_TIME_ZONE: Europe/Copenhagen
               PAPERLESS_URL: https://${SUBDOMAIN:=paperless-ngx}.hephaestus.markmk.com
           redis:
             image:
               repository: docker.io/library/redis
               tag: 7.4.3
+          gotenburg:
+            image:
+              repository: gotenberg/gotenberg
+              tag: 8.20.1
+          tika:
+            image:
+              repository: ghcr.io/paperless-ngx/tika
+              tag: 2.9.1-minimal
+
 
     service:
       app:
