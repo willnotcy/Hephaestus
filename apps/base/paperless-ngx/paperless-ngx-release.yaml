@@ -54,15 +54,6 @@ spec:
           redis:
             enabled: true
             port: &redisport 6379
-
-
-    defaultPodOptions:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
-        fsGroupChangePolicy: OnRootMismatch
         
     persistence:
       data:
