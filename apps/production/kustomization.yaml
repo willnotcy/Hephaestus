@@ -18,4 +18,5 @@ resources:
   - mealie/kustomization.yaml
   - zigbee2mqtt/kustomization.yaml
   - mosquitto/kustomization.yaml
+  - paperless-ngx/kustomization.yaml
   

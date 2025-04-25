@@ -1,0 +1,22 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: paperless-ngx-ingressroute
+  annotations:
+    gethomepage.dev/href: "https://${SUBDOMAIN:=paperless-ngx}.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Paperless NGX"
+    gethomepage.dev/description: "Document management and OCR system"
+    gethomepage.dev/app: paperless-ngx
+    gethomepage.dev/group: "Utilities"
+    gethomepage.dev/icon: "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/dev/docs/img/logo.svg"
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`${SUBDOMAIN:=paperless-ngx}.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: paperless-ngx
+          port: 8000
