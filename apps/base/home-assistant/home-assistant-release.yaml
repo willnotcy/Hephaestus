@@ -29,7 +29,7 @@ spec:
           home-assistant:
             image:
               repository: ghcr.io/home-operations/home-assistant
-              tag: 2025.4.3
+              tag: 2025.4.4
           code:
             dependsOn: home-assistant
             image:
