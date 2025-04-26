@@ -29,9 +29,9 @@ spec:
               tag: v3.2.1
             envFrom:
               - secretRef:
-                  name: plex-auto-languages-secret    
+                  name: tinyauth
             env:
-              APP_URL: https://tinyauth..hephaestus.markmk.com
+              APP_URL: https://tinyauth.hephaestus.markmk.com
     service:
       app:
         controller: tinyauth
