@@ -6,3 +6,4 @@ resources:
   - snapshot-controller/
   - democratic-csi/
   - node-feature-discovery/kustomization.yaml
+  - tinyauth/kustomization.yaml
