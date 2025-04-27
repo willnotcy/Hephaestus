@@ -25,6 +25,10 @@ metadata:
   name: infra-controllers
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   dependsOn:
     - name: infra-repositories
   interval: 1h
