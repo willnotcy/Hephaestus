@@ -22,8 +22,6 @@ spec:
   values:
     controllers:
       it-tools:
-        labels:
-          traefik.http.routers.tinyauth.middlewares: tinyauth
         containers:
           app:
             image:

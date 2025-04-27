@@ -23,9 +23,6 @@ spec:
     controllers:
       tinyauth:
         labels:
-          traefik.enable: "true"
-          traefik.http.routers.tinyauth.rule: Host(`tinyauth.hephaestus.markmk.com`)
-          traefik.http.middlewares.tinyauth.forwardauth.address: https://tinyauth.hephaestus.markmk.com:3000/api/auth/traefik
         containers:
           app:
             image:
