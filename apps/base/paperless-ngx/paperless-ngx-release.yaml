@@ -41,6 +41,7 @@ spec:
               PAPERLESS_TIME_ZONE: Europe/Copenhagen
               PAPERLESS_URL: https://${SUBDOMAIN:=paperless-ngx}.hephaestus.markmk.com
               PAPERLESS_ENABLE_HTTP_REMOTE_USER: 1
+              PAPERLESS_ENABLE_HTTP_REMOTE_USER_API: 1
           redis:
             image:
               repository: docker.io/library/redis
