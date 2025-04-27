@@ -27,6 +27,10 @@ metadata:
 spec:
   dependsOn:
     - name: infra-secrets
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   interval: 1h
   retryInterval: 1m
   timeout: 5m
