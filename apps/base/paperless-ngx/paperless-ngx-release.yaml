@@ -40,6 +40,7 @@ spec:
               PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://localhost:3000
               PAPERLESS_TIME_ZONE: Europe/Copenhagen
               PAPERLESS_URL: https://${SUBDOMAIN:=paperless-ngx}.hephaestus.markmk.com
+              PAPERLESS_ENABLE_HTTP_REMOTE_USER: 1
           redis:
             image:
               repository: docker.io/library/redis
