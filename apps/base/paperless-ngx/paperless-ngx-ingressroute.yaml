@@ -20,3 +20,6 @@ spec:
       services:
         - name: paperless-ngx-app
           port: 8000
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
