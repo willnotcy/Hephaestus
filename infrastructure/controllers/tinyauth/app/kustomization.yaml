@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
   - tinyauth-namespace.yaml
   - tinyauth-ingressroute.yaml
+  - tinyauth-middleware.yaml
   - tinyauth-release.yaml
   - tinyauth-secret.yaml

@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/app: it-tools
     gethomepage.dev/group: "Tools"
     gethomepage.dev/icon: "https://github.com/CorentinTh/it-tools/blob/main/public/android-chrome-192x192.png?raw=true"  
-    traefik.http.routers.tinyauth.middlewares: tinyauth
+    traefik.http.routers.it-tools.middlewares: tinyauth@kubernetescrd
 spec:
   entryPoints:
     - websecure
