@@ -19,4 +19,5 @@ resources:
   - zigbee2mqtt/kustomization.yaml
   - mosquitto/kustomization.yaml
   - paperless-ngx/kustomization.yaml
+  - actual-budget/kustomization.yaml
   
