@@ -14,6 +14,9 @@ spec:
         - name: homepage
           port: 3000
           namespace: homepage
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -30,3 +33,6 @@ spec:
         - name: homepage
           port: 3000
           namespace: homepage
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
