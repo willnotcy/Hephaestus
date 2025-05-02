@@ -13,6 +13,7 @@ jobs:
       pull-requests: write
     strategy:
       matrix:
+        path: ["apps", "infrastructure"]       
         resource: ["helmrelease", "kustomization"]
     steps:
       - name: "Generate Short Lived OAuth App Token (ghs_*)"
