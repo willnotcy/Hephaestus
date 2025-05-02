@@ -37,6 +37,7 @@ jobs:
           path: "${{ matrix.path }}"
           resource: "${{ matrix.resource }}"
           debug: true
+          live-branch: "master"
 
       - if: ${{ steps.diff.outputs.diff != '' }}
         name: Add comment
