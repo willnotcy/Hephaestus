@@ -1,50 +1,88 @@
----
-name: "Flux Diff" # Taken from https://github.com/JJGadgets/Biohazard/
+name: Flux Local
 
 on:
   pull_request:
     branches: ["master"]
+    paths: ["apps/**", "infrastructure/**", "components/**"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  flux-diff:
-    name: Flux Diff
+  test:
+    name: Flux Local Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Run flux-local test
+        uses: docker://ghcr.io/allenporter/flux-local:v7.4.0
+        with:
+          args: >-
+            test
+            --all-namespaces
+            --enable-helm
+            --path /github/workspace/clusters/production
+            --verbose
+
+  diff:
+    name: Flux Local Diff
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     strategy:
       matrix:
-        path: ["apps", "infrastructure"]       
-        resource: ["helmrelease", "kustomization"]
+        resources: ["helmrelease", "kustomization"]
+      fail-fast: false
     steps:
-      - name: "Generate Short Lived OAuth App Token (ghs_*)"
-        uses: actions/create-github-app-token@30bf6253fa41bdc8d1501d202ad15287582246b4 # v2.0.3
-        id: oauth-token
+      - name: Checkout Pull Request Branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          app-id: "${{ secrets.BOT_APP_ID }}" # $BOT_APP_ID is found in GitHub App main settings page
-          private-key: "${{ secrets.BOT_JWT_PRIVATE_KEY }}" # $BOT_JWT_PRIVATE_KEY is generated in GitHub App main settings page, uses the X.509 private key format
+          path: pull
 
-      - name: Setup Flux
-        uses: fluxcd/flux2/action@8d5f40dca5aa5d3c0fc3414457dda15a0ac92fa4 # v2.5.1
+      - name: Checkout Default Branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          version: "2.5.1"
+          ref: "${{ github.event.repository.default_branch }}"
+          path: default
 
-      - name: Diff Resources
-        uses: allenporter/flux-local/action/diff@23b8f4e593254e34b2913728007c419b52789382 # 7.3.0
-        #uses: allenporter/flux-local/action/diff@flux-build
+      - name: Run flux-local diff
+        uses: docker://ghcr.io/allenporter/flux-local:v7.4.0
+        with:
+          args: >-
+            diff ${{ matrix.resources }}
+            --unified 6
+            --path /github/workspace/pull/clusters/production
+            --path-orig /github/workspace/default/clusters/production
+            --strip-attrs "helm.sh/chart,checksum/config,app.kubernetes.io/version,chart"
+            --limit-bytes 10000
+            --all-namespaces
+            --sources "flux-system"
+            --output-file diff.patch
+
+      - name: Generate Diff
         id: diff
-        with:
-          sources: "flux-system"
-          path: "${{ matrix.path }}"
-          resource: "${{ matrix.resource }}"
-          debug: true
-          live-branch: "master"
+        run: |
+          echo 'diff<<EOF' >> $GITHUB_OUTPUT
+          cat diff.patch >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
 
       - if: ${{ steps.diff.outputs.diff != '' }}
-        name: Add comment
+        name: Generate Token
+        uses: actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5 # v2.0.2
+        id: app-token
+        with:
+          app-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+
+      - if: ${{ steps.diff.outputs.diff != '' }}
+        name: Add Comment
         uses: mshick/add-pr-comment@b8f338c590a895d50bcbfa6c5859251edc8952fc # v2.8.2
         with:
-          repo-token: "${{ steps.oauth-token.outputs.token }}"
-          message-id: "${{ github.event.pull_request.number }}/${{ matrix.path }}/${{ matrix.resource }}"
+          repo-token: ${{ steps.app-token.outputs.token }}
+          message-id: ${{ github.event.pull_request.number }}/kubernetes/${{ matrix.resources }}
           message-failure: Diff was not successful
           message: |
             ```diff
