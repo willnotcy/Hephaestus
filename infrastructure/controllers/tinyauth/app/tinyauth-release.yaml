@@ -27,7 +27,7 @@ spec:
           app:
             image:
               repository: ghcr.io/steveiliop56/tinyauth
-              tag: v3.3.0
+              tag: v3.3.1
             envFrom:
               - secretRef:
                   name: tinyauth
