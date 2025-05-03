@@ -4,5 +4,9 @@ namespace: riven
 resources:
   - riven-namespace.yaml
   - riven-ingressroute.yaml
+  - riven-backend-configmap.yaml
+  - riven-backend-secret.yaml
+  - riven-frontend-configmap.yaml
+  - riven-frontend-secret.yaml
   - riven-release.yaml
   - riven-sharedmedia-pvc.yaml
