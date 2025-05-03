@@ -88,8 +88,9 @@ spec:
       data:
         type: emptyDir
         advancedMounts:
-          backend:
-            - path: /riven/data
+          riven:          
+            backend:
+              - path: /riven/data
 
       rclone:
         type: hostPath
@@ -106,7 +107,7 @@ spec:
               - path: /mnt/library
 
       database:
-        existingClaim:  *app
+        existingClaim: *app
         advancedMounts:
           riven:
             postgres:
