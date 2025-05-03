@@ -104,6 +104,15 @@ spec:
           - path: /mnt/zurg
             readOnly: true
 
+      media2:
+        type: hostPath
+        hostPath: /mnt/riven/
+        advancedMounts:
+          riven:
+            backend:
+              - path: /mnt/riven
+                mountPropagation: Bidirectional
+
       media:
         existingClaim: shared-media-pvc
         advancedMounts:
@@ -112,7 +121,7 @@ spec:
               - path: /mnt/library
 
       database:
-        existingClaim: *app
+        type: emptyDir
         advancedMounts:
           riven:
             postgres:
