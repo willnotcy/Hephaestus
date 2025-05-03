@@ -3,7 +3,6 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: riven-frontend-ingress
-  namespace: riven
   annotations:
     gethomepage.dev/href: "https://riven.hephaestus.markmk.com"
     gethomepage.dev/enabled: "true"
@@ -21,5 +20,4 @@ spec:
       kind: Rule
       services:
         - name: riven-frontend-service
-          port: 3000
-          namespace: riven              
+          port: 3000             

@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  namespace: plex
-  name: riven-backend-pvc
+  name: shared-media-pvc
+  namespace: media
 spec:
   storageClassName: local-path
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 5Gi           

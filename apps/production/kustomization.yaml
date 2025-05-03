@@ -5,8 +5,7 @@ resources:
   - it-tools/kustomization.yaml
   - zurg/
   - rclone/
-  - riven/
-  - riven-backend/
+  - riven/kustomization.yaml
   - plex/kustomization.yaml
   - plex-auto-languages/
   - babybuddy/kustomization.yaml
