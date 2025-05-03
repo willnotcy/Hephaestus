@@ -19,5 +19,5 @@ spec:
     - match: Host(`riven.hephaestus.markmk.com`) 
       kind: Rule
       services:
-        - name: riven-frontend-service
+        - name: riven-frontend
           port: 3000             

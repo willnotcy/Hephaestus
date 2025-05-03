@@ -47,14 +47,21 @@ spec:
                 name: riven-backend-secret              
             - configMapRef:
                 name: riven-backend-configmap
+          postgres:
+            image:
+              repository: postgres
+              tag: 17.0-alpine3.20    
+            envFrom:
+            - secretRef:
+                name: riven-postgres-secret              
+            - configMapRef:
+                name: riven-postgres-configmap
+            readinessProbe:
+              exec:
+                command: ["pg_isready", "-U", "postgres"]
+              initialDelaySeconds: 10
+              periodSeconds: 5
 
-
-    defaultPodOptions:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
 
     service:
       frontend:
@@ -69,13 +76,20 @@ spec:
         ports:
           http:
             port: &portbackend 8080
+      postgres:
+        controller: riven
+        type: ClusterIP
+        ports:
+          http:
+            port: &portpostgres 5432
 
 
     persistence:
       data:
-        existingClaim: *app
-        globalMounts:
-          - path: /riven/data
+        type: emptyDir
+        advancedMounts:
+          backend:
+            - path: /riven/data
 
       rclone:
         type: hostPath
@@ -90,3 +104,10 @@ spec:
           riven:
             backend:
               - path: /mnt/library
+
+      database:
+        existingClaim:  *app
+        advancedMounts:
+          riven:
+            postgres:
+              - path: /var/lib/postgresql/data/pgdata
