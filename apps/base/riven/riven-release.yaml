@@ -34,7 +34,8 @@ spec:
             - secretRef:
                 name: riven-frontend-secret              
             - configMapRef:
-                name: riven-frontend-configmap                
+                name: riven-frontend-configmap  
+            dependsOn: backend                
           backend:
             image:
               repository: spoked/riven
@@ -47,6 +48,7 @@ spec:
                 name: riven-backend-secret              
             - configMapRef:
                 name: riven-backend-configmap
+            dependsOn: postgres  
           postgres:
             image:
               repository: postgres
@@ -56,6 +58,13 @@ spec:
                 name: riven-postgres-secret              
             - configMapRef:
                 name: riven-postgres-configmap
+            probes:
+              readiness:
+                enabled: true
+                exec:
+                  command: ["pg_isready", "-U", "postgres"]
+                initialDelaySeconds: 10
+                periodSeconds: 5
 
     service:
       frontend:
