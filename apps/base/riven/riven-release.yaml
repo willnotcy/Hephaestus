@@ -56,12 +56,6 @@ spec:
                 name: riven-postgres-secret              
             - configMapRef:
                 name: riven-postgres-configmap
-            readinessProbe:
-              exec:
-                command: ["pg_isready", "-U", "postgres"]
-              initialDelaySeconds: 10
-              periodSeconds: 5
-
 
     service:
       frontend:
