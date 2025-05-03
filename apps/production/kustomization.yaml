@@ -20,4 +20,5 @@ resources:
   - mosquitto/kustomization.yaml
   - paperless-ngx/kustomization.yaml
   - actual-budget/kustomization.yaml
+  - jellyfin/kustomization.yaml
   
