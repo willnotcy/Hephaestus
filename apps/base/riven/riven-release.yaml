@@ -61,10 +61,12 @@ spec:
             probes:
               readiness:
                 enabled: true
-                exec:
-                  command: ["pg_isready", "-U", "postgres"]
-                initialDelaySeconds: 10
-                periodSeconds: 5
+                custom: true
+                spec:
+                  exec:
+                    command: ["pg_isready", "-U", "postgres"]
+                  initialDelaySeconds: 10
+                  periodSeconds: 5
 
     service:
       frontend:
