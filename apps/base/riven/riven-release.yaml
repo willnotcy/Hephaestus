@@ -74,10 +74,8 @@ spec:
     persistence:
       data:
         existingClaim: *app
-        advancedMounts:
-          riven:
-            backend:
-              - path: /riven/data
+        globalMounts:
+          - path: /riven/data
 
       rclone:
         type: hostPath
