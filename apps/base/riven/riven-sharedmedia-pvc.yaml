@@ -5,7 +5,7 @@ metadata:
   name: shared-media-pvc
   namespace: media
 spec:
-  storageClassName: local-path
+  storageClassName: local-hostpath
   accessModes:
     - ReadWriteOnce
   resources:

@@ -8,5 +8,7 @@ resources:
   - riven-backend-secret.yaml
   - riven-frontend-configmap.yaml
   - riven-frontend-secret.yaml
+  - riven-postgres-configmap.yaml
+  - riven-postgres-secret.yaml
   - riven-release.yaml
   - riven-sharedmedia-pvc.yaml
