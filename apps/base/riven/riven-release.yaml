@@ -1,0 +1,92 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app riven
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      riven:
+        containers:
+          frontend:
+            image:
+              repository: spoked/riven-frontend
+              tag: v0.20.0
+            env:
+              - name: TZ
+                value: Europe/Copenhagen
+            envFrom:
+            - secretRef:
+                name: riven-frontend-secret              
+            - configMapRef:
+                name: riven-frontend-configmap                
+          backend:
+            image:
+              repository: spoked/riven
+              tag: v0.21.20
+            env:
+              - name: TZ
+                value: Europe/Copenhagen     
+            envFrom:
+            - secretRef:
+                name: riven-backend-secret              
+            - configMapRef:
+                name: riven-backend-configmap
+
+
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+
+    service:
+      frontend:
+        controller: riven
+        type: ClusterIP
+        ports:
+          http:
+            port: &portfrontend 3000
+      backend:
+        controller: riven
+        type: ClusterIP
+        ports:
+          http:
+            port: &portbackend 8080
+
+
+    persistence:
+      data:
+        existingClaim: *app
+        globalMounts:
+          - path: /riven/data
+
+      rclone:
+        type: hostPath
+        hostPath: /mnt/zurg/
+        globalMounts:
+          - path: /mnt/zurg
+            readOnly: true
+
+      media:
+        existingClaim: shared-media-pvc
+        advancedMounts:
+          riven:
+            backend:
+              - path: /mnt/library

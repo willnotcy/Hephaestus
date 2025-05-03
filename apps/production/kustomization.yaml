@@ -5,8 +5,7 @@ resources:
   - it-tools/kustomization.yaml
   - zurg/
   - rclone/
-  - riven/
-  - riven-backend/
+  - riven/kustomization.yaml
   - babybuddy/kustomization.yaml
   - huginn/
   - spoolman/kustomization.yaml

@@ -3,8 +3,6 @@ kind: Kustomization
 namespace: riven
 resources:
   - riven-namespace.yaml
-  - riven-postgres-pvc.yaml
-  - riven-postgres-deployment.yaml
-  - riven-postgres-service.yaml
-  - riven-frontend-deployment.yaml
-  - riven-frontend-service.yaml
+  - riven-ingressroute.yaml
+  - riven-release.yaml
+  - riven-sharedmedia-pvc.yaml
