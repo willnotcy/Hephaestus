@@ -7,8 +7,6 @@ resources:
   - rclone/
   - riven/
   - riven-backend/
-  - plex/kustomization.yaml
-  - plex-auto-languages/
   - babybuddy/kustomization.yaml
   - huginn/
   - spoolman/kustomization.yaml
