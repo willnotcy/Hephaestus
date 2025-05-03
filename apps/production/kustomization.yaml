@@ -6,8 +6,6 @@ resources:
   - zurg/
   - rclone/
   - riven/kustomization.yaml
-  - plex/kustomization.yaml
-  - plex-auto-languages/
   - babybuddy/kustomization.yaml
   - huginn/
   - spoolman/kustomization.yaml
