@@ -6,6 +6,7 @@ resources:
   - riven-ingressroute.yaml
   - riven-backend-configmap.yaml
   - riven-backend-secret.yaml
+  - riven-backend-pvc.yaml
   - riven-frontend-configmap.yaml
   - riven-frontend-secret.yaml
   - riven-postgres-configmap.yaml

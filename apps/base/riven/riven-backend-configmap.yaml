@@ -5,5 +5,7 @@ metadata:
 data:
   RIVEN_SYMLINK_RCLONE_PATH: /mnt/zurg/__all__
   TZ: Europe/Copenhagen
-  RIVEN_FORCE_ENV: "true"
+  RIVEN_FORCE_ENV: "false"
   RIVEN_SYMLINK_LIBRARY_PATH: /mnt/library
+  RIVEN_SYMLINK_REPAIR_SYMLINKS: "true"
+
