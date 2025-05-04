@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/description: "Application for tracking baby care activities."
     gethomepage.dev/app: babybuddy
     gethomepage.dev/group: "Tools"
-    gethomepage.dev/icon: "https://github.com/babybuddy/babybuddy/blob/master/static/babybuddy/img/core/child-placeholder.png?raw=true"  # Adjust or replace with an appropriate icon URL
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/baby-buddy.svg"
 spec:
   entryPoints:
     - websecure

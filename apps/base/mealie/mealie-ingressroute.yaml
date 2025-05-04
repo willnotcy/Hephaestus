@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/description: "Self-hosted recipe manager and meal planner"
     gethomepage.dev/app: mealie
     gethomepage.dev/group: "Tools"
-    gethomepage.dev/icon: "https://github.com/mealie-recipes/mealie/blob/mealie-next/frontend/static/icons/android-chrome-512x512.png?raw=true"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/mealie.svg"
 spec:
   entryPoints:
     - websecure

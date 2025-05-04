@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/description: "Zigbee to MQTT bridge."
     gethomepage.dev/app: zigbee2mqtt
     gethomepage.dev/group: "Automation"
-    gethomepage.dev/icon: "https://www.zigbee2mqtt.io/logo.png"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/zigbee2mqtt.svg"
 spec:
   entryPoints:
     - websecure

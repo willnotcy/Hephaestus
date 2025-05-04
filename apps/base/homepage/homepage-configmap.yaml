@@ -20,6 +20,9 @@ data:
         - Renovate:
             - abbr: MEND
               href: https://developer.mend.io/github/willnotcy/Hephaestus
+        - Selfh.st icons:
+            - abbr: ICONS
+              href: https://selfh.st/icons/
   docker.yaml: ""
   kubernetes.yaml: |
     mode: cluster

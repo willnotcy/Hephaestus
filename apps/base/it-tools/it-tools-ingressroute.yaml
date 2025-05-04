@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/description: "Collection of handy online tools for developers"
     gethomepage.dev/app: it-tools
     gethomepage.dev/group: "Tools"
-    gethomepage.dev/icon: "https://github.com/CorentinTh/it-tools/blob/main/public/android-chrome-192x192.png?raw=true"  
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/it-tools.svg"
 spec:
   entryPoints:
     - websecure

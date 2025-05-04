@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/description: "Self-hosted workflow automation"
     gethomepage.dev/app: n8n
     gethomepage.dev/group: "Automation"
-    gethomepage.dev/icon: "https://github.com/n8n-io/n8n/blob/master/assets/n8n-logo.png?raw=true"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/n8n.svg"
 spec:
   entryPoints:
     - web
