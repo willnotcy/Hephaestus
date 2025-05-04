@@ -33,6 +33,7 @@ spec:
                   name: tinyauth
             env:
               APP_URL: https://tinyauth.hephaestus.markmk.com
+              DISABLE_CONTINUE: "true"
     service:
       app:
         controller: tinyauth
