@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/description: "Self-hosted audiobook and podcast server"
     gethomepage.dev/app: audiobookshelf
     gethomepage.dev/group: "Media"
-    gethomepage.dev/icon: "https://github.com/advplyr/audiobookshelf/blob/master/client/static/icon192.png?raw=true"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/audiobookshelf.svg"
 spec:
   entryPoints:
     - websecure

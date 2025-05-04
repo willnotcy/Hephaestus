@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/description: "Collection of powerful web-based tools"
     gethomepage.dev/app: omni-tools
     gethomepage.dev/group: "Tools"
-    gethomepage.dev/icon: "https://github.com/iib0011/omni-tools/blob/main/src/assets/logo.png"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/omnitools.svg"
 spec:
   entryPoints:
     - websecure

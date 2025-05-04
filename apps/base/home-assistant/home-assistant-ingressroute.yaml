@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/description: "Self-hosted home automation"
     gethomepage.dev/app: home-assistant
     gethomepage.dev/group: "Automation"
-    gethomepage.dev/icon: "https://avatars.githubusercontent.com/u/13844975?s=48&v=4"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/home-assistant.svg"
 spec:
   entryPoints:
     - web
