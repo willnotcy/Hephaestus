@@ -30,7 +30,7 @@ spec:
             env:
               - name: TZ
                 value: Europe/Copenhagen
-              - name: port
+              - name: PORT
                 value: &port 80
 
     service:
