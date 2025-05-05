@@ -19,4 +19,5 @@ resources:
   - actual-budget/kustomization.yaml
   - jellyfin/kustomization.yaml
   - omni-tools/kustomization.yaml
+  - jellyseerr/kustomization.yaml
   

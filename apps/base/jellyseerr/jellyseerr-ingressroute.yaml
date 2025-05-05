@@ -1,0 +1,22 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jellyseerr-ingressroute
+  annotations:
+    gethomepage.dev/href: "https://${SUBDOMAIN:=jellyseerr}.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "jellyseerr"
+    gethomepage.dev/description: "Open-source media request and discovery manager for Jellyfin"
+    gethomepage.dev/app: jellyseerr
+    gethomepage.dev/group: "Media"
+    gethomepage.dev/icon: "https://avatars.githubusercontent.com/u/37879538?s=48&v=4"
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`${SUBDOMAIN:=jellyseerr}.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: jellyseerr
+          port: 80
