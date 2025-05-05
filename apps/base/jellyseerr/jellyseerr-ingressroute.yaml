@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/description: "Open-source media request and discovery manager for Jellyfin"
     gethomepage.dev/app: jellyseerr
     gethomepage.dev/group: "Media"
-    gethomepage.dev/icon: "https://avatars.githubusercontent.com/u/37879538?s=48&v=4"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/jellyseerr.svg"
 spec:
   entryPoints:
     - websecure
