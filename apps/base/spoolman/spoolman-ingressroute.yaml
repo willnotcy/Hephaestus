@@ -22,3 +22,6 @@ spec:
       services:
         - name: spoolman
           port: 8000
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
