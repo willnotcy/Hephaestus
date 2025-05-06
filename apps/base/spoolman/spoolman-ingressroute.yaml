@@ -17,6 +17,13 @@ spec:
   entryPoints:
     - websecure
   routes:
+    # Route WITHOUT middleware for /api
+    - match: Host(`${SUBDOMAIN:=placeholder}.hephaestus.markmk.com`) && PathPrefix(`/api`)
+      kind: Rule
+      services:
+        - name: spoolman
+          port: 8000
+
     - match: Host(`${SUBDOMAIN:=placeholder}.hephaestus.markmk.com`)
       kind: Rule
       services:
