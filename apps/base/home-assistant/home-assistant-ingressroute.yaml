@@ -45,3 +45,7 @@ spec:
       services:
         - name: home-assistant-code
           port: http
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
+

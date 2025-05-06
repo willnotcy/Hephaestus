@@ -20,3 +20,6 @@ spec:
       services:
         - name: zigbee2mqtt
           port: 80
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
