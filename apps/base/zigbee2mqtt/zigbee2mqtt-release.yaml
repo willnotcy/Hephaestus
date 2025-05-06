@@ -27,6 +27,9 @@ spec:
             image:
               repository: ghcr.io/koenkk/zigbee2mqtt
               tag: 2.3.0
+            envFrom:
+              - secretRef:
+                  name: *app
             env:
               TZ: Europe/Copenhagen
               ZIGBEE2MQTT_DATA: /config
@@ -60,13 +63,8 @@ spec:
               ZIGBEE2MQTT_CONFIG_PERMIT_JOIN: "false"
 
               ZIGBEE2MQTT_CONFIG_SERIAL_BAUDRATE: 115200
-              ZIGBEE2MQTT_CONFIG_SERIAL_PORT: &usbdevice /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_cc27ec094470ec119067213519c2d21c-if00-port0
-              ZIGBEE2MQTT_CONFIG_SERIAL_ADAPTER: ember
+              ZIGBEE2MQTT_CONFIG_SERIAL_ADAPTER: zstack
 
-            securityContext:
-              # apparently required for the USB attached device, even with owner/group set correctly?
-              privileged: true
-              readOnlyRootFilesystem: true
     service:
       app:
         controller: zigbee2mqtt
@@ -89,10 +87,3 @@ spec:
         existingClaim: *app
         globalMounts:
           - path: /config
-
-      zigbee:
-        type: hostPath
-        hostPath: *usbdevice
-        hostPathType: CharDevice
-        globalMounts:
-          - path: *usbdevice
