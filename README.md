@@ -50,7 +50,7 @@ This project is a learning playground, a passion project, hopefully—a way to a
 - ✅ K3s cluster deployed
 - ✅ Flux desired state deployments
 - ✅ Automatic backup and restore of Persitent Volumes ([volsync](https://volsync.readthedocs.io/en/stable/))
-- ⏳ Migrate all LXC applications 
+- ✅ Migrate all LXC applications 
 - ⏳ Setup observability/monitoring
 
 ---
