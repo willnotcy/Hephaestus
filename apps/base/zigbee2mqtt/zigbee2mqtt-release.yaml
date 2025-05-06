@@ -60,8 +60,13 @@ spec:
               ZIGBEE2MQTT_CONFIG_PERMIT_JOIN: "false"
 
               ZIGBEE2MQTT_CONFIG_SERIAL_BAUDRATE: 115200
-              ZIGBEE2MQTT_CONFIG_SERIAL_PORT: &hostPath /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_cc27ec094470ec119067213519c2d21c-if00-port0
+              ZIGBEE2MQTT_CONFIG_SERIAL_PORT: &usbdevice /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_cc27ec094470ec119067213519c2d21c-if00-port0
               ZIGBEE2MQTT_CONFIG_SERIAL_ADAPTER: ember
+
+            securityContext:
+              # apparently required for the USB attached device, even with owner/group set correctly?
+              privileged: true
+              readOnlyRootFilesystem: true
     service:
       app:
         controller: zigbee2mqtt
@@ -71,7 +76,6 @@ spec:
 
     defaultPodOptions:
       securityContext:
-        runAsNonRoot: true
         runAsUser: 1000
         runAsGroup: 1000
         fsGroup: 1000
@@ -88,7 +92,7 @@ spec:
 
       zigbee:
         type: hostPath
-        hostPath: /dev/ttyUSB0
+        hostPath: *usbdevice
         hostPathType: CharDevice
         globalMounts:
-          - path: /dev/ttyUSB0
+          - path: *usbdevice
