@@ -1,0 +1,26 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: gatus
+  namespace: gatus
+  annotations:
+    gethomepage.dev/href: "https://gatus.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "gatus"
+    gethomepage.dev/description: "Automated developer-oriented status page"
+    gethomepage.dev/app: gatus
+    gethomepage.dev/group: "Monitoring"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/gatus.svg"
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`gatus.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: gatus
+          port: 80
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
