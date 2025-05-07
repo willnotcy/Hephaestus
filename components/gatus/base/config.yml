@@ -1,6 +1,6 @@
 endpoints:
   - name: "${APP}"
-    group: external
+    group: base
     url: "https://${GATUS_SUBDOMAIN:=${APP}}.devbu.io${GATUS_PATH:=/}"
     interval: 1m
     client:
