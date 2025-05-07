@@ -20,4 +20,5 @@ resources:
   - jellyfin/kustomization.yaml
   - omni-tools/kustomization.yaml
   - jellyseerr/kustomization.yaml
+  - gatus/kustomization.yaml
   

@@ -1,0 +1,24 @@
+web:
+  port: ${WEB_PORT}
+storage:
+  type: sqlite
+  path: /config/sqlite.db
+  caching: true
+metrics: true
+debug: false
+ui:
+  title: Status | Gatus
+  header: Status
+connectivity:
+  checker:
+    target: 1.1.1.1:53
+    interval: 1m
+alerting:
+  discord:
+    title: Gatus
+    webhook-url: ${DISCORD_WEBHOOK_URL}
+    default-alert:
+      description: health-check failed
+      send-on-resolved: true
+      failure-threshold: 5
+      success-threshold: 2    
