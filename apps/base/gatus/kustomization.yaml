@@ -6,7 +6,6 @@ resources:
   - gatus-rbac.yaml
   - gatus-pvc.yaml
   - gatus-secret.yaml
-  - gatus-release.yaml
 
 configMapGenerator:
   - name: gatus-configmap
