@@ -21,8 +21,13 @@ spec:
       SUBDOMAIN: *app
       CAPACITY: 4Gi
       GATUS_PATH: /health
+<<<<<<< HEAD
       GATUS_PORT: "8096"
       APP_NAMESPACE: media
+=======
+      APP_NAMESPACE: media
+      GATUS_PORT: "8096"
+>>>>>>> d6d1782643ed20729762dcb5e6a5be379dbfcc20
   prune: true
   retryInterval: 2m
   sourceRef:
