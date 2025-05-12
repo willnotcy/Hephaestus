@@ -39,7 +39,7 @@ spec:
           backend:
             image:
               repository: spoked/riven
-              tag: v0.21.20
+              tag: v0.21.21
             env:
               - name: TZ
                 value: Europe/Copenhagen     
