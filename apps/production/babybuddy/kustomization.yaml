@@ -11,6 +11,7 @@ spec:
       app.kubernetes.io/name: *app
   components:
     - ../../../components/volsync
+    - ../../../components/gatus/internal
   interval: 1h
   path: ./apps/base/babybuddy
   postBuild:
@@ -18,6 +19,7 @@ spec:
       APP: *app
       SUBDOMAIN: *app
       CAPACITY: 2Gi
+      GATUS_PORT: "8000"
   prune: true
   retryInterval: 2m
   sourceRef:
