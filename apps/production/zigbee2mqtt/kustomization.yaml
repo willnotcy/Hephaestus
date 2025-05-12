@@ -11,12 +11,14 @@ spec:
       app.kubernetes.io/name: *app
   components:
     - ../../../components/volsync
+    - ../../../components/gatus/internal
   interval: 1h
   path: ./apps/base/zigbee2mqtt
   postBuild:
     substitute:
       APP: *app
       SUBDOMAIN: *app
+      GATUS_PORT: "80"
   prune: true
   retryInterval: 2m
   sourceRef:
