@@ -6,4 +6,4 @@ endpoints:
     conditions:
       - "[CONNECTED] == ${GATUS_STATUS_INTERNAL:=true}"
     alerts:
-      - discord
+      - type: discord
