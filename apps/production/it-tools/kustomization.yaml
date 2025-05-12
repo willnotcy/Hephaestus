@@ -15,6 +15,7 @@ spec:
   path: ./apps/base/it-tools
   postBuild:
     substitute:
+      APP: *app
       HOSTNAME: "it-tools.hephaestus.markmk.com"
       GATUS_PORT: "80"
   prune: true
