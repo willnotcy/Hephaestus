@@ -20,6 +20,7 @@ spec:
       SUBDOMAIN: *app
       CAPACITY: 40Gi
       GATUS_PORT: "8000"
+      GATUS_APP: "paperless-ngx-app"
   prune: true
   retryInterval: 2m
   sourceRef:
