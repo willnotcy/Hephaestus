@@ -3,7 +3,7 @@
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 configMapGenerator:
-  - name: ${APP}-gatus-endpoint
+  - name: ${APP}-gatus-external-endpoint
     files:
       - config.yaml=./config.yaml
     options:

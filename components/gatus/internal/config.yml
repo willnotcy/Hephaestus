@@ -1,0 +1,9 @@
+endpoints:
+  - name: "${APP}"
+    group: internal
+    url: "tcp://${APP}.${APP_NAMESPACE:=${APP}}.svc.cluster.local:${GATUS_PORT}"
+    interval: 1m
+    conditions:
+      - "[CONNECTED] == ${GATUS_STATUS_INTERNAL:=true}"
+    alerts:
+      - discord
