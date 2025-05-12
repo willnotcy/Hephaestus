@@ -21,7 +21,7 @@ spec:
       SUBDOMAIN: *app
       CAPACITY: 4Gi
       GATUS_PATH: /health
-      GATUS_PORT: 8096
+      GATUS_PORT: "8096"
   prune: true
   retryInterval: 2m
   sourceRef:
