@@ -12,12 +12,14 @@ spec:
   components:
     - ../../../components/volsync
     - ../../../components/gatus/internal
+    - ../../../components/gatus/external
   interval: 1h
   path: ./apps/base/audiobookshelf
   postBuild:
     substitute:
       APP: *app
       SUBDOMAIN: *app
+      GATUS_PATH: /healthcheck
       GATUS_PORT: "80"
   prune: true
   retryInterval: 2m

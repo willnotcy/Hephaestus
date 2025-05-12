@@ -12,6 +12,7 @@ spec:
   components:
     - ../../../components/volsync
     - ../../../components/gatus/internal
+    - ../../../components/gatus/external
   interval: 1h
   path: ./apps/base/jellyseerr
   postBuild:
@@ -19,6 +20,7 @@ spec:
       APP: *app
       SUBDOMAIN: *app
       CAPACITY: 2Gi
+      GATUS_PATH: /login
       GATUS_PORT: "80"
   prune: true
   retryInterval: 2m
