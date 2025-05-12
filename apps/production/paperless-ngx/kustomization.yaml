@@ -12,6 +12,7 @@ spec:
   components:
     - ../../../components/volsync
     - ../../../components/gatus/internal
+    - ../../../components/gatus/external
   interval: 1h
   path: ./apps/base/paperless-ngx
   postBuild:
@@ -19,6 +20,7 @@ spec:
       APP: *app
       SUBDOMAIN: *app
       CAPACITY: 40Gi
+      GATUS_PATH: /accounts/login/?next=/
       GATUS_PORT: "8000"
       GATUS_APP: "paperless-ngx-app"
   prune: true

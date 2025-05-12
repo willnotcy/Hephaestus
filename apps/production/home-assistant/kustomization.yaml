@@ -12,6 +12,7 @@ spec:
   components:
     - ../../../components/volsync
     - ../../../components/gatus/internal
+    - ../../../components/gatus/external
   interval: 1h
   path: ./apps/base/home-assistant
   postBuild:

@@ -12,12 +12,14 @@ spec:
   components:
     - ../../../components/volsync
     - ../../../components/gatus/internal
+    - ../../../components/gatus/external
   interval: 1h
   path: ./apps/base/mealie
   postBuild:
     substitute:
       APP: *app
       SUBDOMAIN: *app
+      GATUS_PATH: /api/app/about
       GATUS_PORT: "9000"
   prune: true
   retryInterval: 2m
