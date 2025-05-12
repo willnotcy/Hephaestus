@@ -22,6 +22,7 @@ spec:
       CAPACITY: 4Gi
       GATUS_PATH: /health
       GATUS_PORT: "8096"
+      APP_NAMESPACE: media
   prune: true
   retryInterval: 2m
   sourceRef:
