@@ -8,4 +8,4 @@ endpoints:
     conditions:
       - "[STATUS] == ${GATUS_STATUS_EXTERNAL:=200}"
     alerts:
-      - discord
+      - type: discord
