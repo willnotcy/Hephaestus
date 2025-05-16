@@ -21,4 +21,5 @@ resources:
   - omni-tools/kustomization.yaml
   - jellyseerr/kustomization.yaml
   - gatus/kustomization.yaml
+  - prometheus/kustomization.yaml
   
