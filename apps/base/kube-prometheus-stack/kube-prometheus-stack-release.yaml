@@ -39,15 +39,15 @@ spec:
     cleanPrometheusOperatorObjectNames: true
 
     alertmanager:
-      ingress:
-        enabled: true
-        annotations:
-          kubernetes.io/ingress.class: traefik
-          traefik.ingress.kubernetes.io/router.middlewares: tinyauth@kubernetescrd
-        hosts:
-          - "alerts.hephaestus.markmk.com"
-        path: /
-        pathType: Prefix
+      # ingress:
+      #   enabled: true
+      #   annotations:
+      #     kubernetes.io/ingress.class: traefik
+      #     traefik.ingress.kubernetes.io/router.middlewares: tinyauth@kubernetescrd
+      #   hosts:
+      #     - "alerts.hephaestus.markmk.com"
+      #   path: /
+      #   pathType: Prefix
 
       alertmanagerSpec:
         replicas: &replicasCount 1
@@ -127,15 +127,15 @@ spec:
             grafana_folder: Kubernetes
 
     prometheus:
-      ingress:
-        enabled: true
-        annotations:
-          kubernetes.io/ingress.class: traefik
-          traefik.ingress.kubernetes.io/router.middlewares: tinyauth@kubernetescrd
-        path: /
-        pathType: Prefix
-        hosts:
-          - "prometheus.hephaestus.markmk.com"
+      # ingress:
+      #   enabled: true
+      #   annotations:
+      #     kubernetes.io/ingress.class: traefik
+      #     traefik.ingress.kubernetes.io/router.middlewares: tinyauth@kubernetescrd
+      #   path: /
+      #   pathType: Prefix
+      #   hosts:
+      #     - "prometheus.hephaestus.markmk.com"
 
       prometheusSpec:
         replicas: *replicasCount
