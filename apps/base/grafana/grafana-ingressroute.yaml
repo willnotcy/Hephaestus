@@ -1,0 +1,25 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana
+  annotations:
+    gethomepage.dev/href: "https://grafana.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "grafana"
+    gethomepage.dev/description: "Analytics and interactive visualization web application"
+    gethomepage.dev/app: grafana
+    gethomepage.dev/group: "Monitoring"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/grafana.svg"
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`grafana.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: grafana
+          port: 3000
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
