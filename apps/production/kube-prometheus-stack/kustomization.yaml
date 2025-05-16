@@ -1,0 +1,26 @@
+---
+# yaml-language-server: $schema=https://kube-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app kube-prometheus-stack
+  namespace: flux-system
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  interval: 1h
+  path: ./apps/base/kube-prometheus-stack
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: alertmanager-secret-vars      
+  prune: true
+  retryInterval: 2m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: &namespace kube-prometheus-stack
+  timeout: 5m
+  wait: false

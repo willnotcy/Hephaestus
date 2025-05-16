@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - cloudflare.yaml
   - gatus-secret.yaml
+  - alertmanager-secret.yaml
