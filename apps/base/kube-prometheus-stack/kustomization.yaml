@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - kube-prometheus-stack-namespace.yaml
   - alertmanager-secret.yaml
+  - kube-prometheus-stack-ingressroute.yaml
   - kube-prometheus-stack-release.yaml
