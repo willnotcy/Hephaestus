@@ -22,4 +22,5 @@ resources:
   - jellyseerr/kustomization.yaml
   - gatus/kustomization.yaml
   - kube-prometheus-stack/kustomization.yaml
+  - grafana/kustomization.yaml
   
