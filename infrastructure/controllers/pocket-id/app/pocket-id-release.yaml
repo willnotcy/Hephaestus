@@ -1,0 +1,64 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app pocket-id
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      pocket-id:
+        labels:
+        containers:
+          app:
+            image:
+              repository: ghcr.io/pocket-id/pocket-id
+              tag: v1.2.0
+            env:
+              DB_CONNECTION_STRING: file:/app/data/pocket-id.db?_journal_mode=WAL&_busy_timeout=2500&_txlock=immediate
+              APP_URL: https://pocket-id.hephaestus.markmk.com
+              TRUST_PROXY: true
+              TZ: Europe/Stockholm
+              UPLOAD_PATH: /app/data/uploads
+
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
+
+    service:
+      app:
+        controller: pocket-id
+        ports:
+          http:
+            port: &port 1411
+
+    persistence:
+      config:
+        existingClaim: "${VOLSYNC_CLAIM}"
+        globalMounts:
+          - path: /app/data
+
+      tmp:
+        type: emptyDir
+
