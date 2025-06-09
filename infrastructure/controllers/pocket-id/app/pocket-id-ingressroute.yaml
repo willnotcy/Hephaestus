@@ -2,6 +2,14 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: pocket-id
+  annotations:
+    gethomepage.dev/href: "https://pocket-id.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Pocket-id"
+    gethomepage.dev/description: "Self-hosted audiobook and podcast server"
+    gethomepage.dev/app: pocket-id
+    gethomepage.dev/group: "Tools"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/pocket-id.svg"
 spec:
   entryPoints:
     - websecure
