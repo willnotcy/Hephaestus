@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app volsync
+  name: &app pocket-id
   namespace: flux-system
 spec:
   decryption:
@@ -13,12 +13,15 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
+  dependsOn:
+    - name: volsync
+      namespace: volsync-system
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
       name: *app
-      namespace: &namespace volsync-system
-  path: ./infrastructure/controllers/volsync/app
+      namespace: &namespace pocket-id
+  path: ./infrastructure/controllers/pocket-id/app
   prune: true
   retryInterval: 2m
   sourceRef:
