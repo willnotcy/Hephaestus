@@ -6,7 +6,7 @@ metadata:
     gethomepage.dev/href: "https://pocket-id.hephaestus.markmk.com"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: "Pocket-id"
-    gethomepage.dev/description: "Self-hosted audiobook and podcast server"
+    gethomepage.dev/description: "Self-hosted OIDC server using passkeys"
     gethomepage.dev/app: pocket-id
     gethomepage.dev/group: "Tools"
     gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/pocket-id.svg"
