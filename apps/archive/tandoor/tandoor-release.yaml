@@ -38,7 +38,7 @@ spec:
           main:
             image:
               repository: ghcr.io/tandoorrecipes/recipes
-              tag: 1.5.33
+              tag: 1.5.35
             env:
               - name: TZ
                 value: Europe/Copenhagen
