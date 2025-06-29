@@ -11,6 +11,7 @@ spec:
       app.kubernetes.io/name: *app
   components:
     - ../../../components/volsync
+    - ../../../components/volsync/remote
     - ../../../components/gatus/internal
     - ../../../components/gatus/external
   interval: 1h
