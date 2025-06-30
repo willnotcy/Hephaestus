@@ -21,6 +21,9 @@ spec:
   matchConditions:
     - name: has-name
       expression: object.metadata.name.startsWith("volsync-")
+    - name: name-not-b2
+      expression: >
+        !object.metadata.name.contains("-b2")
     - name: has-labels
       expression: object.metadata.labels["app.kubernetes.io/created-by"] == "volsync"
     - name: volume-not-present
