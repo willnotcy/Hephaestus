@@ -16,7 +16,7 @@ spec:
     spec: 
       containers:
       - name: rclone
-        image: rclone/rclone@sha256:600f51856285df1ae5d91c8bb2682cbbe31bf109ebeeef9ecead6ca8c0ff6138
+        image: rclone/rclone@sha256:34c729127386abec1c610b2aa024e39b4498dc2b4a72a0798ae21fbdc1b0493b
         command: ["rclone", "mount", "zurg:", "/mnt/zurg"]
         args:
         - "--umask=000"          
