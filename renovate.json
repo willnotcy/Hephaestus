@@ -47,8 +47,11 @@
       "datasourceTemplate": "helm"
     }
   ],
-  "packageRules": [
-    {
+  "packageRules": [    
+      {
+        "matchPaths": ["apps/archive/**"],
+        "enabled": false
+      },    
       "matchDatasources": [
         "helm"
       ],
