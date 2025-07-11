@@ -8,6 +8,9 @@
       "cluster/.+\\.ya?ml$"
     ]
   },
+  "ignorePaths": [
+    "apps/archive/**"
+  ],
   "helm-values": {
     "fileMatch": [
       "cluster/.+\\.ya?ml$",
@@ -48,10 +51,6 @@
     }
   ],
   "packageRules": [    
-      {
-        "matchPaths": ["apps/archive/**"],
-        "enabled": false
-      },    
       "matchDatasources": [
         "helm"
       ],
