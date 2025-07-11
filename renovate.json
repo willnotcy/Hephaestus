@@ -4,32 +4,34 @@
     "config:recommended"
   ],
   "flux": {
-    "fileMatch": [
-      "cluster/.+\\.ya?ml$"
+    "managerFilePatterns": [
+      "/cluster/.+\\.ya?ml$/"
     ]
   },
   "ignorePaths": [
     "apps/archive/**"
   ],
   "helm-values": {
-    "fileMatch": [
-      "cluster/.+\\.ya?ml$",
-      "apps/.+\\.ya?ml$",
-      "infrastructure/.+\\.ya?ml$"
+    "managerFilePatterns": [
+      "/cluster/.+\\.ya?ml$/",
+      "/apps/.+\\.ya?ml$/",
+      "/infrastructure/.+\\.ya?ml$/"
     ]
   },
   "kubernetes": {
-    "fileMatch": [
-      "cluster/.+\\.ya?ml$",
-      "apps/.+\\.ya?ml$",
-      "infrastructure/.+\\.ya?ml$"
+    "managerFilePatterns": [
+      "/cluster/.+\\.ya?ml$/",
+      "/apps/.+\\.ya?ml$/",
+      "/infrastructure/.+\\.ya?ml$/"
     ]
   },
   "customManagers": [
     {
       "customType": "regex",
       "description": "Match Helm values for non-standard yamls",
-      "fileMatch": "infrastructure/.+\\.ya?ml$",
+      "managerFilePatterns": [
+        "/infrastructure/.+\\.ya?ml$/"
+      ],
       "matchStringsStrategy": "any",
       "matchStrings": [
         "repository:\\s?\"?(?<depName>[^\\s\"]*)\"?\\s*?tag:\\s?\"?(?<currentValue>[^\\s\"]*)\"?"
@@ -39,9 +41,9 @@
     {
       "customType": "regex",
       "description": "Match Helm Releases for helm charts",
-      "fileMatch": [
-        "apps/.+\\.ya?ml$",
-        "infrastructure/.+\\.ya?ml$"
+      "managerFilePatterns": [
+        "/apps/.+\\.ya?ml$/",
+        "/infrastructure/.+\\.ya?ml$/"
       ],
       "matchStringsStrategy": "any",
       "matchStrings": [
@@ -51,7 +53,7 @@
     }
   ],
   "packageRules": [
-    {    
+    {
       "matchDatasources": [
         "helm"
       ],
