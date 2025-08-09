@@ -20,6 +20,6 @@ data:
 
     [decypharr]
     type = webdav
-    url = http://decypharr.decypharr.svc.cluster.local:8282/webdav/realdebrid
+    url = http://decypharr.media.svc.cluster.local:8282/webdav/realdebrid
     vendor = other
     pacer_min_sleep = 0
