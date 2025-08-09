@@ -25,4 +25,5 @@ resources:
   - kube-prometheus-stack/kustomization.yaml
   - grafana/kustomization.yaml
   - decypharr/kustomization.yaml
+  - radarr/kustomization.yaml
   

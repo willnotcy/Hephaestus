@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app decypharr
+  name: &app radarr
 spec:
   interval: 30m
   chartRef:
@@ -21,21 +21,12 @@ spec:
     keepHistory: false
   values:
     controllers:
-      decypharr:
-        initContainers:
-          init-config:
-            image:
-              repository: busybox
-              tag: latest
-            command:
-              - sh
-              - -c
-              - cp /tmp/config/config.json /app/config.json && chmod 644 /app/config.json && chown -R 1000:1000 /app
+      radarr:
         containers:
           app:
             image:
-              repository: cy01/blackhole
-              tag: v1.0.4
+              repository: ghcr.io/home-operations/radarr
+              tag: 5.27.3.10153
 
     defaultPodOptions:
       securityContext:
@@ -50,36 +41,24 @@ spec:
         controller: *app
         ports:
           http:
-            port: &port 8282
+            port: &port 7878
 
     persistence:
       app:
         existingClaim: *app
         globalMounts:
-          - path: /app
-
-      config:
-        enabled: true
-        type: secret
-        name: decypharr-secret
-        globalMounts:
-          - path: /tmp/config
+          - path: /config
 
       rclone:
         type: hostPath
-        hostPath: /mnt/data/
+        hostPath: /mnt/decypharr
         globalMounts:
-          - path: /mnt/data
+          - path: /mnt/decypharr
             readOnly: true
 
       symlinks:
         existingClaim: symlinks
         globalMounts:
-          - path: /mnt/symlinks
-
-      logs:
-        type: emptyDir
-        globalMounts:
-          - path: /app/logs
-
-
+          - path: /mnt/symlinks/decypharr
+            readOnly: true
+          - path: /mnt/symlinks/radarr
