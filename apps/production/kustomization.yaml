@@ -24,4 +24,5 @@ resources:
   - gatus/kustomization.yaml
   - kube-prometheus-stack/kustomization.yaml
   - grafana/kustomization.yaml
+  - decypharr/kustomization.yaml
   
