@@ -17,3 +17,9 @@ data:
     url = http://zurg-webdav.zurg.svc.cluster.local:9999/http
     no_head = false
     no_slash = false
+
+    [decypharr]
+    type = webdav
+    url = http://decypharr.decypharr.svc.cluster.local:8282/webdav/realdebrid
+    vendor = other
+    pacer_min_sleep = 0

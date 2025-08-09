@@ -4,7 +4,7 @@ metadata:
   name: rclone-mount
   namespace: rclone
   labels:
-    app: rclone-mount  
+    app: rclone-mount
 spec:
   selector:
     matchLabels:
@@ -13,13 +13,14 @@ spec:
     metadata:
       labels:
         app: rclone-mount
-    spec: 
+    spec:
+      # This is the main container for the Zurg mount
       containers:
-      - name: rclone
+      - name: rclone-zurg
         image: rclone/rclone@sha256:600f51856285df1ae5d91c8bb2682cbbe31bf109ebeeef9ecead6ca8c0ff6138
         command: ["rclone", "mount", "zurg:", "/mnt/zurg"]
         args:
-        - "--umask=000"          
+        - "--umask=000"
         - "--dir-cache-time=30s"
         - "--allow-other"
         - "--allow-non-empty"
@@ -41,6 +42,29 @@ spec:
         - name: zurg-mount
           mountPath: /mnt/zurg
           mountPropagation: Bidirectional
+      - name: rclone-decypharr
+        image: rclone/rclone@sha256:600f51856285df1ae5d91c8bb2682cbbe31bf109ebeeef9ecead6ca8c0ff6138
+        command: ["rclone", "mount", "decypharr:", "/mnt/decypharr"]
+        args:
+        - "--umask=000"
+        - "--allow-other"
+        - "--allow-non-empty"
+        - "--read-only"
+        - "-v"
+        securityContext:
+          privileged: true
+          capabilities:
+            add:
+            - SYS_ADMIN
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/rclone
+        - name: rclone-config
+          mountPath: /root/.rclone.conf
+          subPath: rclone.conf
+        - name: decypharr-mount
+          mountPath: /mnt/decypharr
+          mountPropagation: Bidirectional
       volumes:
       - name: data
         hostPath:
@@ -51,4 +75,7 @@ spec:
       - name: zurg-mount
         hostPath:
           path: /mnt/zurg
+      - name: decypharr-mount
+        hostPath:
+          path: /mnt/decypharr
       restartPolicy: Always
