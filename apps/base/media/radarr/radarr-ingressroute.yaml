@@ -1,0 +1,26 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: radarr-ingressroute
+  annotations:
+    gethomepage.dev/href: "https://radarr.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Radarr"
+    gethomepage.dev/description: "Movie organizer/manager"
+    gethomepage.dev/app: radarr
+    gethomepage.dev/group: "Media"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/radarr.svg"    
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`${SUBDOMAIN:=radarr}.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: radarr
+          port: 8282
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
+
