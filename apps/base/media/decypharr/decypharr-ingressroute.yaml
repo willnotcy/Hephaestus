@@ -1,0 +1,26 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: decypharr-ingressroute
+  annotations:
+    gethomepage.dev/href: "https://decypharr.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Decypharr"
+    gethomepage.dev/description: "Movie organizer/manager"
+    gethomepage.dev/app: decypharr
+    gethomepage.dev/group: "Media"
+    gethomepage.dev/icon: "https://github.com/sirrobot01/decypharr/blob/main/docs/docs/images/logo.png?raw=true"    
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`${SUBDOMAIN:=decypharr}.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: decypharr
+          port: 8282
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
+
