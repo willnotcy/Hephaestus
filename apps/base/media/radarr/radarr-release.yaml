@@ -27,6 +27,10 @@ spec:
             image:
               repository: ghcr.io/home-operations/radarr
               tag: 5.27.3.10153
+            env:
+              RADARR__AUTH__METHOD: External
+              RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
+              TZ: Europe/Copenhagen
 
     defaultPodOptions:
       securityContext:
