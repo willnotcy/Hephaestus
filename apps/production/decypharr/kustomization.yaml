@@ -10,8 +10,8 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   components:
-    - ../../../components/volsync
-    - ../../../components/gatus/internal
+    - ../../../../components/volsync
+    - ../../../../components/gatus/internal
   interval: 1h
   path: ./apps/base/media/decypharr
   postBuild:
