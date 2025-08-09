@@ -82,7 +82,7 @@ spec:
       symlinks:
         existingClaim: symlinks
         globalMounts:
-          - path: /mnt/symlinks
+          - path: /mnt/symlinks/decypharr
 
       logs:
         type: emptyDir
