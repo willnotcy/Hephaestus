@@ -19,7 +19,7 @@ spec:
       kind: Rule
       services:
         - name: radarr
-          port: 8282
+          port: 7878 
       middlewares:
         - name: tinyauth
           namespace: tinyauth
