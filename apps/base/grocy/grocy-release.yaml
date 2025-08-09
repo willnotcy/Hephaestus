@@ -39,7 +39,7 @@ spec:
         controller: main
         ports:
           http:
-            port: &port 9283
+            port: &port 8080
 
     persistence:
       data:

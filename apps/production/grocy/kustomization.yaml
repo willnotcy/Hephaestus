@@ -20,7 +20,7 @@ spec:
     substitute:
       APP: *app
       SUBDOMAIN: *app
-      GATUS_PORT: "9283"
+      GATUS_PORT: "8080"
   prune: true
   retryInterval: 2m
   sourceRef:

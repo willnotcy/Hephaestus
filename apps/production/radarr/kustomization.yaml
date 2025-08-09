@@ -20,6 +20,7 @@ spec:
       SUBDOMAIN: *app
       CAPACITY: 2Gi
       APP_NAMESPACE: media
+      GATUS_PORT: "7878"
   prune: true
   retryInterval: 2m
   sourceRef:
