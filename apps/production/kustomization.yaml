@@ -26,4 +26,5 @@ resources:
   - grafana/kustomization.yaml
   - decypharr/kustomization.yaml
   - radarr/kustomization.yaml
+  - prowlarr/kustomization.yaml
   
