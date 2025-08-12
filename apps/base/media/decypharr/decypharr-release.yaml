@@ -33,7 +33,7 @@ spec:
               - |
                 if [ ! -f /app/config.json ]; then
                   cp /tmp/config/config.json /app/config.json && \
-                  chmod 644 /app/config.json && 
+                  chmod 644 /app/config.json; 
                 fi
 
             securityContext:
