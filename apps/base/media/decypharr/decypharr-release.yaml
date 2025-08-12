@@ -30,7 +30,13 @@ spec:
             command:
               - sh
               - -c
-              - cp /tmp/config/config.json /app/config.json && chmod 644 /app/config.json && chown -R 1000:1000 /app
+              - |
+                if [ ! -f /app/config.json ]; then
+                  cp /tmp/config/config.json /app/config.json && \
+                  chmod 644 /app/config.json && \
+                  chown -R 1000:1000 /app;
+                fi
+
             securityContext:
               runAsUser: 0
               runAsNonRoot: false
