@@ -27,4 +27,5 @@ resources:
   - decypharr/kustomization.yaml
   - radarr/kustomization.yaml
   - prowlarr/kustomization.yaml
+  - notifiarr/kustomization.yaml
   

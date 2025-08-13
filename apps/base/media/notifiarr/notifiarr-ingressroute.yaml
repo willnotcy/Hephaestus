@@ -1,0 +1,26 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: notifiarr-ingressroute
+  annotations:
+    gethomepage.dev/href: "https://notifiarr.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Notifiarr"
+    gethomepage.dev/description: "Notification and automation integration for media servers"
+    gethomepage.dev/app: notifiarr
+    gethomepage.dev/group: "Media"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/notifiarr.svg"    
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`${SUBDOMAIN:=notifiarr}.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: notifiarr
+          port: 5454
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
+
