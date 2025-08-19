@@ -1,0 +1,32 @@
+---
+# yaml-language-server: $schema=https://kube-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app readarr
+  namespace: flux-system
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  components:
+    - ../../../../components/volsync
+    - ../../../../components/gatus/internal
+  interval: 1h
+  path: ./apps/base/media/readarr
+  postBuild:
+    substitute:
+      APP: *app
+      SUBDOMAIN: *app
+      CAPACITY: 2Gi
+      APP_NAMESPACE: media
+      GATUS_PORT: "8787"
+  prune: true
+  retryInterval: 2m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: &namespace media
+  timeout: 5m
+  wait: false

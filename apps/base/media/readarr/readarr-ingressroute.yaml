@@ -1,0 +1,25 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: readarr-ingressroute
+  annotations:
+    gethomepage.dev/href: "https://readarr.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Readarr"
+    gethomepage.dev/description: "Book and audiobook organizer/manager"
+    gethomepage.dev/app: readarr
+    gethomepage.dev/group: "Media"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/readarr.svg"
+spec:
+  entryPoints:
+    - websecure
+    - web
+  routes:
+    - match: Host(`${SUBDOMAIN:=readarr}.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: readarr
+          port: 8787
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
