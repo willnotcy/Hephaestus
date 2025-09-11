@@ -47,7 +47,7 @@ spec:
           app:
             image:
               repository: cy01/blackhole
-              tag: v1.1.0
+              tag: v1.1.3
 
     defaultPodOptions:
       securityContext:
