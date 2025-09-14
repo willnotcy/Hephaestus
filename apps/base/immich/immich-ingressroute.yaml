@@ -18,5 +18,5 @@ spec:
     - match: Host(`${SUBDOMAIN:=immich}.hephaestus.markmk.com`)
       kind: Rule
       services:
-        - name: immich-server
+        - name: immich-app
           port: 2283
