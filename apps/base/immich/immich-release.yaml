@@ -31,7 +31,6 @@ spec:
               TZ: "Europe/Copenhagen"
               REDIS_HOSTNAME: immich-redis
               DB_HOSTNAME: immich-postgres
-              IMMICH_MEDIA_LOCATION: /data
           redis:
             image:
               repository: docker.io/library/redis
@@ -84,8 +83,8 @@ spec:
         existingClaim: *app
         advancedMounts:
           immich:
-            machine-learning:
-              - path: /data
+            app:
+              - path: /usr/src/app/upload
         
       model-cache:
         type: emptyDir
@@ -96,3 +95,10 @@ spec:
               - path: /.cache
       tmp:
         type: emptyDir
+
+      database:
+        existingClaim: immich-postgres-pvc
+        advancedMounts:
+          immich:
+            postgres:
+              - path: /var/lib/postgresql/data/pgdata
