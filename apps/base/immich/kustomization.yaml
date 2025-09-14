@@ -5,3 +5,4 @@ resources:
   - immich-ingressroute.yaml
   - immich-release.yaml
   - immich-secret.yaml
+  - immich-postgres-pvc.yaml
