@@ -44,7 +44,9 @@ spec:
               tag: 17-vectorchord0.4.3-pgvectors0.3.0
             envFrom:
             - secretRef:
-                name: immich-secret   
+                name: immich-secret
+            env:
+              PGDATA: "/var/lib/postgresql/data/pgdata"
           machine-learning:
             image:
               repository: ghcr.io/immich-app/immich-machine-learning
