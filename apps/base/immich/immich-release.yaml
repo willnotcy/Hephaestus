@@ -1,0 +1,98 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app immich
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      immich:
+        containers:
+          app:
+            image:
+              repository: ghcr.io/immich-app/immich-server
+              tag: v1.142.0
+            env:
+              TZ: "Europe/Copenhagen"
+              REDIS_HOSTNAME: immich-redis
+              DB_HOSTNAME: immich-postgres
+              IMMICH_MEDIA_LOCATION: /data
+          redis:
+            image:
+              repository: docker.io/library/redis
+              tag: 8.2.1
+          postgres:
+            image:
+              repository: ghcr.io/immich-app/postgres
+              tag: 17-vectorchord0.4.3-pgvectors0.3.0
+            command: ["gotenberg"]
+            args: ["--chromium-disable-javascript=true", "--chromium-allow-list=file:///tmp/.*"]      
+          machine-learning:
+            image:
+              repository: ghcr.io/immich-app/immich-machine-learning
+              tag: v1.142.0
+            env:
+              MPLCONFIGDIR: /cache/matplotlib
+
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        runAsNonRoot: true
+
+    service:
+      app:
+        controller: immich
+        ports:
+          http:
+            port: &port 2283
+      postgres:
+        controller: immich
+        ports:
+          http:
+            port: &port 5432
+      machine-learning:
+        controller: immich
+        ports:
+          http:
+            port: &port 3003
+      redis:
+        controller: immich
+        ports:
+          redis:
+            enabled: true
+            port: &redisport 6379
+        
+    persistence:
+      data:
+        existingClaim: *app
+        advancedMounts:
+          immich:
+            machine-learning:
+              - path: /data
+        
+      model-cache:
+        type: emptyDir
+        advancedMounts:
+          immich:
+            machine-learning:
+              - path: /cache
+              - path: /.cache
+      tmp:
+        type: emptyDir

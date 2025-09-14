@@ -29,4 +29,5 @@ resources:
   - prowlarr/kustomization.yaml
   - notifiarr/kustomization.yaml
   - readarr/kustomization.yaml
+  - immich/kustomization.yaml
   
