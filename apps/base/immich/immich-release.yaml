@@ -54,7 +54,6 @@ spec:
             env:
               MPLCONFIGDIR: /cache/matplotlib
 
-    defaultPodOptions:
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
