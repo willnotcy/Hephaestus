@@ -31,6 +31,9 @@ spec:
               TZ: "Europe/Copenhagen"
               REDIS_HOSTNAME: immich-redis
               DB_HOSTNAME: immich-postgres
+            envFrom:
+            - secretRef:
+                name: immich-secret   
           redis:
             image:
               repository: docker.io/library/redis
@@ -39,6 +42,9 @@ spec:
             image:
               repository: ghcr.io/immich-app/postgres
               tag: 17-vectorchord0.4.3-pgvectors0.3.0
+            envFrom:
+            - secretRef:
+                name: immich-secret   
           machine-learning:
             image:
               repository: ghcr.io/immich-app/immich-machine-learning
