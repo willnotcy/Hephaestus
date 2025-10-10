@@ -5,3 +5,4 @@ resources:
   - n8n-namespace.yaml
   - n8n-pvc.yaml
   - n8n-release.yaml
+  - n8n-rbac.yaml
