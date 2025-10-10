@@ -50,7 +50,7 @@ spec:
           machine-learning:
             image:
               repository: ghcr.io/immich-app/immich-machine-learning
-              tag: v1.142.0
+              tag: v1.144.1
             env:
               MPLCONFIGDIR: /cache/matplotlib
 
