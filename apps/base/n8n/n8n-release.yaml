@@ -23,6 +23,8 @@ spec:
       n8n:
         containers:
           n8n:
+            serviceAccount:
+              name: n8n-sa
             image:
               repository: ghcr.io/n8n-io/n8n
               tag: 1.111.0
