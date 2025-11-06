@@ -30,4 +30,5 @@ resources:
   - notifiarr/kustomization.yaml
   - readarr/kustomization.yaml
   - immich/kustomization.yaml
+  - kitchenowl/kustomization.yaml
   

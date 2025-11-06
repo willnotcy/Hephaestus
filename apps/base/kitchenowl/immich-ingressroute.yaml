@@ -1,0 +1,22 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kitchenowl-ingressroute
+  namespace: kitchenowl
+  annotations:
+    gethomepage.dev/href: "https://${SUBDOMAIN:=kitchenowl}.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Kitchenowl"
+    gethomepage.dev/description: "Self-hosted groceries & recipe management"
+    gethomepage.dev/app: kitchenowl
+    gethomepage.dev/group: "Tools"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/kitchenowl.svg"
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`${SUBDOMAIN:=kitchenowl}.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: kitchenowl
+          port: 8080
