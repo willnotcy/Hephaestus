@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/name: "Cura"
     gethomepage.dev/description: "3D printer slicing software"
     gethomepage.dev/app: cura
-    gethomepage.dev/group: "Media"
+    gethomepage.dev/group: "Tools"
     gethomepage.dev/icon: "https://curaslicer.com/wp-content/uploads/2024/10/cura-icon.png"
 spec:
   entryPoints:
