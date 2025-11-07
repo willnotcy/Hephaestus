@@ -34,7 +34,7 @@ spec:
               UMASK: "022"
             envFrom: 
             - secretRef:
-              name: cura-secret 
+                name: cura-secret 
 
     service:
       app:
