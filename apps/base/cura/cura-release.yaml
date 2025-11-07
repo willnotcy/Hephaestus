@@ -33,8 +33,8 @@ spec:
               PGID: "1000"
               UMASK: "022"
             envFrom: 
-              - secretRef:
-                name: cura-secret 
+            - secretRef:
+              name: cura-secret 
 
     service:
       app:
