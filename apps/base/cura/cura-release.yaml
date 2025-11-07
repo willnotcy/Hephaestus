@@ -24,6 +24,8 @@ spec:
       cura:
         containers:
           app:
+            securityContext:
+              allowPrivilegeEscalation: false
             image:
               repository: lscr.io/linuxserver/cura
               tag: "5.11.0"
@@ -45,7 +47,6 @@ spec:
 
     defaultPodOptions:
       securityContext:
-        allowPrivilegeEscalation: false
         fsGroup: 1000
         fsGroupChangePolicy: "OnRootMismatch"
 
