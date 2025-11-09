@@ -31,6 +31,7 @@ spec:
             image:
               repository: cloudflare/cloudflared
               tag: 2025.11.1
+            args: ["tunnel", "run"]
             env:
               NO_AUTOUPDATE: true
               TUNNEL_METRICS: 0.0.0.0:8080
