@@ -1,0 +1,66 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app wedding-share
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      wedding-share:
+        containers:
+          app:
+            securityContext:
+              allowPrivilegeEscalation: false
+            image:
+              repository: cirx08/wedding_share
+              tag: v1.8.1
+            envFrom:
+            - secretRef:
+                name: wedding-share-secret
+
+    service:
+      app:
+        controller: wedding-share
+        ports:
+          http:
+            port: &port 5000
+
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
+
+    persistence:
+      data:
+        existingClaim: *app
+        advancedMounts:
+          wedding-share:
+            app:
+              - path: /app/wwwroot/uploads
+
+      config:
+        type: emptyDir
+        advancedMounts:
+          wedding-share:
+            app:
+              - path: /app/config
+              - path: /app/wwwroot/thumbnails
+              - path: /app/wwwroot/custom_resources
