@@ -1,0 +1,22 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: wedding-share-ingressroute
+  namespace: wedding-share
+  annotations:
+    gethomepage.dev/href: "https://${SUBDOMAIN:=wedding-share}.hephaestus.markmk.com"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Wedding-share"
+    gethomepage.dev/description: "A place for guests to view and drop pictures"
+    gethomepage.dev/app: wedding-share
+    gethomepage.dev/group: "Media"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/wedding-share.svg"
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`${SUBDOMAIN:=wedding-share}.hephaestus.markmk.com`)
+      kind: Rule
+      services:
+        - name: wedding-share
+          port: 5000
