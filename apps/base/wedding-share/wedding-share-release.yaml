@@ -28,7 +28,7 @@ spec:
               allowPrivilegeEscalation: false
             image:
               repository: cirx08/wedding_share
-              tag: v1.8.1
+              tag: 1.8.1
             envFrom:
             - secretRef:
                 name: wedding-share-secret
