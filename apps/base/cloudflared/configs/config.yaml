@@ -1,0 +1,4 @@
+ingress:
+  - hostname: bryllup.markmk.com
+    service: http://wedding-share.wedding-share.svc.cluster.local:5000
+  - service: http_status:404

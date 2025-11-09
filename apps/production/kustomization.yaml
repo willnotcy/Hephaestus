@@ -32,4 +32,5 @@ resources:
   - immich/kustomization.yaml
   - kitchenowl/kustomization.yaml
   - wedding-share/kustomization.yaml
+  - cloudflared/kustomization.yaml
   
