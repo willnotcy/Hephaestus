@@ -40,6 +40,7 @@ spec:
               N8N_HOST: n8n.hephaestus.markmk.com
               N8N_LOG_LEVEL: info
               N8N_LOG_OUTPUT: console
+              WEBHOOK_URL: "https://n8n.markmk.com/""
 
     service:
       n8n:
