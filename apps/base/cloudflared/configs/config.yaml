@@ -1,4 +1,8 @@
+tunnel: hephaestus
 ingress:
   - hostname: bryllup.markmk.com
     service: http://wedding-share.wedding-share.svc.cluster.local:5000
+  - hostname: n8n.hephaestus.markmk.com
+    service: http://n8n.n8n.svc.cluster.local:5678
+    path: /webhook/*
   - service: http_status:404
