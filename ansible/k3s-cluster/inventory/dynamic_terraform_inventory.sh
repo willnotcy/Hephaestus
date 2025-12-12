@@ -47,8 +47,8 @@ cat <<EOF
       $(generate_hosts "$masters")
     ],
     "vars": {
-      "ip_pool_first": "192.168.0.241",
-      "ip_pool_last": "192.168.0.255"
+      "ip_pool_first": "192.168.20.241",
+      "ip_pool_last": "192.168.20.255"
     }
   },
   "worker": {
