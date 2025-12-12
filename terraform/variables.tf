@@ -10,7 +10,7 @@ variable "cluster_name" {
 variable "gateway" {
   description = "Gateway IP"
   type        = string  
-  default     = "192.168.0.1"
+  default     = "192.168.20.1"
 }
 
 variable "ci_template" {
@@ -175,7 +175,7 @@ variable "k3s_worker_name_prefix" {
 variable "pm_url" {
   description = "The url for the proxmox api on the host"
   type        = string
-  default     = "https://192.168.0.37:8006/"
+  default     = "https://192.168.20.37:8006/"
 }
 
 variable "pm_token_secret" {
