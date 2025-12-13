@@ -33,4 +33,5 @@ resources:
   - kitchenowl/kustomization.yaml
   - wedding-share/kustomization.yaml
   - cloudflared/kustomization.yaml
+  - isponsorblocktv/kustomization.yaml
   
