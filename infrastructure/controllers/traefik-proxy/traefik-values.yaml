@@ -13,8 +13,7 @@ persistence:
 
 ports:
   web:
-    redirectTo:
-      port: websecure
+    redirectTo: websecure
 
 env:
   - name: CF_DNS_API_TOKEN
