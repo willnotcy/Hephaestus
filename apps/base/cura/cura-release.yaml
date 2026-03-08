@@ -28,7 +28,7 @@ spec:
               allowPrivilegeEscalation: false
             image:
               repository: lscr.io/linuxserver/cura
-              tag: "5.11.0"
+              tag: "5.12.0"
             env:
               TZ: "Europe/Copenhagen"
               PUID: "1000"
