@@ -34,4 +34,5 @@ resources:
   - wedding-share/kustomization.yaml
   - cloudflared/kustomization.yaml
   - isponsorblocktv/kustomization.yaml
+  - freshrss/kustomization.yaml
   
