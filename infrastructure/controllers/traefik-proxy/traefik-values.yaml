@@ -11,10 +11,6 @@ persistence:
   path: /certs
   size: 128Mi
 
-ports:
-  web:
-    redirectTo: websecure
-
 env:
   - name: CF_DNS_API_TOKEN
     valueFrom:
