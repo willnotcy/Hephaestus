@@ -13,11 +13,8 @@ persistence:
 
 ports:
   web:
-    redirections:
-      entryPoint:
-        to: websecure
-        scheme: https
-        permanent: true  
+    redirectTo:
+      port: websecure
 
 env:
   - name: CF_DNS_API_TOKEN
