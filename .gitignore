@@ -50,3 +50,6 @@ terraform.rc
 
 # Ignore out files
 *.out
+
+# Ignore agents
+AGENTS.md

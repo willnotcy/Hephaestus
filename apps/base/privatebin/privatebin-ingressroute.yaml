@@ -1,0 +1,25 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: privatebin
+  annotations:
+    gethomepage.dev/href: "https://${HOSTNAME:=pastebin.hephaestus.markmk.com}"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "PrivateBin"
+    gethomepage.dev/description: "Self-hosted pastebin"
+    gethomepage.dev/app: privatebin
+    gethomepage.dev/group: "Tools"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/privatebin.svg"
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`${HOSTNAME:=pastebin.hephaestus.markmk.com}`)
+      kind: Rule
+      services:
+        - name: privatebin
+          port: 8080
+          namespace: privatebin
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
