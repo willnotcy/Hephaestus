@@ -4,3 +4,4 @@ resources:
   - pocket-id-namespace.yaml
   - pocket-id-ingressroute.yaml
   - pocket-id-release.yaml
+  - pocket-id-secret.yaml
