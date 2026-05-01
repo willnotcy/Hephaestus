@@ -8,3 +8,4 @@ resources:
   - node-feature-discovery/kustomization.yaml
   - tinyauth/kustomization.yaml
   - pocket-id/kustomization.yaml
+  - kube-prometheus-stack/kustomization.yaml
