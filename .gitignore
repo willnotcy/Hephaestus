@@ -53,3 +53,6 @@ terraform.rc
 
 # Ignore agents
 AGENTS.md
+
+# Talos
+Talos/clusterconfig/*
