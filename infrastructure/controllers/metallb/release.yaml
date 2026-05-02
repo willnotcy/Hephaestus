@@ -21,5 +21,7 @@ spec:
   interval: 1h
   releaseName: metallb
   targetNamespace: metallb-system
-  crds:
-    enabled: true
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
