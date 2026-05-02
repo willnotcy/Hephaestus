@@ -37,7 +37,7 @@ spec:
   interval: 1h
   dependsOn:
     - name: node-feature-discovery
-      namespace: &namespace node-feature-discovery
+      namespace: flux-system
   path: ./infrastructure/controllers/node-feature-discovery/rules
   prune: true
   retryInterval: 2m
@@ -45,6 +45,6 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  targetNamespace: *namespace
+  targetNamespace: node-feature-discovery
   timeout: 5m
   wait: true
