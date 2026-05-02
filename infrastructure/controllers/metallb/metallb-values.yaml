@@ -1,0 +1,6 @@
+speaker:
+  ignoreExcludeLB: true
+controller:
+  enabled: true
+speaker:
+  enabled: true
