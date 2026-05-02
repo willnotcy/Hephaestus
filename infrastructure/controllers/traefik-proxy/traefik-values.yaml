@@ -11,15 +11,6 @@ persistence:
   path: /certs
   size: 128Mi
 
-deployment:
-  initContainers:
-    - name: volume-permissions
-      image: busybox
-      command: ["sh", "-c", "touch /certs/acme.json && chmod 600 /certs/acme.json"]
-      volumeMounts:
-        - name: data
-          mountPath: /certs
-
 env:
   - name: CF_DNS_API_TOKEN
     valueFrom:

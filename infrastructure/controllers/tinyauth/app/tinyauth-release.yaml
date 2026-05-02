@@ -32,7 +32,7 @@ spec:
               - secretRef:
                   name: tinyauth
             env:
-              APP_URL: https://tinyauth.hephaestus.markmk.com
+              APP_URL: https://tinyauth.alpha.markmk.com
               DISABLE_CONTINUE: "true"
     service:
       app:
