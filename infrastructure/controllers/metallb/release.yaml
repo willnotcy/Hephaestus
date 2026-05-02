@@ -21,3 +21,5 @@ spec:
   interval: 1h
   releaseName: metallb
   targetNamespace: metallb-system
+  crds:
+    enabled: true
