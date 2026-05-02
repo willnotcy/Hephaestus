@@ -57,3 +57,6 @@ certificatesResolvers:
           - 1.1.1.1
 
 
+podSecurityContext:
+  fsGroup: 65532
+  fsGroupChangePolicy: "OnRootMismatch"
