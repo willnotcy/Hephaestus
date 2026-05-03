@@ -10,6 +10,7 @@ nodes:
     installDisk: /dev/nvme0n1
     controlPlane: true
     disableSearchDomain: true
+    nodeLabels: {}
     networkInterfaces:
       - interface: eno1
         dhcp: true
@@ -28,13 +29,10 @@ controlPlane:
           modules:
             - name: amdgpu
     - |-
-      machine:
-        nodeLabels:
-          node.kubernetes.io/exclude-from-external-load-balancers: null
-    - |-
       cluster:
         proxy:
           extraArgs: 
             ipvs-strict-arp: "true"
+       
 
           
