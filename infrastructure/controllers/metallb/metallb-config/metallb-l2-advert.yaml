@@ -7,3 +7,5 @@ metadata:
 spec:
   ipAddressPools:
   - default-pool
+  interface:
+  - eno1
