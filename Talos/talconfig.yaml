@@ -27,3 +27,14 @@ controlPlane:
         kernel:
           modules:
             - name: amdgpu
+    - |-
+      machine:
+        nodeLabels:
+          node.kubernetes.io/exclude-from-external-load-balancers: null
+    - |-
+      cluster:
+        proxy:
+          extraArgs: 
+            ipvs-strict-arp: "true"
+
+          
