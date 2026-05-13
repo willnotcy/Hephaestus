@@ -30,7 +30,7 @@ spec:
               capabilities: { drop: ["ALL"] }
             image:
               repository: cloudflare/cloudflared
-              tag: 2026.2.0
+              tag: 2026.5.0
             args: ["tunnel", "run"]
             env:
               NO_AUTOUPDATE: true
