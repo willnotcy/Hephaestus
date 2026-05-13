@@ -4,7 +4,7 @@ metadata:
   name: huginn-mysql-pvc
   namespace: huginn
 spec:
-  storageClassName: local-path
+  storageClassName: local-hostpath
   accessModes:
     - ReadWriteOnce
   resources:
