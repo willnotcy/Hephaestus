@@ -11,7 +11,7 @@ resources:
   - huginn/
   - spoolman/kustomization.yaml
   - home-assistant/kustomization.yaml
-  - n8n/
+  # - n8n/
   # - audiobookshelf/kustomization.yaml
   - mealie/kustomization.yaml
   - zigbee2mqtt/kustomization.yaml
@@ -31,7 +31,7 @@ resources:
   - immich/kustomization.yaml
   - kitchenowl/kustomization.yaml
   - wedding-share/kustomization.yaml
-  - cloudflared/kustomization.yaml
+  # - cloudflared/kustomization.yaml
   - isponsorblocktv/kustomization.yaml
   - freshrss/kustomization.yaml
   - privatebin/kustomization.yaml
