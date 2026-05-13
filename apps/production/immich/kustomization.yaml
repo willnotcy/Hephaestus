@@ -23,7 +23,7 @@ spec:
       CAPACITY: 1000Gi
       GATUS_PORT: "2283"
       GATUS_APP: "immich-app"
-  prune: true½
+  prune: true
   retryInterval: 2m
   sourceRef:
     kind: GitRepository
