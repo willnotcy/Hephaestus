@@ -3,7 +3,7 @@ kind: IngressRoute
 metadata:
   name: alertmanager
   annotations:
-    gethomepage.dev/href: "https://alerts.alpha.markmk.com"
+    gethomepage.dev/href: "https://alerts.hephaestus.markmk.com"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: "Alertmanager"
     gethomepage.dev/description: "Receives and manages Prometheus alerts."
@@ -15,7 +15,7 @@ spec:
     - websecure
     - web
   routes:
-    - match: Host(`alerts.alpha.markmk.com`)
+    - match: Host(`alerts.hephaestus.markmk.com`)
       kind: Rule
       services:
         - name: kube-prometheus-stack-alertmanager
@@ -29,7 +29,7 @@ kind: IngressRoute
 metadata:
   name: prometheus
   annotations:
-    gethomepage.dev/href: "https://prometheus.alpha.markmk.com"
+    gethomepage.dev/href: "https://prometheus.hephaestus.markmk.com"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: "Prometheus"
     gethomepage.dev/description: "Metrics collection and monitoring."
@@ -41,7 +41,7 @@ spec:
     - websecure
     - web
   routes:
-    - match: Host(`prometheus.alpha.markmk.com`)
+    - match: Host(`prometheus.hephaestus.markmk.com`)
       kind: Rule
       services:
         - name: kube-prometheus-stack-prometheus

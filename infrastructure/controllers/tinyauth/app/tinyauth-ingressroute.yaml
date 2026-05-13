@@ -4,13 +4,13 @@ metadata:
   name: tinyauth
   annotations:
     traefik.enable: "true"
-    traefik.http.routers.tinyauth.rule: Host(`tinyauth.alpha.markmk.com`)
+    traefik.http.routers.tinyauth.rule: Host(`tinyauth.hephaestus.markmk.com`)
     traefik.http.middlewares.tinyauth.forwardauth.address: http://tinyauth.tinyauth.svc.cluster.local:3000/api/auth/traefik
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`tinyauth.alpha.markmk.com`) 
+    - match: Host(`tinyauth.hephaestus.markmk.com`) 
       kind: Rule
       services:
         - name: tinyauth
