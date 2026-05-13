@@ -12,9 +12,9 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  # components:
-  #   - ../../../../components/volsync
-  #   - ../../../../components/volsync/remote
+  components:
+    - ../../../../components/volsync
+    - ../../../../components/volsync/remote
   interval: 1h
   dependsOn:
     - name: volsync
