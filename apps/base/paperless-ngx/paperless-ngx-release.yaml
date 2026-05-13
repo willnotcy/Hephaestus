@@ -54,8 +54,8 @@ spec:
             args: ["--chromium-disable-javascript=true", "--chromium-allow-list=file:///tmp/.*"]      
           tika:
             image:
-              repository: ghcr.io/paperless-ngx/tika
-              tag: 2.9.1-minimal
+              repository: apache/tika
+              tag: 3.3.0.0
 
 
     service:
