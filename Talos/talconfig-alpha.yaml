@@ -1,0 +1,38 @@
+clusterName: alpha
+talosVersion: v1.13.0
+kubernetesVersion: v1.36.0
+endpoint: https://192.168.20.138:6443
+allowSchedulingOnControlPlanes: true
+
+nodes:
+  - hostname: talos01-test
+    ipAddress: 192.168.20.138
+    installDisk: /dev/nvme0n1
+    controlPlane: true
+    disableSearchDomain: true
+    nodeLabels: {}
+    networkInterfaces:
+      - interface: eno1
+        dhcp: true
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/amdgpu
+            - siderolabs/amd-ucode
+
+controlPlane:
+  patches:
+    - |-
+      machine:
+        kernel:
+          modules:
+            - name: amdgpu
+    - |-
+      cluster:
+        proxy:
+          extraArgs: 
+            ipvs-strict-arp: "true"
+       
+
+          

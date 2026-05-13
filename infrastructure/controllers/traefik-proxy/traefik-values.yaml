@@ -35,6 +35,9 @@ ports:
           - main: alpha.markmk.com
             sans:
               - "*.alpha.markmk.com"
+          - main: hephaestus.markmk.com
+            sans:
+              - "*.hephaestus.markmk.com"              
 
 certificatesResolvers:
   cloudflare:

@@ -1,33 +1,28 @@
-clusterName: alpha
+clusterName: hephaestus
 talosVersion: v1.13.0
 kubernetesVersion: v1.36.0
-endpoint: https://192.168.20.138:6443
+endpoint: https://192.168.20.190:6443
 allowSchedulingOnControlPlanes: true
 
 nodes:
   - hostname: talos01
-    ipAddress: 192.168.20.138
+    ipAddress: 192.168.20.190
     installDisk: /dev/nvme0n1
     controlPlane: true
     disableSearchDomain: true
     nodeLabels: {}
     networkInterfaces:
-      - interface: eno1
+      - interface: enp0s31f6
         dhcp: true
     schematic:
       customization:
         systemExtensions:
           officialExtensions:
-            - siderolabs/amdgpu
-            - siderolabs/amd-ucode
+            - siderolabs/i915
+            - siderolabs/intel-ucode
 
 controlPlane:
   patches:
-    - |-
-      machine:
-        kernel:
-          modules:
-            - name: amdgpu
     - |-
       cluster:
         proxy:

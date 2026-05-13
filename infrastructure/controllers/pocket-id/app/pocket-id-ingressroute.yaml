@@ -3,7 +3,7 @@ kind: IngressRoute
 metadata:
   name: pocket-id
   annotations:
-    gethomepage.dev/href: "https://pocket-id.alpha.markmk.com"
+    gethomepage.dev/href: "https://pocket-id.hephaestus.markmk.com"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: "Pocket-id"
     gethomepage.dev/description: "Self-hosted OIDC server using passkeys"
@@ -14,7 +14,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`pocket-id.alpha.markmk.com`) 
+    - match: Host(`pocket-id.hephaestus.markmk.com`) 
       kind: Rule
       services:
         - name: pocket-id
