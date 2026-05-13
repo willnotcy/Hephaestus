@@ -6,26 +6,26 @@ resources:
   - it-tools/kustomization.yaml
   - zurg/
   - rclone/
-  - riven/kustomization.yaml
+  # - riven/kustomization.yaml
   - babybuddy/kustomization.yaml
   - huginn/
   - spoolman/kustomization.yaml
   - home-assistant/kustomization.yaml
   - n8n/
-  - audiobookshelf/kustomization.yaml
+  # - audiobookshelf/kustomization.yaml
   - mealie/kustomization.yaml
   - zigbee2mqtt/kustomization.yaml
   - mosquitto/kustomization.yaml
   - paperless-ngx/kustomization.yaml
   - actual-budget/kustomization.yaml
-  - jellyfin/kustomization.yaml
+  # - jellyfin/kustomization.yaml
   - omni-tools/kustomization.yaml
   - jellyseerr/kustomization.yaml
   - gatus/kustomization.yaml
   - grafana/kustomization.yaml
-  - decypharr/kustomization.yaml
-  - radarr/kustomization.yaml
-  - prowlarr/kustomization.yaml
+  # - decypharr/kustomization.yaml
+  # - radarr/kustomization.yaml
+  # - prowlarr/kustomization.yaml
   - notifiarr/kustomization.yaml
   - readarr/kustomization.yaml
   - immich/kustomization.yaml
