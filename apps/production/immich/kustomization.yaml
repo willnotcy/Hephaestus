@@ -20,10 +20,10 @@ spec:
     substitute:
       APP: *app
       SUBDOMAIN: *app
-      CAPACITY: 50Gi
+      CAPACITY: 1000Gi
       GATUS_PORT: "2283"
       GATUS_APP: "immich-app"
-  prune: true
+  prune: true½
   retryInterval: 2m
   sourceRef:
     kind: GitRepository
