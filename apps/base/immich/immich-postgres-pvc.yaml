@@ -5,7 +5,7 @@ metadata:
   name: immich-postgres-pvc
   namespace: immich
 spec:
-  storageClassName: local-path
+  storageClassName: local-hostpath
   accessModes:
     - ReadWriteOnce
   resources:

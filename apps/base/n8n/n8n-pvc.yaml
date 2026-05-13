@@ -5,7 +5,7 @@ metadata:
   name: n8n
   namespace: n8n
 spec:
-  storageClassName: "local-path"
+  storageClassName: "local-hostpath"
   accessModes:
     - ReadWriteOnce
   resources:
