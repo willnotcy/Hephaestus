@@ -26,7 +26,7 @@ spec:
           app:
             image:
               repository:  ghcr.io/faustvii/readarr
-              tag: 0.9.0
+              tag: 0.9.1
             env:
               READARR__AUTH__METHOD: External
               READARR__AUTH__REQUIRED: DisabledForLocalAddresses
