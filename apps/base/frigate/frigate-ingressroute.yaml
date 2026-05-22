@@ -19,4 +19,4 @@ spec:
       kind: Rule
       services:
         - name: frigate
-          port: 8971
+          port: 5000
