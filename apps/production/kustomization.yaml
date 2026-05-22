@@ -34,5 +34,6 @@ resources:
   # - cloudflared/kustomization.yaml
   - isponsorblocktv/kustomization.yaml
   - freshrss/kustomization.yaml
+  - frigate/kustomization.yaml
   - privatebin/kustomization.yaml
   
