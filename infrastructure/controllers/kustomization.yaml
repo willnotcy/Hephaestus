@@ -7,6 +7,7 @@ resources:
   - snapshot-controller/
   - democratic-csi/
   - node-feature-discovery/kustomization.yaml
+  - intel-gpu-plugin/
   - tinyauth/kustomization.yaml
   - pocket-id/kustomization.yaml
   - kube-prometheus-stack/kustomization.yaml
