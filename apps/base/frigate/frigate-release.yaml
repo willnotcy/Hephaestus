@@ -26,7 +26,7 @@ spec:
           app:
             image:
               repository: ghcr.io/blakeblackshear/frigate
-              tag: v0.17.1
+              tag: 0.17.1
             env:
               - name: TZ
                 value: Europe/Copenhagen
@@ -63,14 +63,6 @@ spec:
           frigate:
             app:
               - path: /media/frigate
-
-      dev-dri:
-        type: hostPath
-        hostPath: /dev/dri
-        advancedMounts:
-          frigate:
-            app:
-              - path: /dev/dri
 
       shm:
         type: emptyDir
