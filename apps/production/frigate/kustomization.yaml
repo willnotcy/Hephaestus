@@ -19,7 +19,7 @@ spec:
       APP: *app
       SUBDOMAIN: *app
       CAPACITY: 5Gi
-      GATUS_PORT: "8971"
+      GATUS_PORT: "5000"
   prune: true
   retryInterval: 2m
   sourceRef:

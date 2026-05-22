@@ -44,7 +44,7 @@ spec:
         controller: frigate
         ports:
           http:
-            port: &webport 8971
+            port: &webport 5000
           rtsp:
             enabled: true
             port: 8554
