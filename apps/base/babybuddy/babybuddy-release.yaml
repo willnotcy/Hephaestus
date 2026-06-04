@@ -26,7 +26,7 @@ spec:
           app:
             image:
               repository: lscr.io/linuxserver/babybuddy
-              tag: 2.7.1
+              tag: 2.9.2
             env:
               - name: TZ
                 value: Europe/Copenhagen
