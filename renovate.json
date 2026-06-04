@@ -66,6 +66,32 @@
       "registryUrls": [
         "https://bjw-s.github.io/helm-charts/"
       ]
+    },
+    {
+      "description": "Auto-merge non-major updates for minor/patch cleanliness",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Override: Strictly forbid automerge for defined critical apps and components",
+      "matchPackageNames": [
+        "ghcr.io/home-operations/home-assistant",
+        "ghcr.io/immich-app/immich-server",
+        "ghcr.io/immich-app/postgres",
+        "ghcr.io/immich-app/immich-machine-learning",
+        "ghcr.io/paperless-ngx/paperless-ngx",
+        "ghcr.io/steveiliop56/tinyauth",
+        "ghcr.io/pocket-id/pocket-id",
+        "ghcr.io/home-operations/charts-mirror/volsync"
+      ],
+      "matchPackagePatterns": [
+        "^ghcr\\.io/fluxcd/",
+        "fluxcd",
+        "flux-system"
+      ],
+      "matchManagers": ["flux"],
+      "automerge": false
     }
   ]
 }
