@@ -77,18 +77,19 @@
     {
       "description": "Override: Strictly forbid automerge for defined critical apps and components",
       "matchPackageNames": [
-        "ghcr.io/home-operations/home-assistant",
-        "ghcr.io/immich-app/immich-server",
-        "ghcr.io/immich-app/postgres",
-        "ghcr.io/immich-app/immich-machine-learning",
-        "ghcr.io/paperless-ngx/paperless-ngx",
-        "ghcr.io/steveiliop56/tinyauth",
-        "ghcr.io/pocket-id/pocket-id",
-        "ghcr.io/home-operations/charts-mirror/volsync",
-        "apache/tika",
-        "docker.io/library/redis",
+        "home-assistant",
+        "homeassistant",
+        "immich",
+        "postgres",
+        "paperless",
+        "tinyauth",
+        "pocket-id",
+        "volsync",
+        "tika",
         "redis",
-        "gotenberg/gotenberg"
+        "gotenberg",
+        "fluxcd",
+        "flux-system"
       ],
       "matchPackagePatterns": [
         "^ghcr\\.io/fluxcd/",
