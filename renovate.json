@@ -3,6 +3,7 @@
   "extends": [
     "config:recommended"
   ],
+  "platformAutomerge": true,
   "flux": {
     "managerFilePatterns": [
       "/cluster/.+\\.ya?ml$/"
