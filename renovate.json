@@ -84,7 +84,11 @@
         "ghcr.io/paperless-ngx/paperless-ngx",
         "ghcr.io/steveiliop56/tinyauth",
         "ghcr.io/pocket-id/pocket-id",
-        "ghcr.io/home-operations/charts-mirror/volsync"
+        "ghcr.io/home-operations/charts-mirror/volsync",
+        "apache/tika",
+        "docker.io/library/redis",
+        "redis",
+        "gotenberg/gotenberg"
       ],
       "matchPackagePatterns": [
         "^ghcr\\.io/fluxcd/",
