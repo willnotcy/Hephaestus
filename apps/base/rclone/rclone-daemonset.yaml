@@ -17,7 +17,7 @@ spec:
       # This is the main container for the Zurg mount
       containers:
       - name: rclone-zurg
-        image: rclone/rclone@sha256:9ce0d49b611d3781233e25334e9e23d7af01e5546da7087f90d55f034ef13637
+        image: rclone/rclone@sha256:623378ad0ff3ebd5cebf77720843c0e02edfe46e2d5b5ac6bed54c6371780dfb
         command: ["rclone", "mount", "zurg:", "/mnt/zurg"]
         args:
         - "--umask=000"
@@ -43,7 +43,7 @@ spec:
           mountPath: /mnt/zurg
           mountPropagation: Bidirectional
       - name: rclone-decypharr
-        image: rclone/rclone@sha256:9ce0d49b611d3781233e25334e9e23d7af01e5546da7087f90d55f034ef13637
+        image: rclone/rclone@sha256:623378ad0ff3ebd5cebf77720843c0e02edfe46e2d5b5ac6bed54c6371780dfb
         command: ["rclone", "mount", "decypharr:", "/mnt/decypharr"]
         args:
         - "--umask=000"
