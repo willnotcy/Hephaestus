@@ -1,17 +1,22 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
   "extends": [
     "config:recommended"
   ],
+
   "platformAutomerge": true,
+
   "flux": {
     "managerFilePatterns": [
       "/cluster/.+\\.ya?ml$/"
     ]
   },
+
   "ignorePaths": [
     "apps/archive/**"
   ],
+
   "helm-values": {
     "managerFilePatterns": [
       "/cluster/.+\\.ya?ml$/",
@@ -19,6 +24,7 @@
       "/infrastructure/.+\\.ya?ml$/"
     ]
   },
+
   "kubernetes": {
     "managerFilePatterns": [
       "/cluster/.+\\.ya?ml$/",
@@ -26,6 +32,7 @@
       "/infrastructure/.+\\.ya?ml$/"
     ]
   },
+
   "customManagers": [
     {
       "customType": "regex",
@@ -53,30 +60,18 @@
       "datasourceTemplate": "helm"
     }
   ],
+
   "packageRules": [
     {
-      "matchDatasources": [
-        "helm"
-      ],
-      "matchManagers": [
-        "custom.regex"
-      ],
-      "matchPackageNames": [
-        "app-template"
-      ],
-      "registryUrls": [
-        "https://bjw-s.github.io/helm-charts/"
-      ]
-    },
-    {
-      "description": "Auto-merge non-major updates for minor/patch cleanliness",
+      "description": "Auto-merge all safe updates (default behavior)",
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true,
       "automergeType": "pr"
     },
+
     {
-      "description": "Override: Strictly forbid automerge for defined critical apps and components",
-      "matchPackageNames": [
+      "description": "NEVER automerge critical services",
+      "matchPackagePatterns": [
         "home-assistant",
         "homeassistant",
         "immich",
@@ -91,13 +86,18 @@
         "fluxcd",
         "flux-system"
       ],
-      "matchPackagePatterns": [
-        "^ghcr\\.io/fluxcd/",
-        "fluxcd",
-        "flux-system"
-      ],
-      "matchManagers": ["flux"],
       "automerge": false
+    },
+
+    {
+      "description": "Handle Flux Helm repo for app-template",
+      "matchDatasources": ["helm"],
+      "matchManagers": ["custom.regex"],
+      "matchPackageNames": ["app-template"],
+      "registryUrls": [
+        "https://bjw-s.github.io/helm-charts/"
+      ]
     }
   ]
 }
+``
