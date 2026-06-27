@@ -71,22 +71,22 @@
 
     {
       "description": "NEVER automerge critical services",
-      "matchPackagePatterns": [
-        "home-assistant",
-        "homeassistant",
-        "immich",
-        "postgres",
-        "paperless",
-        "tinyauth",
-        "pocket-id",
-        "volsync",
-        "tika",
-        "redis",
-        "gotenberg",
-        "fluxcd",
-        "flux-system"
-      ],
-      "automerge": false
+      "automerge": false,
+      "matchPackageNames": [
+        "/home-assistant/",
+        "/homeassistant/",
+        "/immich/",
+        "/postgres/",
+        "/paperless/",
+        "/tinyauth/",
+        "/pocket-id/",
+        "/volsync/",
+        "/tika/",
+        "/redis/",
+        "/gotenberg/",
+        "/fluxcd/",
+        "/flux-system/"
+      ]
     },
 
     {
