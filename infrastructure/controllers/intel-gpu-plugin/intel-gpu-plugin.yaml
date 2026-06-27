@@ -25,7 +25,7 @@ spec:
         image: intel/intel-gpu-plugin:0.36.0
         imagePullPolicy: IfNotPresent
         args:
-        - "-shared-dev-num=1"
+        - "-shared-dev-num=2"
         - "-enable-monitoring"
         - "-v=2"
         env:
