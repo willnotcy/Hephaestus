@@ -1,0 +1,79 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app ollama
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      ollama:
+        containers:
+          app:
+            image:
+              repository: ollama/ollama
+              tag: latest
+            env:
+              - name: TZ
+                value: Europe/Copenhagen
+              - name: OLLAMA_INTEL_GPU
+                value: "1"
+              - name: OLLAMA_MODELS
+                value: /models
+            resources:
+              requests:
+                gpu.intel.com/i915: 1
+              limits:
+                gpu.intel.com/i915: 1
+        initContainers:
+          pull-model:
+            image:
+              repository: ollama/ollama
+              tag: latest
+            env:
+              - name: OLLAMA_MODELS
+                value: /models
+            command:
+              - /bin/sh
+              - -c
+              - |
+                /bin/ollama serve &
+                SERVE_PID=$!
+                sleep 5
+                ollama pull gemma4:e2b
+                kill $SERVE_PID 2>/dev/null
+                exit 0
+        pod:
+          nodeSelector:
+            intel.feature.node.kubernetes.io/gpu: "true"
+
+    service:
+      app:
+        controller: ollama
+        ports:
+          http:
+            port: &port 11434
+
+    persistence:
+      models:
+        enabled: true
+        type: persistentVolumeClaim
+        storageClass: local-hostpath
+        size: 20Gi
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: /models

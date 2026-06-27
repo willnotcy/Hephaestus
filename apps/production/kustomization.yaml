@@ -35,5 +35,6 @@ resources:
   - isponsorblocktv/kustomization.yaml
   - freshrss/kustomization.yaml
   - frigate/kustomization.yaml
+  - ollama/kustomization.yaml
   - privatebin/kustomization.yaml
   
