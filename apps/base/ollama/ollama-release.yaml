@@ -30,15 +30,8 @@ spec:
             env:
               - name: TZ
                 value: Europe/Copenhagen
-              - name: OLLAMA_INTEL_GPU
-                value: "1"
               - name: OLLAMA_MODELS
                 value: /models
-            resources:
-              requests:
-                gpu.intel.com/i915: 1
-              limits:
-                gpu.intel.com/i915: 1
         initContainers:
           pull-model:
             image:
@@ -57,9 +50,6 @@ spec:
                 ollama pull gemma4:e2b
                 kill $SERVE_PID 2>/dev/null
                 exit 0
-        pod:
-          nodeSelector:
-            intel.feature.node.kubernetes.io/gpu: "true"
 
     service:
       app:
