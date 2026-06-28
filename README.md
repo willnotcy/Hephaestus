@@ -1,6 +1,6 @@
 # Hephaestus 🛠️ 
 
-A homelab forged with **Proxmox**, **Terraform**, **Ansible**, **K3s**, **Flux**, and **Renovate**.
+A homelab forged with **Proxmox**, **Terraform**, **Talos**, **Flux**, and **Renovate**.
 
 ---
 
@@ -8,7 +8,7 @@ A homelab forged with **Proxmox**, **Terraform**, **Ansible**, **K3s**, **Flux**
 
 **Hephaestus** is a mono repository for managing my Kubernetes-based homelab. It handles everything from provisioning and configuring virtual machine nodes to automating application deployments and managing backups.
 
-I'm transitioning from a setup based on Proxmox VMs and LXC containers to a more modern, Kubernetes-native environment. The goal is to automate everything—spinning up bare-metal servers, bootstrapping K3s, deploying apps, and keeping everything in sync through CI/CD workflows.
+I'm transitioning from a setup based on Proxmox VMs and LXC containers to a more modern, Kubernetes-native environment. The goal is to automate everything—spinning up bare-metal servers, bootstrapping Talos, deploying apps, and keeping everything in sync through CI/CD workflows.
 
 This project is a learning playground, a passion project, hopefully—a way to achieve a wife approved home automation setup.
 
@@ -21,7 +21,7 @@ This project is a learning playground, a passion project, hopefully—a way to a
 | Virtualization | [Proxmox VE](https://www.proxmox.com/en/)                                                                    |
 | Provisioning   | [Terraform](https://www.terraform.io/) + [Cloud-Init](https://cloudinit.readthedocs.io/)                     |
 | Bootstrapping  | [Ansible](https://www.ansible.com/)                                                                          |
-| Kubernetes     | [K3s](https://k3s.io/)                                                                                       |
+| Kubernetes     | [Talos](https://www.talos.dev/)                                                                              |
 | GitOps         | [Flux](https://fluxcd.io/)                                                                                   |
 | Secrets Management   | [SOPS](https://github.com/mozilla/sops)                          |
 | Ingress Controller   | [Traefik](https://doc.traefik.io/traefik/)                          |
@@ -47,7 +47,7 @@ This project is a learning playground, a passion project, hopefully—a way to a
 
 - ✅ Proxmox environment running
 - ✅ Terraform/Ansible bootstrapping complete
-- ✅ K3s cluster deployed
+- ✅ Talos cluster deployed
 - ✅ Flux desired state deployments
 - ✅ Automatic backup and restore of Persitent Volumes ([volsync](https://volsync.readthedocs.io/en/stable/))
 - ✅ Migrate all LXC applications 
@@ -59,7 +59,7 @@ This project is a learning playground, a passion project, hopefully—a way to a
 
 ```
 Hephaestus/
-├── ansible/            # Node end configuration and K3s installation
+├── Talos/             # Talos machine configurations
 ├── apps/            # Application base definitions and cluster overlays.
 ├── clusters/          # Cluster resources (Flux, sops, etc.)
 ├── infrastructure/     # Kubernetes cluster infrastructure code
