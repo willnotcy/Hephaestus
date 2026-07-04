@@ -28,6 +28,21 @@ spec:
             image:
               repository: mbentley/omada-controller
               tag: 6.2.10.17
+            securityContext:
+              runAsNonRoot: true
+              runAsUser: 1000
+              runAsGroup: 1000
+              allowPrivilegeEscalation: true
+              readOnlyRootFilesystem: false
+              capabilities:
+                drop: ["ALL"]
+                add:
+                  - NET_BIND_SERVICE
+                  - CHOWN
+                  - SETUID
+                  - SETGID
+                  - FOWNER
+                  - DAC_OVERRIDE
             env:
               - name: TZ
                 value: Europe/Copenhagen
@@ -76,9 +91,6 @@ spec:
             port: 8843
     defaultPodOptions:
       securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
         fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
     persistence:
