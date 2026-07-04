@@ -1,0 +1,92 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app omada-controller
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      omada-controller:
+        containers:
+          app:
+            image:
+              repository: ghcr.io/mbentley/omada-controller
+              tag: latest
+            env:
+              - name: TZ
+                value: Europe/Copenhagen
+              - name: MANAGE_HTTP_PORT
+                value: "8088"
+              - name: MANAGE_HTTPS_PORT
+                value: "8043"
+              - name: PGID
+                value: "1000"
+              - name: PUID
+                value: "1000"
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+    service:
+      main:
+        controller: omada-controller
+        ports:
+          http:
+            port: 8088
+      device-adoption:
+        controller: omada-controller
+        type: LoadBalancer
+        loadBalancerIP: 192.168.20.248
+        ports:
+          discovery:
+            port: 27001
+            protocol: UDP
+          adoption:
+            port: 27002
+          device-comm-1:
+            port: 29811
+          device-comm-2:
+            port: 29812
+          device-comm-3:
+            port: 29813
+          device-comm-4:
+            port: 29814
+          device-https:
+            port: 8043
+          portal-https:
+            port: 8843
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+    persistence:
+      data:
+        existingClaim: *app
+        globalMounts:
+          - path: /opt/tplink/EAPController/data
+      work:
+        type: emptyDir
+        globalMounts:
+          - path: /opt/tplink/EAPController/work

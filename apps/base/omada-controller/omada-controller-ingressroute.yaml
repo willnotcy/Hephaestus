@@ -1,0 +1,26 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: omada-controller
+  annotations:
+    gethomepage.dev/href: "https://${HOSTNAME:=omada.hephaestus.markmk.com}"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Omada Controller"
+    gethomepage.dev/description: "Network Management"
+    gethomepage.dev/app: omada-controller
+    gethomepage.dev/group: "Infrastructure"
+    gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/omada.png"
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`${HOSTNAME:=omada.hephaestus.markmk.com}`)
+      kind: Rule
+      services:
+        - name: omada-controller
+          port: 8088
+          namespace: omada-controller
+      middlewares:
+        - name: tinyauth
+          namespace: tinyauth
