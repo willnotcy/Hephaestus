@@ -23,6 +23,18 @@ spec:
   values:
     controllers:
       omada-controller:
+        initContainers:
+          init-permissions:
+            image: busybox
+            tag: 1.36.1
+            securityContext:
+              runAsUser: 0
+            command:
+              - sh
+              - -c
+              - |
+                mkdir -p /opt/tplink/EAPController/data /opt/tplink/EAPController/work /opt/tplink/EAPController/logs
+                chown -R 1000:1000 /opt/tplink/EAPController/                
         containers:
           app:
             image:
@@ -32,17 +44,10 @@ spec:
               runAsNonRoot: true
               runAsUser: 1000
               runAsGroup: 1000
-              allowPrivilegeEscalation: true
-              readOnlyRootFilesystem: false
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
               capabilities:
                 drop: ["ALL"]
-                add:
-                  - NET_BIND_SERVICE
-                  - CHOWN
-                  - SETUID
-                  - SETGID
-                  - FOWNER
-                  - DAC_OVERRIDE
             env:
               - name: TZ
                 value: Europe/Copenhagen
@@ -50,10 +55,6 @@ spec:
                 value: "8088"
               - name: MANAGE_HTTPS_PORT
                 value: "8043"
-              - name: PGID
-                value: "1000"
-              - name: PUID
-                value: "1000"
             probes:
               liveness:
                 enabled: false
@@ -89,10 +90,6 @@ spec:
             port: 8043
           portal-https:
             port: 8843
-    defaultPodOptions:
-      securityContext:
-        fsGroup: 1000
-        fsGroupChangePolicy: OnRootMismatch
     persistence:
       data:
         existingClaim: *app
@@ -102,3 +99,7 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /opt/tplink/EAPController/work
+      logs: 
+        type: emptyDir
+        globalMounts:
+          - path: /opt/tplink/EAPController/logs          
