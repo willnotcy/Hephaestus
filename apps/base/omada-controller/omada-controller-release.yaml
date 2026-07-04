@@ -26,8 +26,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/mbentley/omada-controller
-              tag: latest
+              repository: mbentley/omada-controller
+              tag: 6.2.10.17
             env:
               - name: TZ
                 value: Europe/Copenhagen
