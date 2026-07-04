@@ -23,32 +23,11 @@ spec:
   values:
     controllers:
       omada-controller:
-        initContainers:
-          init-permissions:
-            image: 
-              repository: busybox
-              tag: 1.38.0
-            securityContext:
-              runAsUser: 0
-            command:
-              - sh
-              - -c
-              - |
-                mkdir -p /opt/tplink/EAPController/data /opt/tplink/EAPController/work /opt/tplink/EAPController/logs
-                chown -R 1000:1000 /opt/tplink/EAPController/                
         containers:
           app:
             image:
               repository: mbentley/omada-controller
               tag: 6.2.10.17
-            securityContext:
-              runAsNonRoot: true
-              runAsUser: 1000
-              runAsGroup: 1000
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: ["ALL"]
             env:
               - name: TZ
                 value: Europe/Copenhagen
@@ -100,7 +79,7 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /opt/tplink/EAPController/work
-      logs: 
+      logs:
         type: emptyDir
         globalMounts:
           - path: /opt/tplink/EAPController/logs          
