@@ -4,4 +4,3 @@ namespace: omada-controller
 resources:
   - omada-controller-namespace.yaml
   - omada-controller-release.yaml
-  - omada-controller-ingressroute.yaml
