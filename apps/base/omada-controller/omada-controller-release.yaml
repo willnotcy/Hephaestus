@@ -57,7 +57,7 @@ spec:
             port: 29812
           upgrade:
             port: 29813
-         transfer:
+          transfer:
             port: 29814            
           device-https:
             port: 8043
