@@ -85,6 +85,7 @@
         "/redis/",
         "/gotenberg/",
         "/fluxcd/",
+        "/frigate/",
         "/flux-system/"
       ]
     },
