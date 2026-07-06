@@ -86,6 +86,7 @@
         "/gotenberg/",
         "/fluxcd/",
         "/frigate/",
+        "/omada-controller/",
         "/flux-system/"
       ]
     },
