@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: huginn
-          image: ghcr.io/huginn/huginn@sha256:0c3c1e79aeb767048c6672a454f65e3a02eff5ed82bdb3add592fd6035a8c561
+          image: ghcr.io/huginn/huginn@sha256:e67dc5f7381340a91d63053e9b1e2db33c235c72a41d2413716ac1656ca84990
           ports:
             - containerPort: 3000
               name: http
