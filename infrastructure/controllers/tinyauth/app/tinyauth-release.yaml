@@ -26,8 +26,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/steveiliop56/tinyauth
-              tag: v5.0.7
+              repository: ghcr.io/tinyauthapp/tinyauth
+              tag: v5.1.1
             envFrom:
               - secretRef:
                   name: tinyauth
