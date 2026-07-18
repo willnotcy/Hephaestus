@@ -38,4 +38,5 @@ resources:
   - ollama/kustomization.yaml
   - omada-controller/kustomization.yaml
   - privatebin/kustomization.yaml
+  - vaultwarden/kustomization.yaml
   
