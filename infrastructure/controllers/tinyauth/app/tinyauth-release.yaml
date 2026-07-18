@@ -27,12 +27,12 @@ spec:
           app:
             image:
               repository: ghcr.io/steveiliop56/tinyauth
-              tag: v4.1.0
+              tag: v5.0.0
             envFrom:
               - secretRef:
                   name: tinyauth
             env:
-              APP_URL: https://tinyauth.hephaestus.markmk.com
+              TINYAUTH_APPURL: https://tinyauth.hephaestus.markmk.com
     service:
       app:
         controller: tinyauth
