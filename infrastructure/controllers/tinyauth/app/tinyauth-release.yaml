@@ -27,17 +27,22 @@ spec:
           app:
             image:
               repository: ghcr.io/steveiliop56/tinyauth
-              tag: v3.6.2
+              tag: v4.1.0
             envFrom:
               - secretRef:
                   name: tinyauth
             env:
               APP_URL: https://tinyauth.hephaestus.markmk.com
-              DISABLE_CONTINUE: "true"
     service:
       app:
         controller: tinyauth
         ports:
           http:
             port: &port 3000
+    persistence:
+      data:
+        enabled: true
+        type: emptyDir
+        globalMounts:
+          - path: /data
 
