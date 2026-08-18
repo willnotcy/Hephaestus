@@ -34,20 +34,45 @@ spec:
                 value: "1000"
               - name: AUDIOBOOKSHELF_GID
                 value: "1000"
+              - name: METADATA_PATH
+                value: /config/metadata
+              - name: CACHE_PATH
+                value: /cache                
             probes:
               liveness:
-                enabled: false
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthcheck
+                    port: &port 80
+                  initialDelaySeconds: 10
+                  periodSeconds: 20
               readiness:
-                enabled: false
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthcheck
+                    port: *port
+                  initialDelaySeconds: 5
+                  periodSeconds: 10
               startup:
-                enabled: false
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthcheck
+                    port: *port
+                  failureThreshold: 30
+                  periodSeconds: 5
 
     service:
       app:
         controller: audiobookshelf
         ports:
           http:
-            port: &port 80
+            port: *port
 
     persistence:
       config:
@@ -55,9 +80,22 @@ spec:
         globalMounts:
           - path: /config
 
-      rclone:
-        type: hostPath
-        hostPath: /mnt/zurg/audiobooks
+      audiobooks:
+        type: nfs
+        server: nfs.markmk.com
+        path: /media/audiobooks
         globalMounts:
           - path: /audiobooks
             readOnly: true
+
+      podcasts:
+        type: nfs
+        server: nfs.markmk.com
+        path: /media/podcasts
+        globalMounts:
+          - path: /podcasts        
+
+      cache:
+        type: emptyDir
+        globalMounts:
+          - path: /cache        
