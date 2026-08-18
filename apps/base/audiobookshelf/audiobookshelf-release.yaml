@@ -83,7 +83,7 @@ spec:
       audiobooks:
         type: nfs
         server: nfs.markmk.com
-        path: /media/audiobooks
+        path: /Audiobooks
         globalMounts:
           - path: /audiobooks
             readOnly: true
@@ -91,7 +91,7 @@ spec:
       podcasts:
         type: nfs
         server: nfs.markmk.com
-        path: /media/podcasts
+        path: /Podcasts
         globalMounts:
           - path: /podcasts        
 
