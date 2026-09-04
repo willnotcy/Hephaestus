@@ -27,7 +27,7 @@ spec:
           app:
             image:
               repository: mbentley/omada-controller
-              tag: 6.2.14.11
+              tag: 6.3.0.45
             env:
               - name: TZ
                 value: Europe/Copenhagen
