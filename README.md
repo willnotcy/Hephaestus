@@ -1,10 +1,10 @@
-# Hephaestus 🛠️ 
+# Hephaestus 
 
 A homelab forged with **Proxmox**, **Terraform**, **Talos**, **Flux**, and **Renovate**.
 
 ---
 
-## 🚀 Overview
+## Overview
 
 **Hephaestus** is a mono repository for managing my Kubernetes-based homelab. It handles everything from provisioning and configuring virtual machine nodes to automating application deployments and managing backups.
 
@@ -14,7 +14,7 @@ This project is a learning playground, a passion project, hopefully—a way to a
 
 ---
 
-## 🌐 Core stack
+## Core stack
 
 | Layer          | Tooling                                                                                                      |
 | -------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -25,14 +25,14 @@ This project is a learning playground, a passion project, hopefully—a way to a
 | GitOps         | [Flux](https://fluxcd.io/)                                                                                   |
 | Secrets Management   | [SOPS](https://github.com/mozilla/sops)                          |
 | Ingress Controller   | [Traefik](https://doc.traefik.io/traefik/)                          |
-|CSI storage   | [democratic-csi](https://github.com/democratic-csi/democratic-csi)                          |
-|Backup/Recovery   | [volsync](https://volsync.readthedocs.io/en/stable/)                          |
+| CSI storage   | [democratic-csi](https://github.com/democratic-csi/democratic-csi)                          |
+| Backup/Recovery   | [volsync](https://volsync.readthedocs.io/en/stable/)                          |
 | Dependency Management   | [Renovate](https://github.com/renovatebot/renovate)                          |
 | Observability  | TBD (Prometheus,Loki,Grafana...) |
 
 ---
 
-## 🛠️ Goals
+## Goals
 
 - Replace my current Proxmox-based VM/LXC infrastructure with a Kubernetes-first approach
 - Automate everything from bare metal provisioning to app deployment
@@ -41,7 +41,7 @@ This project is a learning playground, a passion project, hopefully—a way to a
 
 ---
 
-## 📊 Current Status
+## Current Status
 
 > \_"Under active development. Expect chaos, pain, and possibly fire."
 
@@ -49,33 +49,37 @@ This project is a learning playground, a passion project, hopefully—a way to a
 - ✅ Terraform/Ansible bootstrapping complete
 - ✅ Talos cluster deployed
 - ✅ Flux desired state deployments
-- ✅ Automatic backup and restore of Persitent Volumes ([volsync](https://volsync.readthedocs.io/en/stable/))
-- ✅ Migrate all LXC applications 
+- ✅ Automatic backup and restore of Persistent Volumes ([volsync](https://volsync.readthedocs.io/en/stable/))
+- ✅ Migrate all LXC applications
+- ✅ Migrate from K3s to Talos
+- ✅ Onboard wife to core applications and ultimately accept a platinum level, 100% 24/7/365 uptime requirement. Unplanned downtime no longer acceptable. 
 - ⏳ Setup observability/monitoring
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 Hephaestus/
 ├── Talos/             # Talos machine configurations
-├── apps/            # Application base definitions and cluster overlays.
+├── apps/              # Application base definitions and cluster overlays.
 ├── clusters/          # Cluster resources (Flux, sops, etc.)
-├── infrastructure/     # Kubernetes cluster infrastructure code
-├── terraform/          # Infrastructure provisioning
+├── infrastructure/    # Kubernetes cluster infrastructure code
+├── components/        # Reusable Kubernetes component.s 
+├── ~~terraform/~~     # Infrastructure provisioning - legacy replaced by [Talhelper](https://budimanjojo.github.io/talhelper/latest/)
+├── ~~ansible/~~       # Cluster bootstrapping - legacy replaced by [Talhelper](https://budimanjojo.github.io/talhelper/latest/)
 └── README.md
 ```
 
 ---
 
-## 🌐 Inspirations
+## Inspirations
 
 Much inspiration has been taken from the incredible [onedr0p/home-ops](https://github.com/onedr0p/home-ops)/[cluster-template](https://github.com/onedr0p/cluster-template) repository, among others in the self-hosted and GitOps communities. Join the [Home Operations](https://discord.gg/home-operations) Discord community!
 
 ---
 
-## 💥 Things I Broke
+## Things I Broke
 
 - **[2025-03-27] The Great Namespace Refactor Disaster**\
   [Commit 3faa0e2](https://github.com/willnotcy/Hephaestus/commit/3faa0e28c636eecd0b08e4a1e607efecfc216ff7) — Moved all `namespace.yaml` files for better structure... and accidentally wiped every application and all their persistent volumes. Learned the hard way how the prune option for Flux kustomizations is applied.
