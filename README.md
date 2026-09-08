@@ -20,7 +20,7 @@ This project is a learning playground, a passion project, hopefully—a way to a
 | -------------- | ------------------------------------------------------------------------------------------------------------ |
 | Virtualization | [Proxmox VE](https://www.proxmox.com/en/)                                                                    |
 | Provisioning   | [Terraform](https://www.terraform.io/) + [Cloud-Init](https://cloudinit.readthedocs.io/)                     |
-| Bootstrapping  | [Ansible](https://www.ansible.com/)                                                                          |
+| Bootstrapping  | [Talhelper](https://budimanjojo.github.io/talhelper/latest/)                                                                        |
 | Kubernetes     | [Talos](https://www.talos.dev/)                                                                              |
 | GitOps         | [Flux](https://fluxcd.io/)                                                                                   |
 | Secrets Management   | [SOPS](https://github.com/mozilla/sops)                          |
