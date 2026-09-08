@@ -1,6 +1,6 @@
 # Hephaestus 
 
-A homelab forged with **Proxmox**, **Terraform**, **Talos**, **Flux**, and **Renovate**.
+A homelab forged with **Proxmox**, **Talhelper**, **Talos**, **Flux**, and **Renovate**.
 
 ---
 
