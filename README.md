@@ -65,7 +65,7 @@ This project is a learning playground, a passion project, hopefully—a way to a
 ├── apps/                    # Application base definitions and cluster overlays.
 ├── clusters/                # Cluster resources (Flux, sops, etc.)
 ├── infrastructure/          # Kubernetes cluster infrastructure code
-├── components/              # Reusable Kubernetes component.s 
+├── components/              # Reusable Kubernetes component. 
 ├── <del>terraform/</del>    # Infrastructure provisioning - legacy replaced by [Talhelper](https://budimanjojo.github.io/talhelper/latest/)
 ├── <del>ansible/</del>      # Cluster bootstrapping - legacy replaced by [Talhelper](https://budimanjojo.github.io/talhelper/latest/)
 └── README.md
