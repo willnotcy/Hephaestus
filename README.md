@@ -61,12 +61,12 @@ This project is a learning playground, a passion project, hopefully—a way to a
 
 
 <pre><code>Hephaestus/
-├── Talos/             # Talos machine configurations
-├── apps/              # Application base definitions and cluster overlays.
-├── clusters/          # Cluster resources (Flux, sops, etc.)
-├── infrastructure/    # Kubernetes cluster infrastructure code
-├── components/        # Reusable Kubernetes component.s 
-├── <del>terraform/</del>     # Infrastructure provisioning - legacy replaced by [Talhelper](https://budimanjojo.github.io/talhelper/latest/)
+├── Talos/                   # Talos machine configurations
+├── apps/                    # Application base definitions and cluster overlays.
+├── clusters/                # Cluster resources (Flux, sops, etc.)
+├── infrastructure/          # Kubernetes cluster infrastructure code
+├── components/              # Reusable Kubernetes component.s 
+├── <del>terraform/</del>    # Infrastructure provisioning - legacy replaced by [Talhelper](https://budimanjojo.github.io/talhelper/latest/)
 ├── <del>ansible/</del>      # Cluster bootstrapping - legacy replaced by [Talhelper](https://budimanjojo.github.io/talhelper/latest/)
 └── README.md
 </code></pre>
