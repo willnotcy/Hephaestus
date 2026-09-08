@@ -52,7 +52,7 @@ This project is a learning playground, a passion project, hopefully—a way to a
 - [x] Automatic backup and restore of Persistent Volumes ([volsync](https://volsync.readthedocs.io/en/stable/))
 - [x] Migrate all LXC applications
 - [x] Migrate from K3s to Talos
-- [x] Onboard wife to core applications and ultimately accept a platinum level, 100% 24/7/365 uptime requirement. Unplanned downtime no longer acceptable. 
+- [x] **Onboard wife to core applications and ultimately accept a platinum level, 100% 24/7/365 uptime requirement. Unplanned downtime no longer acceptable.**
 - [ ] Setup observability/monitoring
 ---
 
