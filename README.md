@@ -59,17 +59,17 @@ This project is a learning playground, a passion project, hopefully—a way to a
 
 ## Repository Structure
 
-```
-Hephaestus/
+
+<pre><code>Hephaestus/
 ├── Talos/             # Talos machine configurations
 ├── apps/              # Application base definitions and cluster overlays.
 ├── clusters/          # Cluster resources (Flux, sops, etc.)
 ├── infrastructure/    # Kubernetes cluster infrastructure code
 ├── components/        # Reusable Kubernetes component.s 
-├── ~~terraform/~~     # Infrastructure provisioning - legacy replaced by [Talhelper](https://budimanjojo.github.io/talhelper/latest/)
-├── ~~ansible/~~       # Cluster bootstrapping - legacy replaced by [Talhelper](https://budimanjojo.github.io/talhelper/latest/)
+├── <del>terraform/</del>     # Infrastructure provisioning - legacy replaced by [Talhelper](https://budimanjojo.github.io/talhelper/latest/)
+├── <del>ansible/</del>      # Cluster bootstrapping - legacy replaced by [Talhelper](https://budimanjojo.github.io/talhelper/latest/)
 └── README.md
-```
+</code></pre>
 
 ---
 
