@@ -45,7 +45,7 @@ spec:
           redis:
             image:
               repository: docker.io/library/redis
-              tag: 8.10.3
+              tag: 8.12.0
           gotenburg:
             image:
               repository: gotenberg/gotenberg
