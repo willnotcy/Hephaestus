@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: paperless-ngx
 resources:
   - paperless-ngx-namespace.yaml
+  - paperless-ngx-secret.yaml
   - paperless-ngx-ingressroute.yaml
   - paperless-ngx-release.yaml

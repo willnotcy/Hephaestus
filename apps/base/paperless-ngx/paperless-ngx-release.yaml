@@ -42,6 +42,10 @@ spec:
               PAPERLESS_URL: https://${SUBDOMAIN:=paperless-ngx}.hephaestus.markmk.com
               PAPERLESS_ENABLE_HTTP_REMOTE_USER: 1
               PAPERLESS_ENABLE_HTTP_REMOTE_USER_API: 1
+              PAPERLESS_ALLAUTH_TRUSTED_PROXY_COUNT: 1
+            envFrom:
+            - secretRef:
+                name: paperless-ngx-secret
           redis:
             image:
               repository: docker.io/library/redis
