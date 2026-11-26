@@ -53,7 +53,7 @@ spec:
           gotenburg:
             image:
               repository: gotenberg/gotenberg
-              tag: 9.10.0
+              tag: 9.10.2
             command: ["gotenberg"]
             args: ["--chromium-disable-javascript=true", "--chromium-allow-list=file:///tmp/.*"]      
           tika:
